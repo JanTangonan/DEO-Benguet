@@ -1,4 +1,4 @@
-export default function FeatureCard({ title, description }: any) {
+function FeatureCard({ title, description }: any) {
     return (
         <div className="bg-white rounded-2xl shadow-md p-8 text-center hover:shadow-lg transition">
             <div className="text-4xl mb-4">⛪</div>
@@ -12,7 +12,7 @@ export default function FeatureCard({ title, description }: any) {
     );
 }
 
-function Features() {
+export default function Features() {
     return (
         <section className="bg-gray-100 py-20">
             <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
