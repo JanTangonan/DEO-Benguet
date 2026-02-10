@@ -4,7 +4,7 @@ export default function Navbar() {
   return (
     <nav className="w-full bg-white shadow-sm">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-        <div className="text-2xl font-bold">Your Church</div>
+        <div className="text-2xl font-bold">DEO-Benguet</div>
 
         <div className="hidden md:flex gap-8 items-center text-gray-700 font-medium">
           <Link href="/about">About Us</Link>
