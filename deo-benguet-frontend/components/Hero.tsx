@@ -15,7 +15,7 @@ export default function Hero() {
 
             <div className="relative z-10 flex flex-col justify-center h-full max-w-6xl mx-auto px-6 text-white">
                 <h1 className="text-5xl md:text-6xl font-bold leading-tight max-w-2xl">
-                    Welcome to <span className="text-teal-400">Your Church</span>
+                    Welcome to <span className="text-teal-400">DEO Church-Benguet</span>
                 </h1>
 
                 <p className="mt-4 text-lg max-w-xl text-gray-200">
