@@ -19,8 +19,7 @@ export default function Hero() {
                 </h1>
 
                 <p className="mt-4 text-lg max-w-xl text-gray-200">
-                    We are a family deeply moved by the love of Jesus. Join us this Sunday
-                    and experience community, faith, and purpose.
+                    A ministry empowered by the Holy Spirit to reach the nations with Lifechanging Gospel of Jesus Christ
                 </p>
 
                 <div className="mt-6">
