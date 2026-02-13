@@ -2,7 +2,8 @@ import Image from "next/image";
 
 export default function Hero() {
     return (
-        <section className="relative h-[70vh] w-full">
+        <section className="relative h-[85vh] w-full">
+            {/* Background Image */}
             <Image
                 src="https://images.unsplash.com/photo-1507692049790-de58290a4334"
                 alt="Church worship"
@@ -11,8 +12,10 @@ export default function Hero() {
                 className="object-cover"
             />
 
-            <div className="absolute inset-0 bg-black/40" />
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-black/60" />
 
+            {/* Content */}
             <div className="relative z-10 flex flex-col justify-center h-full max-w-6xl mx-auto px-6 text-white">
                 <h1 className="text-5xl md:text-6xl font-bold leading-tight max-w-2xl">
                     Welcome to <span className="text-teal-400">DEO Church-Benguet</span>
@@ -23,9 +26,12 @@ export default function Hero() {
                 </p>
 
                 <div className="mt-6">
-                    <button className="bg-teal-600 px-6 py-3 rounded-lg text-lg font-semibold hover:bg-teal-700 transition">
+                    <a
+                        href="#visit"
+                        className="bg-teal-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-teal-700 transition inline-block"
+                    >
                         Plan a Visit
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>
