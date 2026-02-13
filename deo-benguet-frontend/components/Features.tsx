@@ -1,6 +1,6 @@
 function FeatureCard({ title, description }: any) {
     return (
-        <div className="bg-white rounded-2xl shadow-md p-8 text-center hover:shadow-lg transition">
+        <div className="bg-white rounded-2xl shadow-md p-8 text-center hover:shadow-lg hover:-translate-y-1 transition duration-300">
             <div className="text-4xl mb-4">⛪</div>
             <h3 className="text-xl font-semibold mb-2">{title}</h3>
             <p className="text-gray-600">{description}</p>
@@ -14,7 +14,7 @@ function FeatureCard({ title, description }: any) {
 
 export default function Features() {
     return (
-        <section className="bg-gray-100 py-20">
+        <section className="bg-gray-100 py-26">
             <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
                 <FeatureCard
                     title="Midweek Groups"
