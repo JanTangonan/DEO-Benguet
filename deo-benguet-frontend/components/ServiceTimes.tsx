@@ -20,7 +20,7 @@ const serviceTimes: ServiceTime[] = [
 
 function ServiceTimeCard({ title, time }: ServiceTime) {
     return (
-        <div className="p-6 rounded-2xl shadow-sm border hover:-translate-y-1 transition duration-300">
+        <div className="bg-white p-10 rounded-3xl border border-gray-100 hover:shadow-lg transition duration-300">
             <h3 className="font-semibold text-xl mb-2">{title}</h3>
             <p className="text-gray-600">{time}</p>
         </div>

@@ -1,9 +1,9 @@
-import Image from "next/image";
-import FeatureCard from "@/components/Features";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import ServiceTimes from "@/components/ServiceTimes";
 import PlanVisit from "@/components/PlanVisit";
+import Location from "@/components/Location";
+import Testimonials from "@/components/Testimonials";
 
 export default function HomePage() {
   return (
@@ -11,6 +11,8 @@ export default function HomePage() {
       <Hero />
       <ServiceTimes />
       <PlanVisit />
+      <Testimonials />
+      <Location />
       <Features />
     </main>
   );

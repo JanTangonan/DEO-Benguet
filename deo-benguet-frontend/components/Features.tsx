@@ -1,6 +1,11 @@
-function FeatureCard({ title, description }: any) {
+interface FeatureProps {
+    title: string;
+    description: string;
+}
+
+function FeatureCard({ title, description }: FeatureProps) {
     return (
-        <div className="bg-white rounded-2xl shadow-md p-8 text-center hover:shadow-lg hover:-translate-y-1 transition duration-300">
+        <div className="border border-gray-200 rounded-2xl bg-transparent p-6 text-center hover:-translate-y-1 transition duration-300">
             <div className="text-4xl mb-4">⛪</div>
             <h3 className="text-xl font-semibold mb-2">{title}</h3>
             <p className="text-gray-600">{description}</p>

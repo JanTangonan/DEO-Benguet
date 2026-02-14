@@ -22,7 +22,8 @@ export default function Hero() {
                 </h1>
 
                 <p className="mt-4 text-lg max-w-xl text-gray-200">
-                    A ministry empowered by the Holy Spirit to reach the nations with Lifechanging Gospel of Jesus Christ
+                    A welcoming church family in Benguet where faith grows,
+                    hope is restored, and lives are transformed through Jesus Christ.
                 </p>
 
                 <div className="mt-6">
