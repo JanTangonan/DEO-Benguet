@@ -5,7 +5,8 @@ export default function Hero() {
         <section className="relative h-[85vh] w-full">
             {/* Background Image */}
             <Image
-                src="https://images.unsplash.com/photo-1507692049790-de58290a4334"
+                // src="https://images.unsplash.com/photo-1507692049790-de58290a4334"
+                src="/events/deo-church-benguet-1.jpg"
                 alt="Church worship"
                 fill
                 priority
