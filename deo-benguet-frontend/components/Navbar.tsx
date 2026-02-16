@@ -32,7 +32,7 @@ export default function Navbar() {
 
                 <div className="hidden md:flex gap-8 items-center font-medium text-gray-700">
                     <Link href="/about">About</Link>
-                    <Link href="/sermons">Sermons</Link>
+                    <Link href="/newsletter">News Letter</Link>
                     <Link href="/events">Events</Link>
                     <Link href="/contact">Contact</Link>
 
@@ -48,7 +48,7 @@ export default function Navbar() {
                     }`}
             >
                 <Link href="/about" className="block py-2 text-lg" onClick={() => setMenuOpen(false)}>About</Link>
-                <Link href="/sermons" className="block py-2 text-lg" onClick={() => setMenuOpen(false)}>Sermons</Link>
+                <Link href="/newsletter" className="block py-2 text-lg" onClick={() => setMenuOpen(false)}>Sermons</Link>
                 <Link href="/events" className="block py-2 text-lg" onClick={() => setMenuOpen(false)}>Events</Link>
                 <Link href="/contact" className="block py-2 text-lg" onClick={() => setMenuOpen(false)}>Contact</Link>
 
