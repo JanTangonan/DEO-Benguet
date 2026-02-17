@@ -29,7 +29,7 @@ export default function EventsPage() {
         <main>
 
             {/* Page Hero */}
-            <section className="bg-gradient-to-b from-teal-50 to-white py-24 text-center fade-in">
+            <section className="bg-gradient-to-b from-teal-100 to-white py-24 text-center fade-in">
                 <div className="max-w-3xl mx-auto px-6">
                     <h1 className="text-4xl md:text-5xl font-bold mb-6">
                         Upcoming Events
@@ -91,11 +91,11 @@ export default function EventsPage() {
             </section>
 
             {/* Past Events */}
-            <section className="fade-in py-24">
+            <section className="fade-in py-24 bg-gray-50">
                 <div className="max-w-6xl mx-auto px-6">
 
                     <h2 className="text-3xl font-bold text-center mb-16">
-                        Past Highlights
+                        Successful Past Events
                     </h2>
 
                     <div className="grid md:grid-cols-3 gap-8">
