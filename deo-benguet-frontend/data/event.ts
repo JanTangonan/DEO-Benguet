@@ -105,17 +105,17 @@ export const events: Event[] = [
     },
     {
         id: 6,
-        title: "Missionary Amanda – Street Evangelism",
-        slug: "missionary-amanda-street-evangelism",
+        title: "Amanda's Street Evangelism",
+        slug: "amanda-street-evangelism",
         date: "January 2026",
         description:
             "Equipping and encouraging believers to boldly share the Gospel in the streets.",
         fullDescription:
             "Equipping and encouraging believers to boldly share the Gospel in the streets with confidence and compassion.",
         images: [
-            "/events/missionary-amanda-1.jpg",
-            "/events/missionary-amanda-2.jpg",
-            "/events/missionary-amanda-3.jpg",
+            "/events/amanda-street-evangelism-1.jpg",
+            "/events/amanda-street-evangelism-2.jpg",
+            "/events/amanda-street-evangelism-3.jpg",
         ],
         type: "past",
     },
@@ -128,6 +128,11 @@ export const events: Event[] = [
             "A joyful celebration bringing families together in gratitude and fellowship.",
         fullDescription:
             "A joyful celebration bringing families together in gratitude and fellowship. We shared meals, games, and celebrated the true meaning of Christmas.",
+        images: [
+            "/events/christmas-party-1.jpg",
+            "/events/christmas-party-2.jpg",
+            "/events/christmas-party-3.jpg",
+        ],
         type: "past",
     },
     {
@@ -139,17 +144,27 @@ export const events: Event[] = [
             "A public declaration of faith as we joined the nationwide celebration of Christ's reign.",
         fullDescription:
             "A public declaration of faith as we joined the nationwide celebration of Christ's reign.",
+        images: [
+            "/events/jesus-reigns-1.jpg",
+            "/events/jesus-reigns-2.jpg",
+            "/events/jesus-reigns-3.jpg",
+        ],
         type: "past",
     },
     {
         id: 9,
-        title: "Missionaries from South Africa",
-        slug: "missionaries-south-africa",
+        title: "DEO Interns Visit",
+        slug: "deo-interns-visit",
         date: "August 2025",
         description:
             "A powerful time of sharing testimonies and global ministry updates.",
         fullDescription:
             "A powerful time of sharing testimonies and global ministry updates from our partners in South Africa.",
+        images: [
+            "/events/deo-interns-visit-1.jpg",
+            "/events/deo-interns-visit-2.jpg",
+            "/events/deo-interns-visit-3.jpg",
+        ],
         type: "past",
     },
 ];
