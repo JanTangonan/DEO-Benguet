@@ -1,9 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
+import { useFadeIn } from "@/hooks/useFadeIn";
 
 export default function AboutPage() {
     //#region State & Data
+    useFadeIn();
     const [expandedValue, setExpandedValue] = useState<string | null>(null);
 
     const leadership = [
@@ -23,7 +25,7 @@ export default function AboutPage() {
             image: "/events/pastor2.jpg",
             focus: "God's Word",
             icon: "📖",
-            bio: "Pastor Kesha is passionate about sharing God's Word with depth and clarity. As our Sunday service preacher, he delivers powerful messages that help our congregation understand and apply Scripture in their daily lives."
+            bio: "Pastor Kesha is passionate about sharing God's Word with depth and clarity. As our Sunday service preacher, she delivers powerful messages that help our congregation understand and apply Scripture in their daily lives."
         },
         {
             id: "youth-leader-kate",
@@ -88,28 +90,12 @@ export default function AboutPage() {
         "We believe in final judgement, resurrection of the body and eternal life."
     ];
 
-    useEffect(() => {
-        const elements = document.querySelectorAll(".fade-in");
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("visible");
-                }
-            });
-        }, { threshold: 0.1 });
-
-        elements.forEach((el) => observer.observe(el));
-
-        return () => observer.disconnect();
-    }, []);
-
     //#endregion
     return (
         <main>
             
             {/* Page Hero */}
-            <section className="relative h-[60vh] flex items-center justify-center text-white fade-in py-24">
+            <section className="relative h-[50vh] flex items-center justify-center text-white fade-in py-24 scroll-mt-24">
                 <div
                     className="absolute inset-0 bg-cover bg-center"
                     style={{ backgroundImage: "url('/events/deo-church-benguet-2.jpg')" }}

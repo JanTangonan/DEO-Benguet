@@ -1,3 +1,6 @@
+"use client";
+import { useFadeIn } from "@/hooks/useFadeIn";
+
 interface Testimonial {
     name: string;
     quote: string;
@@ -19,8 +22,9 @@ const testimonials: Testimonial[] = [
 ];
 
 export default function Testimonials() {
+    useFadeIn();    
     return (
-        <section className="bg-white py-24">
+        <section className="bg-white py-24 fade-in">
             <div className="max-w-6xl mx-auto px-6 text-center">
                 
                 <h2 className="text-3xl md:text-4xl font-bold mb-12">

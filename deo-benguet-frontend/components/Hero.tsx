@@ -1,8 +1,13 @@
+"use client";
+
 import Image from "next/image";
+import { useFadeIn } from "@/hooks/useFadeIn";
 
 export default function Hero() {
+    useFadeIn();
+
     return (
-        <section className="relative h-[85vh] w-full">
+        <section className="relative h-[85vh] w-full fade-in">
             {/* Background Image */}
             <Image
                 // src="https://images.unsplash.com/photo-1507692049790-de58290a4334"
@@ -14,7 +19,7 @@ export default function Hero() {
             />
 
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-black/60" />
+            <div className="absolute inset-0 bg-black/40" />
 
             {/* Content */}
             <div className="relative z-10 flex flex-col justify-center h-full max-w-6xl mx-auto px-6 text-white">

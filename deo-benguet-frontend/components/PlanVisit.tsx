@@ -1,3 +1,7 @@
+"use client";
+
+import { useFadeIn } from "@/hooks/useFadeIn";
+
 const visitInfo = [
 	{
 		title: "What to Expect",
@@ -32,8 +36,9 @@ function InfoCard({
 }
 
 export default function PlanVisit() {
+	useFadeIn();
 	return (
-		<section id="visit" className="bg-teal-600 text-white relative py-28 overflow-hidden scroll-mt-24">
+		<section id="visit" className="bg-teal-600 text-white relative py-28 overflow-hidden scroll-mt-24 fade-in">
 			{/* Soft teal background glow */}
 
 			<div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">

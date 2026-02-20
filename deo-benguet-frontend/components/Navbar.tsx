@@ -32,13 +32,16 @@ export default function Navbar() {
 
                 <div className="hidden md:flex gap-8 items-center font-medium text-gray-700">
                     <Link href="/about">About</Link>
-                    <Link href="/newsletter">News Letter</Link>
                     <Link href="/events">Events</Link>
                     <Link href="/contact">Contact</Link>
+                    <Link href="/newsletter">News Letter</Link>
 
-                    <button className="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition">
+                    <a
+                        href="/contact/#contact"
+                        className="bg-teal-600 px-8 text-white py-2 rounded-lg text-lg font-semibold hover:bg-teal-700 transition inline-block"
+                    >
                         Contact Us
-                    </button>
+                    </a>
                 </div>
             </div>
 
@@ -48,13 +51,16 @@ export default function Navbar() {
                     }`}
             >
                 <Link href="/about" className="block py-2 text-lg" onClick={() => setMenuOpen(false)}>About</Link>
-                <Link href="/newsletter" className="block py-2 text-lg" onClick={() => setMenuOpen(false)}>Sermons</Link>
                 <Link href="/events" className="block py-2 text-lg" onClick={() => setMenuOpen(false)}>Events</Link>
                 <Link href="/contact" className="block py-2 text-lg" onClick={() => setMenuOpen(false)}>Contact</Link>
+                <Link href="/newsletter" className="block py-2 text-lg" onClick={() => setMenuOpen(false)}>Sermons</Link>
 
-                <button className="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition">
+                <a
+                    href="/contact/#contact"
+                    className="bg-teal-600 px-8 py-3 text-white rounded-lg text-lg font-semibold hover:bg-teal-700 transition inline-block"
+                >
                     Contact Us
-                </button>
+                </a>
             </div>
 
         </nav>
