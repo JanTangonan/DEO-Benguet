@@ -1,3 +1,7 @@
+"use client";
+
+import { useFadeIn } from "@/hooks/useFadeIn";
+
 interface ServiceTime {
     title: string;
     time: string;
@@ -28,8 +32,9 @@ function ServiceTimeCard({ title, time }: ServiceTime) {
 }
 
 export default function ServiceTimes() {
+    useFadeIn();
     return (
-        <section className="bg-white py-26">
+        <section className="bg-white py-26 fade-in">
             <div className="max-w-5xl mx-auto px-6 text-center">
                 <h2 className="text-3xl md:text-4xl font-bold mb-10">
                     Join Our Church Services and Activities
