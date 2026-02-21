@@ -1,7 +1,10 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useFadeIn } from "@/hooks/useFadeIn";
+import { Facebook } from "lucide-react";
 
 export default function Contact() {
+    useFadeIn();
     const [form, setForm] = useState({
         name: "",
         email: "",
@@ -32,26 +35,10 @@ export default function Contact() {
         setLoading(false);
     };
 
-    useEffect(() => {
-        const elements = document.querySelectorAll(".fade-in");
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("visible");
-                }
-            });
-        }, { threshold: 0.1 });
-
-        elements.forEach((el) => observer.observe(el));
-
-        return () => observer.disconnect();
-    }, []);
-
     return (
         <>
             {/* Hero */}
-            <section className="relative h-[50vh] flex items-center justify-center text-white fade-in">
+            <section className="relative h-[50vh] flex items-center justify-center text-white fade-in scroll-mt-24">
                 <div
                     className="absolute inset-0 bg-cover bg-center"
                     style={{ backgroundImage: "url('/events/deo-church-benguet-3.jpg')" }}
@@ -71,20 +58,20 @@ export default function Contact() {
             </section>
 
             {/* Contact Details */}
-            <section className="py-20 fade-in">
+            <section id="contact" className="py-24 fade-in scroll-mt-24">
                 <div className="max-w-6xl mx-auto px-6">
 
                     <h2 className="text-3xl font-bold text-center mb-16">
                         Contact Information
                     </h2>
 
-                    <div className="grid md:grid-cols-3 gap-8 text-center">
+                    <div className="grid md:grid-cols-4 gap-8 text-center">
 
                         {/* Address */}
                         <div className="p-8 rounded-3xl shadow-md bg-white hover:shadow-lg transition">
                             <div className="text-3xl mb-4">📍</div>
                             <h3 className="font-semibold text-lg mb-2">Location</h3>
-                            <p className="text-gray-600">
+                            <p className="text-gray-600 hover:text-teal-600 transition">
                                 Benguet, Philippines
                             </p>
                         </div>
@@ -93,7 +80,7 @@ export default function Contact() {
                         <div className="p-8 rounded-3xl shadow-md bg-white hover:shadow-lg transition">
                             <div className="text-3xl mb-4">📞</div>
                             <h3 className="font-semibold text-lg mb-2">Call Us</h3>
-                            <p className="text-gray-600">
+                            <p className="text-gray-600 hover:text-teal-600 transition">
                                 +63 977 126 8262
                             </p>
                         </div>
@@ -102,9 +89,25 @@ export default function Contact() {
                         <div className="p-8 rounded-3xl shadow-md bg-white hover:shadow-lg transition">
                             <div className="text-3xl mb-4">✉️</div>
                             <h3 className="font-semibold text-lg mb-2">Email</h3>
-                            <p className="text-gray-600">
+                            <p className="text-gray-600 hover:text-teal-600 transition">
                                 antiwallbreaker@gmail.com
                             </p>
+                        </div>
+
+                        {/* Facebook */}
+                        <div className="p-8 rounded-3xl shadow-md bg-white hover:shadow-lg transition">
+                            <div className="text-3xl mb-4 flex justify-center">
+                                <Facebook size={32} className="text-blue-600" />
+                            </div>
+                            <h3 className="font-semibold text-lg mb-2">Facebook</h3>
+                            <a
+                                href="https://www.facebook.com/profile.php?id=61587087962445"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-gray-600 hover:text-teal-600 transition"
+                            >
+                                Visit Our Page
+                            </a>
                         </div>
 
                     </div>

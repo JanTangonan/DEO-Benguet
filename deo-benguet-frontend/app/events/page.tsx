@@ -2,39 +2,30 @@
 
 import Link from "next/link";
 import { events } from "../../data/event";
-import { useEffect } from "react";
+import { useFadeIn } from "@/hooks/useFadeIn";
 
 export default function EventsPage() {
+    useFadeIn();
     const upcomingEvents = events.filter(e => e.type === "upcoming");
     const pastEvents = events.filter(e => e.type === "past");
-
-    useEffect(() => {
-        const elements = document.querySelectorAll(".fade-in");
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("visible");
-                    }
-                });
-            },
-            { threshold: 0.1 }
-        );
-
-        elements.forEach((el) => observer.observe(el));
-    }, []);
-
+    
     return (
         <main>
 
             {/* Page Hero */}
-            <section className="bg-gradient-to-b from-teal-100 to-white py-24 text-center fade-in">
-                <div className="max-w-3xl mx-auto px-6">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <section className="relative h-[50vh] flex items-center justify-center text-white fade-in py-24 scroll-mt-24">
+                <div
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{ backgroundImage: "url('/events/deo-church-benguet-4.jpg')" }}
+                ></div>
+
+                <div className="absolute inset-0 bg-black/50"></div>
+
+                <div className="relative text-center px-6">
+                    <h1 className="text-5xl md:text-5xl font-bold mb-6">
                         Upcoming Events
                     </h1>
-                    <p className="text-gray-600 text-lg">
+                    <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
                         Join us and be part of what God is doing in our church and community.
                     </p>
                 </div>

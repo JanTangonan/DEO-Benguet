@@ -95,7 +95,7 @@ export const events: Event[] = [
         description:
             "A powerful start of the year through prayer and worship.",
         fullDescription:
-            "Soaking & Seeking focused on intentional prayer and deep worship as we committed the year to God. It was a spiritually refreshing time for everyone involved.",
+            "Soaking & Seeking focused on intentional prayer and deep worship as we  committed the year to God. It was a spiritually refreshing time for everyone involved.",
         images: [
             "/events/soaking-seeking-1.jpg",
             "/events/soaking-seeking-2.jpg",

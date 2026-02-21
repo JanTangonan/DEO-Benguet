@@ -1,6 +1,10 @@
+"use client";
+import { useFadeIn } from "@/hooks/useFadeIn";
+
 export default function Location() {
+    useFadeIn();
     return (
-        <section id="location" className="bg-gray-50 py-24 scroll-mt-20">
+        <section id="location" className="bg-gray-50 py-24 scroll-mt-20 fade-in">
             <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
                 
                 {/* Left Side */}
