@@ -53,7 +53,7 @@ export default function Navbar() {
                 <Link href="/about" className="block py-2 text-lg" onClick={() => setMenuOpen(false)}>About</Link>
                 <Link href="/events" className="block py-2 text-lg" onClick={() => setMenuOpen(false)}>Events</Link>
                 <Link href="/contact" className="block py-2 text-lg" onClick={() => setMenuOpen(false)}>Contact</Link>
-                <Link href="/newsletter" className="block py-2 text-lg" onClick={() => setMenuOpen(false)}>Sermons</Link>
+                <Link href="/newsletter" className="block py-2 text-lg" onClick={() => setMenuOpen(false)}>News Letter</Link>
 
                 <a
                     href="/contact/#contact"

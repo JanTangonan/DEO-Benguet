@@ -21,7 +21,7 @@ export default function NewsLetterPage() {
 
                     {newsletters.map((newsletter) => (
                         <div key={newsletter.id} className="shadow-xl overflow-hidden bg-white fade-in">
-                            <h3 className="text-sm font-semibold mb-6">
+                            <h3 className="text-sm font-semibold">
                                 {newsletter.title}
                             </h3>
                             <img

@@ -65,7 +65,7 @@ export default function Contact() {
                         Contact Information
                     </h2>
 
-                    <div className="grid md:grid-cols-4 gap-8 text-center">
+                    <div className="grid md:grid-cols-2 gap-8 text-center">
 
                         {/* Address */}
                         <div className="p-8 rounded-3xl shadow-md bg-white hover:shadow-lg transition">
