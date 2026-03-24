@@ -9,7 +9,7 @@ export interface Event {
     fullDescription?: string;
     image?: string;
     images?: string[];
-    type: "upcoming" | "past";
+    type: "upcoming" | "past" | "sooner-upcoming";
     featured?: boolean;
 }
 
@@ -70,9 +70,72 @@ export const events: Event[] = [
         ],
         type: "upcoming",
     },
-    // Past Events
     {
         id: 4,
+        title: "Soldiers of God Taekwondo",
+        slug: "soldiers-of-god-taekwondo",
+        date: "Every Sunday",
+        time: "2:00 PM - 4:00 PM",
+        location: "1229 Camanggaan, Virac, Itogon, Benguet, Itogon, Philippines",
+        description:
+            "Join our Taekwondo Ministry as we develop discipline, strength, and character through martial arts training.",
+        fullDescription:
+            "Soldiers of God Taekwondo is a ministry dedicated to developing young people through martial arts training. We emphasize discipline, respect, physical fitness, and spiritual growth. This is a place where participants learn not only combat techniques but also Christian values and character development. Follow us on Facebook: https://www.facebook.com/share/18RgeM8GJ3/",
+        images: [
+            "/events/taekwondo-ministry-1.jpg",
+            "/events/taekwondo-ministry-2.jpg",
+            "/events/taekwondo-ministry-3.jpg",
+        ],
+        type: "upcoming",
+    },
+
+    // Sooner Upcoming Events (Special Section)
+    {
+        id: 5,
+        title: "Communion Thanksgiving",
+        slug: "communion-thanksgiving",
+        date: "April 6, 2026",
+        time: "10:30 AM - 12:00 PM",
+        location: "1229 Camanggaan, Virac, Itogon, Benguet, Itogon, Philippines",
+        description:
+            "A special service celebrating communion and thanksgiving for God's blessings.",
+        fullDescription:
+            "Join us for a meaningful Communion Thanksgiving service where we gather to celebrate the sacrifice of Christ and express gratitude for His grace and blessings in our lives. This will be a spiritually enriching experience of worship, reflection, and community.",
+        image: "/events/communion-thanksgiving.jpg",
+        type: "sooner-upcoming",
+    },
+    {
+        id: 6,
+        title: "Vacation Bible School",
+        slug: "vacation-bible-school",
+        date: "April 12-16, 2026",
+        time: "9:00 AM - 12:00 PM",
+        location: "1229 Camanggaan, Virac, Itogon, Benguet, Itogon, Philippines",
+        description:
+            "An exciting week of Bible learning, games, and activities for children and youth.",
+        fullDescription:
+            "Vacation Bible School is an exciting week-long program designed for children and youth to learn about God's Word through interactive Bible lessons, engaging activities, games, worship, and crafts. It's a fun, safe environment where young people grow spiritually and build friendships within our church community.",
+        image: "/events/vacation-bible-school-1.jpg",
+        type: "sooner-upcoming",
+    },
+    {
+        id: 7,
+        title: "Women's Fellowship",
+        slug: "womens-fellowship",
+        date: "May 10, 2026",
+        time: "2:00 PM - 5:00 PM",
+        location: "1229 Camanggaan, Virac, Itogon, Benguet, Itogon, Philippines",
+        description:
+            "A gathering focused on sisterhood, spiritual growth, and meaningful connections.",
+        fullDescription:
+            "Women's Fellowship is a special gathering where the women of our church come together for prayer, worship, inspiring messages, and meaningful conversations. It's a time to strengthen our bonds as sisters in Christ, support one another, and grow together in our faith journey.",
+        image: "/events/womens-fellowship-2.jpg",
+        type: "sooner-upcoming",
+    },
+
+    // Past Events
+    {
+        id: 8,
         title: "Acoustic Night",
         slug: "acoustic-night",
         date: "February 2026",
@@ -88,7 +151,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 5,
+        id: 9,
         title: "Soaking & Seeking",
         slug: "soaking-seeking",
         date: "January 2026",
@@ -104,7 +167,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 6,
+        id: 10,
         title: "Amanda's Street Evangelism",
         slug: "amanda-street-evangelism",
         date: "January 2026",
@@ -120,7 +183,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 7,
+        id: 11,
         title: "Christmas Party",
         slug: "christmas-party",
         date: "December 2025",
@@ -136,7 +199,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 8,
+        id: 12,
         title: "Jesus Reigns",
         slug: "jesus-reigns",
         date: "November 2025",
@@ -152,7 +215,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 9,
+        id: 13,
         title: "DEO Interns Visit",
         slug: "deo-interns-visit",
         date: "August 2025",

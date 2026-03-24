@@ -10,13 +10,13 @@ export default function AboutPage() {
 
     const leadership = [
         {
-            id: "pastor-lyka",
-            name: "Pastor Lyka",
-            role: "Senior Pastor",
-            image: "/events/pastor3.jpg",
+            id: "visionary-lyka-arman",
+            name: "Leader Lyka & Arman",
+            role: "Visionaries",
+            image: "/events/pastor4-copy.jpg",
             focus: "Church Leadership",
             icon: "🙋‍♀️",
-            bio: "Pastor Lyka is the heart that holds DEO Church together. As the visionary who started the partnership with DEO Church, she brings unity, wisdom, and steadfast commitment to leading our growing congregation with grace and purpose."
+            bio: "Leader Lyka & Arman is the heart that holds DEO Church together. As the visionary who started the partnership with DEO Church, they bring unity, wisdom, and steadfast commitment to leading our growing congregation with grace and purpose."
         },
         {
             id: "pastor-kesha",
@@ -30,11 +30,20 @@ export default function AboutPage() {
         {
             id: "youth-leader-kate",
             name: "Youth Leader Kate",
-            role: "Youth & Worship Director",
+            role: "Youth Ministry",
             image: "/events/pastor1.jpg",
             focus: "Youth & Worship",
             icon: "🎤",
             bio: "Youth Leader Kate brings passion and energy to our young people through the Youth Connect ministry. As our worship team leader, she creates authentic worship experiences that draw our community closer to God."
+        },
+        {
+            id: "assistant-leader-janelle",
+            name: "Assistant Leader Janelle",
+            role: "Assistant Youth & Kids Ministry (Under Kate)",
+            image: "/events/pastor1.jpg",
+            focus: "Youth & Kids Ministry",
+            icon: "🎤",
+            bio: "Assistant Leader Janelle along with Youth Leader Kate in nurturing our young people and children. She brings enthusiasm and care to the Youth Connect and Kids ministry, helping to create a welcoming environment where every young person feels valued and grows in their faith."
         }
     ];
 

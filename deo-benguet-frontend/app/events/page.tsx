@@ -8,6 +8,7 @@ export default function EventsPage() {
     useFadeIn();
     const upcomingEvents = events.filter(e => e.type === "upcoming");
     const pastEvents = events.filter(e => e.type === "past");
+    const soonerUpcomingEvents = events.filter(e => e.type === "sooner-upcoming");
     
     return (
         <main>
@@ -23,11 +24,61 @@ export default function EventsPage() {
 
                 <div className="relative text-center px-6">
                     <h1 className="text-5xl md:text-5xl font-bold mb-6">
-                        Upcoming Events
+                        Events
                     </h1>
                     <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
                         Join us and be part of what God is doing in our church and community.
                     </p>
+                </div>
+            </section>
+
+            {/* Sooner Upcoming Events */}
+            <section className="fade-in py-24 bg-gray-50">
+                <div className="max-w-6xl mx-auto px-6">
+
+                    <h2 className="text-3xl font-bold text-center mb-16">
+                        Mark Your Calendars: Exciting Events Coming Soon!
+                    </h2>
+
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {soonerUpcomingEvents.map((event) => {
+                            const firstImage = event.images?.[0] || event.image || "/events/placeholder.jpg";
+                            return (
+                            <Link key={event.id} href={`/events/${event.slug}`} className="block group">
+                                <div className="bg-white rounded-3xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 hover:scale-105">
+                                    {/* Image Container */}
+                                    <div className="relative h-130 overflow-hidden bg-gray-200">
+                                        <img
+                                            src={firstImage}
+                                            alt={event.title}
+                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                                        />
+                                    </div>
+
+                                    {/* Content */}
+                                    <div className="p-6">
+                                        <h3 className="text-xl font-semibold mb-3 group-hover:text-teal-600 transition">
+                                            {event.title}
+                                        </h3>
+
+                                        <p className="text-sm text-teal-600 font-medium mb-3">
+                                            {event.date}
+                                        </p>
+
+                                        <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                                            {event.description}
+                                        </p>
+
+                                        <button className="text-teal-600 hover:text-teal-700 font-semibold text-sm">
+                                            Learn More →
+                                        </button>
+                                    </div>
+                                </div>
+                            </Link>
+                            );
+                        })}
+                    </div>
+
                 </div>
             </section>
 
