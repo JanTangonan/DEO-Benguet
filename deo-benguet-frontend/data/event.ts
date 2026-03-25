@@ -74,13 +74,13 @@ export const events: Event[] = [
         id: 4,
         title: "Soldiers of God Taekwondo",
         slug: "soldiers-of-god-taekwondo",
-        date: "Every Sunday",
-        time: "2:00 PM - 4:00 PM",
+        date: "Every TThS",
+        time: "10:00 AM - 3:00 PM",
         location: "1229 Camanggaan, Virac, Itogon, Benguet, Itogon, Philippines",
         description:
             "Join our Taekwondo Ministry as we develop discipline, strength, and character through martial arts training.",
         fullDescription:
-            "Soldiers of God Taekwondo is a ministry dedicated to developing young people through martial arts training. We emphasize discipline, respect, physical fitness, and spiritual growth. This is a place where participants learn not only combat techniques but also Christian values and character development. Follow us on Facebook: https://www.facebook.com/share/18RgeM8GJ3/",
+            "Soldiers of God Taekwondo is a ministry dedicated to developing young people through martial arts training. We emphasize discipline, respect, physical fitness, and spiritual growth. This is a place where participants learn not only combat techniques but also Christian values and character development. To connect with our community and stay updated on training schedules and events, visit our <a href='https://www.facebook.com/share/18RgeM8GJ3/' target='_blank' rel='noopener noreferrer' style='color: #14b8a6; font-weight: 600; text-decoration: underline;' onmouseover=\"this.style.color='#0d9488'\" onmouseout=\"this.style.color='#14b8a6'\">Soldiers of God Taekwondo</a> Facebook page.",
         images: [
             "/events/taekwondo-ministry-1.jpg",
             "/events/taekwondo-ministry-2.jpg",
@@ -94,7 +94,7 @@ export const events: Event[] = [
         id: 5,
         title: "Communion Thanksgiving",
         slug: "communion-thanksgiving",
-        date: "April 6, 2026",
+        date: "March 29, 2026",
         time: "10:30 AM - 12:00 PM",
         location: "1229 Camanggaan, Virac, Itogon, Benguet, Itogon, Philippines",
         description:
@@ -108,7 +108,7 @@ export const events: Event[] = [
         id: 6,
         title: "Vacation Bible School",
         slug: "vacation-bible-school",
-        date: "April 12-16, 2026",
+        date: "April 2-4, 2026",
         time: "9:00 AM - 12:00 PM",
         location: "1229 Camanggaan, Virac, Itogon, Benguet, Itogon, Philippines",
         description:
@@ -122,7 +122,7 @@ export const events: Event[] = [
         id: 7,
         title: "Women's Fellowship",
         slug: "womens-fellowship",
-        date: "May 10, 2026",
+        date: "March 29, 2026",
         time: "2:00 PM - 5:00 PM",
         location: "1229 Camanggaan, Virac, Itogon, Benguet, Itogon, Philippines",
         description:

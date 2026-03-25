@@ -78,8 +78,7 @@ export function EventDetailClient({ event }: { event: typeof events[0] }) {
                     {event.date}
                 </p>
 
-                <p className="text-gray-700 leading-relaxed text-lg">
-                    {event.fullDescription}
+                <p className="text-gray-700 leading-relaxed text-lg" dangerouslySetInnerHTML={{ __html: event.fullDescription || event.description }}>
                 </p>
 
             </div>
