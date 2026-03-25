@@ -81,7 +81,8 @@ export default function Contact() {
                             <div className="text-3xl mb-4">📞</div>
                             <h3 className="font-semibold text-lg mb-2">Call Us</h3>
                             <p className="text-gray-600 hover:text-teal-600 transition">
-                                +63 977 126 8262
+                                +63 938 646 7217 <br/>
+                                +63 999 343 3940
                             </p>
                         </div>
 
@@ -90,7 +91,7 @@ export default function Contact() {
                             <div className="text-3xl mb-4">✉️</div>
                             <h3 className="font-semibold text-lg mb-2">Email</h3>
                             <p className="text-gray-600 hover:text-teal-600 transition">
-                                antiwallbreaker@gmail.com
+                                deochurchbenguetchosenmission@gmail.com
                             </p>
                         </div>
 
@@ -115,7 +116,7 @@ export default function Contact() {
                 </div>
             </section>
 
-            {/* Contact Form */}
+            {/* Contact Form
             <section className="bg-gray-50 py-24 fade-in">
                 <div className="max-w-3xl mx-auto px-6">
                     <h2 className="text-3xl font-bold text-center mb-12">
@@ -167,7 +168,7 @@ export default function Contact() {
                         </button>
                     </form>
                 </div>
-            </section>
+            </section> */}
 
             {/* Invitation */}
             <section className="py-20 text-center fade-in">
