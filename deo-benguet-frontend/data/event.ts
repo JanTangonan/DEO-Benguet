@@ -72,10 +72,28 @@ export const events: Event[] = [
     },
     {
         id: 4,
+        title: "MidWeek Prayer",
+        slug: "midweek-prayer",
+        date: "Every Wednesday",
+        time: "6:00 PM onwards",
+        location: "1229 Camanggaan, Virac, Itogon, Benguet, Itogon, Philippines",
+        description:
+            "Join us for a time of prayer, worship, and spiritual fellowship.",
+        fullDescription:
+            "Join us for a dedicated time of spiritual growth and intercession. We come together to pray for our church family, community, and the world. This is a welcoming space for all believers seeking to strengthen their relationship with God and grow in faith together.",
+        images: [
+            "/events/midweek-prayer-1.jpg",
+            "/events/midweek-prayer-2.jpg",
+            "/events/midweek-prayer-3.jpg",
+        ],
+        type: "upcoming",
+    },
+    {
+        id: 5,
         title: "Soldiers of God Taekwondo",
         slug: "soldiers-of-god-taekwondo",
         date: "Every TThS",
-        time: "10:00 AM - 3:00 PM",
+        time: "9:00 AM - 3:00 PM",
         location: "1229 Camanggaan, Virac, Itogon, Benguet, Itogon, Philippines",
         description:
             "Join our Taekwondo Ministry as we develop discipline, strength, and character through martial arts training.",
@@ -91,7 +109,7 @@ export const events: Event[] = [
 
     // Sooner Upcoming Events (Special Section)
     {
-        id: 5,
+        id: 6,
         title: "Communion Thanksgiving",
         slug: "communion-thanksgiving",
         date: "March 29, 2026",
@@ -105,7 +123,7 @@ export const events: Event[] = [
         type: "sooner-upcoming",
     },
     {
-        id: 6,
+        id: 7,
         title: "Vacation Bible School",
         slug: "vacation-bible-school",
         date: "April 2-4, 2026",
@@ -119,7 +137,7 @@ export const events: Event[] = [
         type: "sooner-upcoming",
     },
     {
-        id: 7,
+        id: 8,
         title: "Women's Fellowship",
         slug: "womens-fellowship",
         date: "March 29, 2026",
@@ -135,7 +153,7 @@ export const events: Event[] = [
 
     // Past Events
     {
-        id: 8,
+        id: 9,
         title: "Acoustic Night",
         slug: "acoustic-night",
         date: "February 2026",
@@ -151,7 +169,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 9,
+        id: 10,
         title: "Soaking & Seeking",
         slug: "soaking-seeking",
         date: "January 2026",
@@ -167,7 +185,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 10,
+        id: 11,
         title: "Amanda's Street Evangelism",
         slug: "amanda-street-evangelism",
         date: "January 2026",
@@ -183,7 +201,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 11,
+        id: 12,
         title: "Christmas Party",
         slug: "christmas-party",
         date: "December 2025",
@@ -199,7 +217,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 12,
+        id: 13,
         title: "Jesus Reigns",
         slug: "jesus-reigns",
         date: "November 2025",
@@ -215,7 +233,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 13,
+        id: 14,
         title: "DEO Interns Visit",
         slug: "deo-interns-visit",
         date: "August 2025",

@@ -14,11 +14,15 @@ const serviceTimes: ServiceTime[] = [
     },
     {
         title: "Friday Youth Connect",
-        time: "8:00 PM - 9:30 PM"
+        time: "4:00 PM - 6:30 PM"
     },
     {
         title: "MTTH Bible Study",
         time: "9:00 PM - 10:00 PM"
+    },
+    {
+        title: "Wednesday Mid Week Prayer",
+        time: "6:00 PM - onwards"
     }
 ];
 
@@ -40,7 +44,7 @@ export default function ServiceTimes() {
                     Join Our Church Services and Activities
                 </h2>
 
-                <div className="grid md:grid-cols-3 gap-8">
+                <div className="grid md:grid-cols-2 gap-8">
                     {serviceTimes.map((service) => (
                         <ServiceTimeCard
                             key={service.title}
