@@ -13,7 +13,7 @@ export default function AboutPage() {
             id: "visionary-lyka-arman",
             name: "Leader Lyka & Arman",
             role: "Visionaries",
-            image: "/events/pastor4-copy.jpg",
+            image: "/events/pastor4-extended.jpeg",
             focus: "Church Leadership",
             icon: "🙋‍♀️",
             bio: "Leader Lyka & Arman is the heart that holds DEO Church together. As the visionary who started the partnership with DEO Church, they bring unity, wisdom, and steadfast commitment to leading our growing congregation with grace and purpose."
@@ -22,7 +22,7 @@ export default function AboutPage() {
             id: "pastor-kesha",
             name: "Pastor Kesha",
             role: "Preacher & Bible Teacher",
-            image: "/events/pastor2.jpg",
+            image: "/events/pastor6.jpg",
             focus: "God's Word",
             icon: "📖",
             bio: "Pastor Kesha is passionate about sharing God's Word with depth and clarity. As our Sunday service preacher, she delivers powerful messages that help our congregation understand and apply Scripture in their daily lives."
@@ -30,17 +30,17 @@ export default function AboutPage() {
         {
             id: "youth-leader-kate",
             name: "Youth Leader Kate",
-            role: "Youth Ministry",
-            image: "/events/pastor1.jpg",
-            focus: "Youth & Worship",
+            role: "Youth & Kids Ministry",
+            image: "/events/pastor5-extended.jpeg",
+            focus: "Youth & Kids Ministry",
             icon: "🎤",
-            bio: "Youth Leader Kate brings passion and energy to our young people through the Youth Connect ministry. As our worship team leader, she creates authentic worship experiences that draw our community closer to God."
+            bio: "Youth Leader Kate brings passion and energy to our young people through the Youth Connect ministry. As the head of the Youth & Kids Ministry, she creates authentic worship experiences that draw our community closer to God. She nurtures and disciples young believers, helping them grow in their faith and discover their purpose in Christ."
         },
         {
             id: "assistant-leader-janelle",
             name: "Assistant Leader Janelle",
-            role: "Assistant Youth & Kids Ministry (Under Kate)",
-            image: "/events/pastor1.jpg",
+            role: "Youth & Kids Ministry",
+            image: "/events/pastor.jpg",
             focus: "Youth & Kids Ministry",
             icon: "🎤",
             bio: "Assistant Leader Janelle along with Youth Leader Kate in nurturing our young people and children. She brings enthusiasm and care to the Youth Connect and Kids ministry, helping to create a welcoming environment where every young person feels valued and grows in their faith."
@@ -310,30 +310,30 @@ export default function AboutPage() {
                     <div className="space-y-12 border-l-2 border-teal-200 pl-8">
 
                         <div>
-                            <h4 className="font-semibold text-teal-700">1976 — The Beginning</h4>
+                            <h4 className="font-semibold text-teal-700">Early Years — Founded in Benguet</h4>
                             <p className="text-gray-600">
-                                Deo Church was originally an Afrikaans Church, that was established in Newcastle
+                                DEO Church Benguet was originally established as a local church community in Benguet, rooted in the faith and vision of our early believers who sought to build a Christ-centered congregation in our region.
                             </p>
                         </div>
 
                         <div>
-                            <h4 className="font-semibold text-teal-700">2015 — Growing Community</h4>
+                            <h4 className="font-semibold text-teal-700">Partnership — Joined DEO Church</h4>
                             <p className="text-gray-600">
-                                Started an English Sunday meeting for the first time, and we are excited about making the English-speaking people of our city, part of this great family of believers.
+                                We partnered with DEO Church, aligning our mission and values with this growing global movement. This partnership strengthened our commitment to make disciples, advance God's Kingdom, and be part of a thriving network of believers across nations.
                             </p>
                         </div>
 
                         <div>
-                            <h4 className="font-semibold text-teal-700">2026 — Expanded Globally</h4>
+                            <h4 className="font-semibold text-teal-700">Present — Growing as a Church Plant</h4>
                             <p className="text-gray-600">
-                                Launched new church plants in South Africa, various countries, such as the Philippines, Russia, embracing a diverse and multicultural community.
+                                As an official partner plant of DEO Church, we continue to grow and expand our impact in Benguet and beyond. Through powerful weekend services, intentional discipleship, and missional outreach, we are building a vibrant community that reflects Christ's love.
                             </p>
                         </div>
 
                         <div>
-                            <h4 className="font-semibold text-teal-700">Present — A New Chapter</h4>
+                            <h4 className="font-semibold text-teal-700">Future — Expanding God's Kingdom</h4>
                             <p className="text-gray-600">
-                                With a new church plant in the Philippines, we are excited to see how God will continue to use us to reach more people with the love of Jesus.
+                                We are excited to see how God will continue to use us to reach more people with the love of Jesus, both locally in Benguet and globally through our partnership with DEO Church's expanding movement.
                             </p>
                         </div>
 
