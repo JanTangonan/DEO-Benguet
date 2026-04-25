@@ -40,7 +40,7 @@ export default function EventsPage() {
                         Mark Your Calendars: Exciting Events Coming Soon!
                     </h2>
 
-                    <div className="grid md:grid-cols-3 gap-8">
+                    <div className="grid md:grid-cols-1 gap-8">
                         {soonerUpcomingEvents.map((event) => {
                             const firstImage = event.images?.[0] || event.image || "/events/placeholder.jpg";
                             return (

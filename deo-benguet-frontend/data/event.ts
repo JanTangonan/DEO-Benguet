@@ -119,8 +119,12 @@ export const events: Event[] = [
             "A special service celebrating communion and thanksgiving for God's blessings.",
         fullDescription:
             "Join us for a meaningful Communion Thanksgiving service where we gather to celebrate the sacrifice of Christ and express gratitude for His grace and blessings in our lives. This will be a spiritually enriching experience of worship, reflection, and community.",
-        image: "/events/communion-thanksgiving.jpg",
-        type: "sooner-upcoming",
+        images: [
+            "/events/communion-thanksgiving-1.jpg",
+            "/events/communion-thanksgiving-2.jpg",
+            "/events/communion-thanksgiving-3.jpg",
+        ],
+        type: "past",
     },
     {
         id: 7,
@@ -133,8 +137,12 @@ export const events: Event[] = [
             "An exciting week of Bible learning, games, and activities for children and youth.",
         fullDescription:
             "Vacation Bible School is an exciting week-long program designed for children and youth to learn about God's Word through interactive Bible lessons, engaging activities, games, worship, and crafts. It's a fun, safe environment where young people grow spiritually and build friendships within our church community.",
-        image: "/events/vacation-bible-school-1.jpg",
-        type: "sooner-upcoming",
+        images: [
+            "/events/vacation-bible-school-1.jpg",
+            "/events/vacation-bible-school-2.jpg",
+            "/events/vacation-bible-school-3.jpg",
+        ],
+        type: "past",
     },
     {
         id: 8,
@@ -147,8 +155,12 @@ export const events: Event[] = [
             "A gathering focused on sisterhood, spiritual growth, and meaningful connections.",
         fullDescription:
             "Women's Fellowship is a special gathering where the women of our church come together for prayer, worship, inspiring messages, and meaningful conversations. It's a time to strengthen our bonds as sisters in Christ, support one another, and grow together in our faith journey.",
-        image: "/events/womens-fellowship-2.jpg",
-        type: "sooner-upcoming",
+        images: [
+            "/events/womens-fellowship-1.jpg",
+            "/events/womens-fellowship-2.jpg",
+            "/events/womens-fellowship-3.jpg",
+        ],
+        type: "past",
     },
 
     // Past Events
@@ -247,5 +259,21 @@ export const events: Event[] = [
             "/events/deo-interns-visit-3.jpg",
         ],
         type: "past",
+    },
+    {
+        id: 15,
+        title: "Youth Camp",
+        slug: "youth-camp",
+        date: "May 2026",
+        description:
+            "An exciting time of fun, fellowship, and spiritual growth for our youth.",
+        fullDescription:
+            "An exciting week of fun, fellowship, and spiritual growth for our youth.",
+        images: [
+            "/events/youth-camp-1.jpg",
+            "/events/youth-camp-2.jpg",
+            "/events/youth-camp-3.jpg",
+        ],
+        type: "sooner-upcoming",
     },
 ];

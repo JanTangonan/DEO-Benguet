@@ -44,10 +44,10 @@ export default function Navbar() {
                     <Link href="/newsletter">News Letter</Link>
 
                     <a
-                        href="/contact/#contact"
+                        href="/support/#support"
                         className="bg-teal-600 px-8 text-white py-2 rounded-lg text-lg font-semibold hover:bg-teal-700 transition inline-block"
                     >
-                        Contact Us
+                        Support Us
                     </a>
                 </div>
             </div>
@@ -63,10 +63,10 @@ export default function Navbar() {
                 <Link href="/newsletter" className="block py-2 text-lg" onClick={() => setMenuOpen(false)}>News Letter</Link>
 
                 <a
-                    href="/contact/#contact"
+                    href="/support/#support"
                     className="bg-teal-600 px-8 py-3 text-white rounded-lg text-lg font-semibold hover:bg-teal-700 transition inline-block"
                 >
-                    Contact Us
+                    Support Us
                 </a>
             </div>
 
