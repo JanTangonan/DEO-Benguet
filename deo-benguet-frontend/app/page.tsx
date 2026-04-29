@@ -4,6 +4,7 @@ import ServiceTimes from "@/components/ServiceTimes";
 import PlanVisit from "@/components/PlanVisit";
 import Location from "@/components/Location";
 import Testimonials from "@/components/Testimonials";
+import { Analytics } from '@vercel/analytics/next';
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
       <Testimonials />
       <Location />
       <Features />
+      <Analytics />
     </main>
   );
 }
