@@ -9,7 +9,7 @@ export default function EventsPage() {
     const upcomingEvents = events.filter(e => e.type === "upcoming");
     const pastEvents = events.filter(e => e.type === "past");
     const soonerUpcomingEvents = events.filter(e => e.type === "sooner-upcoming");
-    
+
     return (
         <main>
 
@@ -33,51 +33,112 @@ export default function EventsPage() {
             </section>
 
             {/* Sooner Upcoming Events */}
-            <section className="fade-in py-24 bg-gray-50">
+            {/* Featured Upcoming Event (Poster Style) */}
+            {/* <section className="fade-in py-24 bg-gray-50">
                 <div className="max-w-6xl mx-auto px-6">
 
                     <h2 className="text-3xl font-bold text-center mb-16">
-                        Mark Your Calendars: Exciting Events Coming Soon!
+                        Happening Soon
                     </h2>
 
-                    <div className="grid md:grid-cols-1 gap-8">
-                        {soonerUpcomingEvents.map((event) => {
-                            const firstImage = event.images?.[0] || event.image || "/events/placeholder.jpg";
-                            return (
-                            <Link key={event.id} href={`/events/${event.slug}`} className="block group">
-                                <div className="bg-white rounded-3xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 hover:scale-105">
-                                    {/* Image Container */}
-                                    <div className="relative h-130 overflow-hidden bg-gray-200">
-                                        <img
-                                            src={firstImage}
-                                            alt={event.title}
-                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                                        />
-                                    </div>
+                    {soonerUpcomingEvents.map((event) => {
+                        const firstImage =
+                            event.images?.[0] || event.image || "/events/placeholder.jpg";
 
-                                    {/* Content */}
-                                    <div className="p-6">
-                                        <h3 className="text-xl font-semibold mb-3 group-hover:text-teal-600 transition">
-                                            {event.title}
-                                        </h3>
+                        return (
+                            <div
+                                key={event.id}
+                                className="relative rounded-3xl overflow-hidden shadow-xl group"
+                            >
+                                <img
+                                    src={firstImage}
+                                    alt={event.title}
+                                    className="w-full h-[500px] object-cover group-hover:scale-105 transition duration-500"
+                                />
 
-                                        <p className="text-sm text-teal-600 font-medium mb-3">
-                                            {event.date}
-                                        </p>
+                                <div className="absolute inset-0 bg-black/60" />
 
-                                        <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                                            {event.description}
-                                        </p>
+                                <div className="absolute inset-0 flex flex-col justify-center items-start p-10 md:p-16 text-white">
 
-                                        <button className="text-teal-600 hover:text-teal-700 font-semibold text-sm">
-                                            Learn More →
-                                        </button>
-                                    </div>
+                                    <span className="bg-teal-500 text-white px-4 py-1 rounded-full text-sm mb-4">
+                                        Upcoming Event
+                                    </span>
+
+                                    <h3 className="text-3xl md:text-5xl font-bold mb-4 max-w-xl">
+                                        {event.title}
+                                    </h3>
+
+                                    <p className="text-lg text-gray-200 mb-4">
+                                        {event.date} • {event.time}
+                                    </p>
+
+                                    <p className="max-w-xl text-gray-200 mb-6">
+                                        {event.description}
+                                    </p>
+
+                                    <a
+                                        href="#contact"
+                                        className="bg-teal-600 px-6 py-3 rounded-lg font-semibold hover:bg-teal-700 transition"
+                                    >
+                                        Ask About This Event
+                                    </a>
+
                                 </div>
-                            </Link>
-                            );
-                        })}
-                    </div>
+                            </div>
+                        );
+                    })}
+
+                </div>
+            </section> */}
+            {/* Featured Upcoming Event (Portrait Poster) */}
+            <section className="fade-in py-24 bg-gray-50">
+                <div className="max-w-6xl mx-auto px-6 text-center">
+
+                    <h2 className="text-3xl font-bold mb-16">
+                        Happening Soon
+                    </h2>
+
+                    {soonerUpcomingEvents.map((event) => {
+                        const firstImage =
+                            event.images?.[0] || event.image || "/events/placeholder.jpg";
+
+                        return (
+                            <div key={event.id} className="flex flex-col items-center">
+
+                                {/* Poster Container */}
+                                <div className="relative w-full max-w-md rounded-3xl overflow-hidden shadow-2xl group">
+                                    <img
+                                        src={firstImage}
+                                        alt={event.title}
+                                        className="w-full h-auto object-cover group-hover:scale-105 transition duration-500"
+                                    />
+                                </div>
+
+                                {/* Event Info Below */}
+                                <div className="mt-8 max-w-xl text-center">
+                                    <h3 className="text-2xl font-semibold mb-2">
+                                        {event.title}
+                                    </h3>
+
+                                    <p className="text-teal-600 font-medium mb-2">
+                                        {event.date} • {event.time}
+                                    </p>
+
+                                    <p className="text-gray-600 mb-6">
+                                        {event.description}
+                                    </p>
+
+                                    <a
+                                        href="/contact"
+                                        className="inline-block bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition"
+                                    >
+                                        Ask About This Event
+                                    </a>
+                                </div>
+
+                            </div>
+                        );
+                    })}
 
                 </div>
             </section>
@@ -144,37 +205,37 @@ export default function EventsPage() {
                         {pastEvents.map((event) => {
                             const firstImage = event.images?.[0] || event.image || "/events/placeholder.jpg";
                             return (
-                            <Link key={event.id} href={`/events/${event.slug}`} className="block group">
-                                <div className="bg-white rounded-3xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 hover:scale-105">
-                                    {/* Image Container */}
-                                    <div className="relative h-48 overflow-hidden bg-gray-200">
-                                        <img
-                                            src={firstImage}
-                                            alt={event.title}
-                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                                        />
+                                <Link key={event.id} href={`/events/${event.slug}`} className="block group">
+                                    <div className="bg-white rounded-3xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 hover:scale-105">
+                                        {/* Image Container */}
+                                        <div className="relative h-48 overflow-hidden bg-gray-200">
+                                            <img
+                                                src={firstImage}
+                                                alt={event.title}
+                                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                                            />
+                                        </div>
+
+                                        {/* Content */}
+                                        <div className="p-6">
+                                            <h3 className="text-xl font-semibold mb-3 group-hover:text-teal-600 transition">
+                                                {event.title}
+                                            </h3>
+
+                                            <p className="text-sm text-teal-600 font-medium mb-3">
+                                                {event.date}
+                                            </p>
+
+                                            <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                                                {event.description}
+                                            </p>
+
+                                            <button className="text-teal-600 hover:text-teal-700 font-semibold text-sm">
+                                                Learn More →
+                                            </button>
+                                        </div>
                                     </div>
-
-                                    {/* Content */}
-                                    <div className="p-6">
-                                        <h3 className="text-xl font-semibold mb-3 group-hover:text-teal-600 transition">
-                                            {event.title}
-                                        </h3>
-
-                                        <p className="text-sm text-teal-600 font-medium mb-3">
-                                            {event.date}
-                                        </p>
-
-                                        <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                                            {event.description}
-                                        </p>
-
-                                        <button className="text-teal-600 hover:text-teal-700 font-semibold text-sm">
-                                            Learn More →
-                                        </button>
-                                    </div>
-                                </div>
-                            </Link>
+                                </Link>
                             );
                         })}
                     </div>

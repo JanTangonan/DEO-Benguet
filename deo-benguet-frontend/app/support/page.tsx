@@ -215,26 +215,18 @@ export default function SupportPage() {
                 </p>
             </section>
 
-            {/* PURPOSE */}
-            <section className="py-20 text-center fade-in bg-white dark:bg-gray-900">
-                <div className="max-w-3xl mx-auto px-6">
-                    <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
-                        These items are created and sold to support the ongoing ministries
-                        of our church. Your support allows us to reach more people, organize
-                        events, and serve our community with love and purpose.
-                    </p>
-                </div>
-            </section>
-
             {/* PRODUCTS */}
-            <section className="bg-gray-50 dark:bg-gray-800 py-24 fade-in" id="support">
+            <section className="bg-gray-50 dark:bg-gray-800 py-24 fade-in">
                 <div className="max-w-6xl mx-auto px-6">
 
                     <h2 className="text-3xl font-bold text-center mb-4 text-gray-800 dark:text-white">
                         Available Items
                     </h2>
                     <p className="text-center text-gray-600 dark:text-gray-400 mb-12">
-                        Browse our collection of quality items supporting church ministries
+                        Browse our collection of quality items supporting church ministries. 
+                        These items are created and sold to support the ongoing ministries
+                        of our church. Your support allows us to reach more people, organize
+                        events, and serve our community with love and purpose.
                     </p>
 
                     {/* Category Filter */}
@@ -344,7 +336,7 @@ export default function SupportPage() {
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
 
                         <a
-                            href="https://facebook.com/YOUR_PAGE_NAME"
+                            href="https://www.facebook.com/profile.php?id=61587087962445"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-lg hover:shadow-lg transition font-semibold"
