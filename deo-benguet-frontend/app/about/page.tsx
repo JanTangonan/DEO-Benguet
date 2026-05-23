@@ -11,7 +11,7 @@ export default function AboutPage() {
     const leadership = [
         {
             id: "visionary-lyka-arman",
-            name: "Leader Lyka & Arman",
+            name: "Pastor Lyka & Arman",
             role: "Pastor",
             image: "/events/pastor4-extended.jpeg",
             focus: "Church Leadership",

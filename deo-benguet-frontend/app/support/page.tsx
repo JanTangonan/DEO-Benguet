@@ -22,26 +22,30 @@ const products: Product[] = [
         price: 350,
         category: "Apparel",
         images: [
-            "/products/taekwondo-ministry-1.jpg",
-            "/products/taekwondo-ministry-2.jpg",
-            "/products/taekwondo-ministry-3.jpg",
+            "/products/shirt-1.jpg",
+            "/products/shirt-2.jpg",
+            "/products/shirt-3.jpg",
         ],
         stock: true,
     },
     {
-        id: "hoodie-1",
-        name: "DEO Church Hoodie",
-        description: "Warm and cozy hoodie perfect for any season.",
-        price: 650,
-        category: "Apparel",
-        images: ["/products/hoodie-1.jpg", "/products/hoodie-2.jpg", "/products/hoodie-3.jpg"],
+        id: "draw-string-bag-1",
+        name: "DEO Church Drawstring Bag",
+        description: "Convenient and stylish drawstring bag for your daily needs.",
+        price: 180,
+        category: "Bags",
+        images: [
+            "/products/draw-string-bag-1.jpg",
+            "/products/draw-string-bag-2.jpg",
+            "/products/draw-string-bag-3.jpg",
+        ],
         stock: true,
     },
     {
         id: "tote-1",
         name: "Canvas Tote Bag",
         description: "Eco-friendly tote bag for everyday use.",
-        price: 250,
+        price: 180,
         category: "Bags",
         images: [
             "/products/tote-bag-1.jpg",
@@ -54,7 +58,7 @@ const products: Product[] = [
         id: "mug-1",
         name: "Faith Mug",
         description: "Start your day with a reminder of faith.",
-        price: 180,
+        price: 150,
         category: "Drinkware",
         images: [
             "/products/mug-1.jpg",
@@ -66,7 +70,7 @@ const products: Product[] = [
         id: "magnet-1",
         name: "Refrigerator Magnet",
         description: "Beautiful fridge magnet to inspire daily.",
-        price: 80,
+        price: 40,
         category: "Home & Office",
         images: [
             "/products/ref-magnet-1.jpg",
@@ -76,12 +80,27 @@ const products: Product[] = [
         stock: true,
     },
     {
-        id: "sticker-1",
-        name: "DEO Church Sticker Pack",
-        description: "Set of 5 inspiring stickers for your laptop or water bottle.",
-        price: 120,
+        id: "bag-tag-1",
+        name: "DEO Church Bag Tag",
+        description: "Tags for your bags and belongings.",
+        price: 70,
         category: "Accessories",
-        images: ["/products/sticker-1.jpg", "/products/sticker-2.jpg", "/products/sticker-3.jpg"],
+        images: [
+            "/products/bag-tag-1.jpg", 
+            "/products/sticker-2.jpg", 
+            "/products/sticker-3.jpg"],
+        stock: true,
+    },
+    {
+        id: "cap-1",
+        name: "DEO Church Cap",
+        description: "Stay cool and stylish with our branded cap.",
+        price: 250,
+        category: "Accessories",
+        images: [
+            "/products/cap-1.jpg", 
+            "/products/cap-2.jpg", 
+            "/products/cap-3.jpg"],
         stock: true,
     },
 ];
@@ -97,32 +116,32 @@ interface Supporter {
 const supporters: Supporter[] = [
     {
         id: "sup-1",
-        name: "Jan Tangonan",
-        product: "DEO Church Hoodie",
-        amount: 650,
+        name: "Rose Rosales",
+        product: "DEO Church Shirt x5",
+        amount: 1750,
         message: "Supporting the youth ministry ❤️"
     },
     {
         id: "sup-2",
-        name: "Jane Malote",
+        name: "Kimberly Toyokan",
         product: "Canvas Tote Bag + Mug",
-        amount: 430,
+        amount: 2000,
         message: "For God's glory!"
     },
-    {
-        id: "sup-3",
-        name: "Henry Sy",
-        product: "DEO Church T-Shirt x2",
-        amount: 700,
-        message: "Love our church community"
-    },
-    {
-        id: "sup-4",
-        name: "Benj Magalang",
-        product: "Sticker Pack + Magnet",
-        amount: 200,
-        message: "Blessings to our church"
-    },
+    // {
+    //     id: "sup-3",
+    //     name: "Henry Sy",
+    //     product: "DEO Church T-Shirt x2",
+    //     amount: 700,
+    //     message: "Love our church community"
+    // },
+    // {
+    //     id: "sup-4",
+    //     name: "Benj Magalang",
+    //     product: "Sticker Pack + Magnet",
+    //     amount: 200,
+    //     message: "Blessings to our church"
+    // },
 ];
 
 function ProductCard({ product }: { product: Product }) {
@@ -198,7 +217,8 @@ export default function SupportPage() {
         ? products.filter((p) => p.category === selectedCategory)
         : products;
 
-    const totalRaised = supporters.reduce((sum, sup) => sum + sup.amount, 0);
+    // const totalRaised = supporters.reduce((sum, sup) => sum + sup.amount, 0);
+    const totalRaised = 29000;
 
     return (
         <main>
@@ -277,7 +297,8 @@ export default function SupportPage() {
                     <div className="text-center mb-12 p-8 bg-teal-50 dark:bg-teal-900/30 rounded-2xl">
                         <p className="text-sm font-semibold text-teal-700 dark:text-teal-400 mb-2">Total Raised</p>
                         <h3 className="text-4xl md:text-5xl font-bold text-teal-600 dark:text-teal-400">₱{totalRaised.toLocaleString()}</h3>
-                        <p className="text-gray-600 dark:text-gray-400 mt-2">From {supporters.length} supporters</p>
+                        {/* <p className="text-gray-600 dark:text-gray-400 mt-2">From {supporters.length} supporters</p> */}
+                        <p className="text-gray-600 dark:text-gray-400 mt-2">From 100+ supporters</p>
                     </div>
 
                     {/* Supporters Grid */}
