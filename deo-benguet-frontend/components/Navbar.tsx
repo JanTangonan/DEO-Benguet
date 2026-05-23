@@ -41,6 +41,7 @@ export default function Navbar() {
                     <Link href="/about">About</Link>
                     <Link href="/events">Events</Link>
                     <Link href="/contact">Contact</Link>
+                    <Link href="/get-involved">Get Involved</Link>
                     <Link href="/newsletter">News Letter</Link>
 
                     <a
@@ -60,8 +61,8 @@ export default function Navbar() {
                 <Link href="/about" className="block py-2 text-lg" onClick={() => setMenuOpen(false)}>About</Link>
                 <Link href="/events" className="block py-2 text-lg" onClick={() => setMenuOpen(false)}>Events</Link>
                 <Link href="/contact" className="block py-2 text-lg" onClick={() => setMenuOpen(false)}>Contact</Link>
+                <Link href="/get-involved" className="block py-2 text-lg" onClick={() => setMenuOpen(false)}>Get Involved</Link>
                 <Link href="/newsletter" className="block py-2 text-lg" onClick={() => setMenuOpen(false)}>News Letter</Link>
-
                 <a
                     href="/support/#support"
                     className="bg-teal-600 px-8 py-3 text-white rounded-lg text-lg font-semibold hover:bg-teal-700 transition inline-block"
