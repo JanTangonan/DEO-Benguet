@@ -11,12 +11,12 @@ export default function AboutPage() {
     const leadership = [
         {
             id: "visionary-lyka-arman",
-            name: "Pastor Lyka & Arman",
+            name: "PH Campus Pastor Lyka & Arman",
             role: "Pastor",
             image: "/events/pastor4-extended.jpeg",
             focus: "Church Leadership",
             icon: "🙋‍♀️",
-            bio: "Pastor Lyka & Arman is the heart that holds DEO Church together. As the visionary who started the partnership with DEO Church, they bring unity, wisdom, and steadfast commitment to leading our growing congregation with grace and purpose."
+            bio: "PH Campus Pastor Lyka & Arman is the heart that holds DEO Church together. As the visionary who started the partnership with DEO Church, they bring unity, wisdom, and steadfast commitment to leading our growing congregation with grace and purpose."
         },
         {
             id: "pastor-kesha",

@@ -36,7 +36,7 @@ const involvement = [
         description:
             "Help support church activities, outreach programs, and local ministry initiatives.",
         button: "Support Us",
-        href: "#support",
+        href: "/support/#support",
         bg: "bg-rose-50",
     },
 ];
@@ -126,107 +126,6 @@ export default function GetInvolvedPage() {
 
                             </div>
                         ))}
-
-                    </div>
-
-                </div>
-
-            </section>
-
-            {/* SUPPORT SECTION */}
-            <section
-                id="support"
-                className="bg-gray-50 py-24 scroll-mt-24"
-            >
-
-                <div className="max-w-5xl mx-auto px-6">
-
-                    <h2 className="text-4xl font-bold text-center mb-6">
-                        Support Our Ministry
-                    </h2>
-
-                    <p className="text-center text-gray-600 mb-16">
-                        Your generosity helps fund church activities,
-                        outreach, and local projects.
-                    </p>
-
-                    <div className="grid md:grid-cols-2 gap-8">
-
-                        {/* Missions */}
-                        <div className="bg-white rounded-3xl p-10 shadow-md">
-
-                            <h3 className="text-2xl font-bold mb-6">
-                                🌍 Deo Missions
-                            </h3>
-
-                            <div className="space-y-3 text-gray-700">
-
-                                <p>
-                                    <strong>Bank:</strong>
-                                    {" "}ABSA Newcastle
-                                </p>
-
-                                <p>
-                                    <strong>Type:</strong>
-                                    {" "}Cheque
-                                </p>
-
-                                <p>
-                                    <strong>Account:</strong>
-                                    {" "}4050497740
-                                </p>
-
-                                <p>
-                                    <strong>Branch:</strong>
-                                    {" "}632005
-                                </p>
-
-                                <p>
-                                    <strong>Reference:</strong>
-                                    {" "}Name & Surname
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                        {/* Local Projects */}
-                        <div className="bg-white rounded-3xl p-10 shadow-md">
-
-                            <h3 className="text-2xl font-bold mb-6">
-                                🏠 Local Projects
-                            </h3>
-
-                            <div className="space-y-3 text-gray-700">
-
-                                <p>
-                                    <strong>Bank:</strong>
-                                    {" "}ABSA Newcastle
-                                </p>
-
-                                <p>
-                                    <strong>Type:</strong>
-                                    {" "}Savings
-                                </p>
-
-                                <p>
-                                    <strong>Account:</strong>
-                                    {" "}9344364183
-                                </p>
-
-                                <p>
-                                    <strong>Branch:</strong>
-                                    {" "}632005
-                                </p>
-
-                                <p>
-                                    <strong>Reference:</strong>
-                                    {" "}Name & Project
-                                </p>
-
-                            </div>
-
-                        </div>
 
                     </div>
 
