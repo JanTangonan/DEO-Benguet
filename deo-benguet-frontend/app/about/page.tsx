@@ -7,6 +7,7 @@ export default function AboutPage() {
     //#region State & Data
     useFadeIn();
     const [expandedValue, setExpandedValue] = useState<string | null>(null);
+    const [openBelief, setOpenBelief] = useState<string | null>(null);
 
     const leadership = [
         {
@@ -49,39 +50,67 @@ export default function AboutPage() {
 
     const coreValues = [
         {
-            id: "missions",
-            title: "Missions",
-            icon: "🌍",
-            brief: "Being the hands and feet of Jesus in our community and the world.",
-            full: "Being the hands and feet of Jesus is a core value at DEO Church. We are passionate about spreading the light of Jesus in a dark world by actively engaging in missions, locally and globally. Our commitment is to serve others generously by creating a platform for all to minister from. We believe that the light which shines the furthest, shines the brightest at home. Through our actions and outreach efforts, we desire to make disciples of All Nations."
+            id: "christ-centered",
+            title: "Christ-Centered",
+            icon: "✝️",
+            brief: "Jesus is the foundation of all we do.",
+            full: "Jesus is the foundation and focus of all we do. We exist to glorify Him and make Him known."
         },
         {
-            id: "growth",
-            title: "Growth",
-            icon: "📈",
-            brief: "Healthy development of spirit, soul and body for all believers.",
-            full: "Healthy growth in spirit, soul and body is a paramount value at DEO Church. By acknowledging that everything in God's creation is created with the ultimate potential and purpose to grow in a healthy manner, we prioritize the full development of our partners. We encourage individual and community growth through various spiritual disciplines, building healthy friendships and serving faithfully."
+            id: "love",
+            title: "Love",
+            icon: "❤️",
+            brief: "We reflect God's unconditional love.",
+            full: "We demonstrate God's unconditional love in how we serve, relate, and care for others."
         },
         {
-            id: "people",
-            title: "People",
-            icon: "👥",
-            brief: "Authentic relationships and meaningful connections in smaller circles.",
-            full: "Authentic relationships between real people are a fundamental value at DEO Church. We believe circles are always better than rows. True transformation always happens in smaller settings, rather than big groups. In a world often marked by superficial interactions, we prioritize authenticity, vulnerability and meaningful connections. We aim to create an environment where people can truly be themselves, build lasting friendships and support each other on their faith journeys."
+            id: "excellence",
+            title: "Excellence",
+            icon: "🏆",
+            brief: "We give our best in all things.",
+            full: "We strive to honor God by giving our best in all things, reflecting His nature through quality and diligence."
         },
         {
-            id: "worship",
-            title: "Worship",
-            icon: "🙏",
-            brief: "Authentic, heartfelt worship in spirit and truth that pleases God.",
-            full: "At DEO Church, we hold the core value of Worship in spirit and truth. This value emphasizes our commitment to authentic and heartfelt worship in a manner that pleases God, not man. We believe that true worship involves not only the outward expression of praise but also a genuine, sincere connection with Holy Spirit and an unwavering commitment to obeying."
+            id: "spirit-driven",
+            title: "Spirit-Driven",
+            icon: "🔥",
+            brief: "Led by the Holy Spirit.",
+            full: "We are led by the Holy Spirit in worship, decision-making, ministry, and daily living."
         },
         {
-            id: "truth",
-            title: "Truth",
+            id: "word-based",
+            title: "Word-Based",
             icon: "📖",
-            brief: "Living according to God's truth as revealed in His Word.",
-            full: "Learning and living according to God's truth in the Word is a foundational value at DEO Church. We are committed to studying and understanding the teachings of the Bible, which we believe to be the ultimate source of divine truth. Through continuous learning, reflection and prayer, we seek to align our lives with God's Word, allowing it to guide our beliefs, values and actions. This value underscores our dedication to living a life that reflects the principles and wisdom found in Scripture."
+            brief: "Guided by God's Word.",
+            full: "God’s Word is our ultimate authority, guiding our beliefs, practices, and growth."
+        },
+        {
+            id: "integrity",
+            title: "Biblical Integrity",
+            icon: "🧭",
+            brief: "Truth in character and conduct.",
+            full: "We live with honesty and alignment to Scripture, upholding truth in both character and conduct."
+        },
+        {
+            id: "brave",
+            title: "Brave",
+            icon: "⚔️",
+            brief: "Bold faith and courage.",
+            full: "We step out in faith, take risks for the Gospel, and stand firm in spiritual boldness."
+        },
+        {
+            id: "unashamed",
+            title: "Unashamed",
+            icon: "📣",
+            brief: "Boldly proclaim Jesus.",
+            full: "We boldly proclaim the name of Jesus without compromise or fear."
+        },
+        {
+            id: "generous",
+            title: "Generous Giving",
+            icon: "🎁",
+            brief: "We give joyfully and sacrificially.",
+            full: "We give joyfully, sacrificially, and faithfully, recognizing all we have belongs to God."
         }
     ];
 
@@ -157,36 +186,186 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* Mission & Vision */}
+            {/* Deo Logo */}
             <section className="bg-gray-100 fade-in py-24">
                 <div className="max-w-6xl mx-auto px-6">
                     <div className="grid md:grid-cols-2 gap-16">
-                        <div>
-                            <h3 className="text-3xl font-bold mb-6 text-teal-700">
-                                Our Mission
+                        <div className="flex flex-col justify-center">
+                            <h3 className="text-2xl mb-6 font-semibold">
+                                DEO = GOD <br />
+                                THIS IS GOD'S CHURCH <br />
+                                DEO VICTORIA = "GOD GIVES VICTORY"
                             </h3>
-                            <p className="text-gray-600 leading-loose text-lg">
-                                To make disciples who love God, love people, and impact the world through 
-                                the power of the Holy Spirit. We accomplish this by glorifying God, 
-                                proclaiming the Kingdom of God through the Gospel, ministering to the 
-                                needs of the total person, developing and equipping believers for ministry, 
-                                extending our church's influence beyond our boundaries, and promoting 
-                                fellowship and unity among believers.
-                            </p>
                         </div>
 
                         <div>
-                            <h3 className="text-3xl font-bold mb-6 text-teal-700">
-                                Our Vision
-                            </h3>
-                            <p className="text-gray-600 leading-loose text-lg">
-                                A vibrant, Spirit-empowered church community where every believer is 
-                                transformed by Christ's love, equipped to serve with purpose, and mobilized 
-                                to extend God's Kingdom from Benguet to the nations. We envision a movement 
-                                of disciples making disciples, advancing the Gospel through powerful 
-                                ministry, authentic worship, and missional engagement.
-                            </p>
+                            <Image
+                                src="10.svg"
+                                alt="DEO Church Logo"
+                                width={400}
+                                height={400}
+                                className="w-full h-auto object-contain"
+                            />
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Our Vision */}
+            <section className="fade-in py-24">
+                <div className="max-w-4xl mx-auto px-6">
+                    <h2 className="text-4xl font-bold mb-8 text-center">
+                        Our Vision
+                    </h2>
+
+                    <div className="space-y-6 text-gray-600 leading-loose text-lg text-center">
+                        <p>
+                            One church impacting nations through establishing christ-like communities around the world.
+                        </p>
+                    </div>
+
+                    <div className="space-y-6 text-teal-600 leading-loose text-lg text-center mt-8">
+                        <p className="text-lg font-semibold">
+                            ACTS 1:8 - NEWCASTLE,KZN, SOUTH AFRICA, BENGUET AND THE WORLD
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+
+            {/* Our Mission */}
+            <section className="fade-in py-24">
+                <div className="max-w-4xl mx-auto px-6">
+                    <h2 className="text-4xl font-bold mb-8 text-center">
+                        Our Mission
+                    </h2>
+
+                    <div className="space-y-6 text-gray-600 leading-loose text-lg text-center">
+                        <p>
+                            At DEO Church Benguet, our mission is to <strong>evangelize</strong> the lost with the transforming
+                            message of Jesus Christ, <strong>encourage</strong>  believers through authentic community and compassionate 
+                            care, <strong>equip</strong> disciples with biblical truth and spiritual disciplines, <strong>establish</strong> strong
+                            foundations of faith and character, empower every indivudial to walk in their God-given
+                            purpose, and pursue <strong>excellence</strong> in all we do for the glory of God.
+                        </p>
+                    </div>
+
+                    <div className="mt-12 flex justify-center">
+                        <Image
+                            src="9.svg"
+                            alt="Our Mission"
+                            width={600}
+                            height={600}
+                        />
+                    </div>
+
+                </div>
+            </section>
+
+            {/* Scripture Highlight */}
+            <section className="bg-teal-600 text-white text-center fade-in py-24">
+                <div className="max-w-3xl mx-auto px-6">
+                    <p className="text-2xl md:text-3xl font-semibold leading-relaxed mb-6">
+                        “For where two or three gather in my name, there am I with them.”
+                    </p>
+                    <span className="text-teal-100">Matthew 18:20</span>
+                </div>
+            </section>
+
+            {/* Focus Areas */}
+            <section className="fade-in py-24 bg-gray-100">
+                <div className="max-w-6xl mx-auto px-6 text-center">
+
+                    <h2 className="text-3xl font-bold mb-6">
+                        Our Focus Areas
+                    </h2>
+
+                    <p className="text-gray-600 max-w-2xl mx-auto mb-12">
+                        These are the core foundations that shape how we worship, grow, and serve as a church community.
+                    </p>
+
+                    {/* Optional image */}
+                    <div className="flex justify-center mb-12">
+                        <Image
+                            src="11.svg"
+                            alt="Our Focus Areas"
+                            width={900}
+                            height={500}
+                        />
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-6 text-left">
+                        {[
+                            {
+                                title: "Worship",
+                                icon: "🙏",
+                                desc: "Worship the Lord with reverence and Spirit-led praise.",
+                                verseDesc: "Worship the Lord your God, and serve Him only.",
+                                verse: "Luke 4:8"
+                            },
+                            {
+                                title: "Word-Based",
+                                icon: "📖",
+                                desc: "Grounded in Scripture and biblical teaching.",
+                                verseDesc: "All Scripture is God-breathed so that the servant of God may be thoroughly equipped for every good work.",
+                                verse: "2 Timothy 3:16-17"
+                            },
+                            {
+                                title: "Prayer",
+                                icon: "🤲",
+                                desc: "A church built on consistent and powerful prayer.",
+                                verseDesc: "Be joyful in hope, patient in affliction, faithful in prayer.",
+                                verse: "Romans 12:12"
+                            },
+                            {
+                                title: "People",
+                                icon: "👥",
+                                desc: "Building authentic relationships and community.",
+                                verseDesc: "To equip His people for works of service, so that the body of Christ may be built up.",
+                                verse: "Ephesians 4:11-15"
+                            },
+                            {
+                                title: "Missions",
+                                icon: "🌍",
+                                desc: "Reaching the local community and nations.",
+                                verseDesc: "Go and make disciples of all nations.",
+                                verse: "Matthew 28:19-20"
+                            },
+                            {
+                                title: "Growth",
+                                icon: "📈",
+                                desc: "Spiritual maturity and discipleship development.",
+                                verseDesc: "Grow in the grace and knowledge of our Lord and Savior Jesus Christ.",
+                                verse: "2 Peter 3:18"
+                            }
+                        ].map((item) => (
+                            <div
+                                key={item.title}
+                                className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition border border-gray-100"
+                            >
+                                {/* Header */}
+                                <div className="flex items-center gap-2 mb-3">
+                                    <h3 className="font-semibold text-lg text-gray-800">
+                                        {item.title}
+                                    </h3>
+                                </div>
+
+                                {/* Description */}
+                                <p className="text-gray-600 text-sm mb-4">
+                                    {item.desc}
+                                </p>
+
+                                {/* Verse block */}
+                                <div className="border-l-4 border-teal-500 pl-3">
+                                    <p className="text-gray-700 text-sm italic">
+                                        “{item.verseDesc}”
+                                    </p>
+                                    <p className="text-teal-600 text-xs font-semibold mt-2">
+                                        {item.verse}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
@@ -194,56 +373,64 @@ export default function AboutPage() {
             {/* Core Values */}
             <section className="fade-in py-24">
                 <div className="max-w-6xl mx-auto px-6">
-                    <h2 className="text-3xl font-bold text-center mb-16">
+                    <h2 className="text-3xl font-bold text-center mb-12">
                         Our Core Values
                     </h2>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
-                        {coreValues.map((value) => (
-                            <div
-                                key={value.id}
-                                onClick={() =>
-                                    setExpandedValue(expandedValue === value.id ? null : value.id)
-                                }
-                                className={`p-6 rounded-2xl border cursor-pointer transition-all duration-300
-                                    ${expandedValue === value.id
-                                        ? "bg-teal-50 border-teal-300 shadow-md"
-                                        : "border-gray-100 hover:shadow-lg hover:border-teal-200"
-                                    }
-                                `}
-                            >
-                                <div className="text-3xl mb-3">{value.icon}</div>
+                    <p className="text-gray-600 text-center mb-16">
+                        Together, these values shape our identity as a church and fuel our mission to impact nations for Christ.
+                    </p>
 
-                                <h4 className="font-semibold text-lg text-gray-800">
-                                    {value.title}
-                                </h4>
+                    <div className="grid md:grid-cols-3 gap-6">
+                        {coreValues.map((value) => {
+                            const isOpen = expandedValue === value.id;
 
-                                <p className="text-gray-600 mt-2 text-sm">
-                                    {value.brief}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-                    {expandedValue && (
-                        <div className="mt-16 bg-teal-50 border border-teal-200 rounded-3xl p-10 shadow-lg animate-fadeIn">
-                            {coreValues
-                                .filter((value) => value.id === expandedValue)
-                                .map((value) => (
-                                    <div key={value.id}>
-                                        <div className="flex items-center gap-4 mb-6">
-                                            <div className="text-4xl">{value.icon}</div>
-                                            <h3 className="text-2xl font-bold text-gray-800">
-                                                {value.title}
-                                            </h3>
-                                        </div>
+                            return (
+                                <div key={value.id} className="space-y-3">
 
-                                        <p className="text-gray-700 leading-relaxed text-lg">
-                                            {value.full}
+                                    {/* CARD */}
+                                    <div
+                                        onClick={() =>
+                                            setExpandedValue(isOpen ? null : value.id)
+                                        }
+                                        className={`p-6 rounded-2xl border cursor-pointer transition-all duration-300
+                                            ${isOpen
+                                                ? "bg-teal-50 border-teal-300 shadow-md"
+                                                : "border-gray-100 hover:shadow-lg hover:border-teal-200"
+                                            }
+                                        `}
+                                    >
+                                        <div className="text-3xl mb-3">{value.icon}</div>
+
+                                        <h4 className="font-semibold text-lg text-gray-800">
+                                            {value.title}
+                                        </h4>
+
+                                        <p className="text-gray-600 mt-2 text-sm">
+                                            {value.brief}
                                         </p>
                                     </div>
-                                ))}
-                        </div>
-                    )}
+
+                                    {/* EXPANDED CONTENT (NOW INSIDE GRID ITEM) */}
+                                    {isOpen && (
+                                        <div className="bg-teal-50 border border-teal-200 rounded-2xl p-6 shadow-lg animate-fadeIn">
+                                            <div className="flex items-center gap-3 mb-4">
+                                                <div className="text-3xl">{value.icon}</div>
+                                                <h3 className="text-xl font-bold text-gray-800">
+                                                    {value.title}
+                                                </h3>
+                                            </div>
+
+                                            <p className="text-gray-700 leading-relaxed text-sm">
+                                                {value.full}
+                                            </p>
+                                        </div>
+                                    )}
+
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
             </section>
 
@@ -345,9 +532,9 @@ export default function AboutPage() {
             <section className="bg-teal-600 text-white text-center fade-in py-24">
                 <div className="max-w-3xl mx-auto px-6">
                     <p className="text-2xl md:text-3xl font-semibold leading-relaxed mb-6">
-                        “For where two or three gather in my name, there am I with them.”
+                        “And let us consider how we may spur one another on toward love and good deeds not giving up meeting together, as some are in the habit of doing, but encouraging one another—and all the more as you see the Day approaching.”
                     </p>
-                    <span className="text-teal-100">Matthew 18:20</span>
+                    <span className="text-teal-100">Hebrew 10:24-25</span>
                 </div>
             </section>
 
