@@ -128,6 +128,34 @@ export default function AboutPage() {
         "We believe in final judgement, resurrection of the body and eternal life."
     ];
 
+    const missionPoints = [
+        {
+            title: "Evangelize",
+            verse: "Matthew 28:19-20",
+            text: "Evangelize the lost with the transforming message of Jesus Christ."
+        },
+        {
+            title: "Encourage",
+            verse: "Hebrews 10:24-25",
+            text: "Encourage believers through authentic community and compassionate care."
+        },
+        {
+            title: "Equip",
+            verse: "Ephesians 4:11-13",
+            text: "Equip disciples with biblical truth and spiritual disciplines."
+        },
+        {
+            title: "Establish",
+            verse: "Mark 16:15, 1 Thessalonians 5:11-18",
+            text: "Establish strong foundations of faith and character. Empower every individual to walk in their God-given purpose."
+        },
+        {
+            title: "Excellence",
+            verse: "Colossians 3:23",
+            text: "Pursue excellence in all we do for the glory of God."
+        }
+    ];
+
     //#endregion
     return (
         <main>
@@ -235,33 +263,60 @@ export default function AboutPage() {
 
             {/* Our Mission */}
             <section className="fade-in py-24">
-                <div className="max-w-4xl mx-auto px-6">
-                    <h2 className="text-4xl font-bold mb-8 text-center">
+                <div className="max-w-6xl mx-auto px-6">
+
+                    {/* Header */}
+                    <h2 className="text-4xl font-bold text-center mb-6">
                         Our Mission
                     </h2>
 
-                    <div className="space-y-6 text-gray-600 leading-loose text-lg text-center">
-                        <p>
-                            At DEO Church Benguet, our mission is to <strong>evangelize</strong> the lost with the transforming
-                            message of Jesus Christ, <strong>encourage</strong>  believers through authentic community and compassionate 
-                            care, <strong>equip</strong> disciples with biblical truth and spiritual disciplines, <strong>establish</strong> strong
-                            foundations of faith and character, empower every indivudial to walk in their God-given
-                            purpose, and pursue <strong>excellence</strong> in all we do for the glory of God.
-                        </p>
-                    </div>
+                    <p className="text-center text-gray-600 leading-relaxed text-lg mb-16 max-w-2xl mx-auto">
+                        At DEO Church Benguet, our mission is guided by Scripture and expressed in every part of our church life.
+                    </p>
 
-                    <div className="mt-12 flex justify-center">
-                        <Image
-                            src="9.svg"
-                            alt="Our Mission"
-                            width={600}
-                            height={600}
-                        />
-                    </div>
+                    {/* Content Layout */}
+                    <div className="grid md:grid-cols-2 gap-12 items-center">
 
+                        {/* LEFT: IMAGE */}
+                        <div className="relative flex justify-center">
+                            <Image
+                                src="9.svg"
+                                alt="Our Mission"
+                                width={700}
+                                height={700}
+                                className="w-full max-w-[480px] md:max-w-[700px] h-auto"
+                            />
+                        </div>
+
+                        {/* RIGHT: MISSION POINTS */}
+                        <div className="space-y-3">
+
+                            {missionPoints.map((item) => (
+                                <div
+                                    key={item.title}
+                                    className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm hover:shadow-md transition"
+                                >
+                                    <div className="flex items-start justify-between mb-2">
+                                        <h3 className="text-lg font-semibold text-gray-900">
+                                            {item.title}
+                                        </h3>
+
+                                        <span className="text-xs font-semibold text-teal-600 bg-teal-50 px-2 py-1 rounded-full">
+                                            {item.verse}
+                                        </span>
+                                    </div>
+
+                                    <p className="text-gray-600 text-sm leading-relaxed">
+                                        {item.text}
+                                    </p>
+                                </div>
+                            ))}
+
+                        </div>
+                    </div>
                 </div>
             </section>
-
+            
             {/* Scripture Highlight */}
             <section className="bg-teal-600 text-white text-center fade-in py-24">
                 <div className="max-w-3xl mx-auto px-6">
