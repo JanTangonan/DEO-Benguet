@@ -274,6 +274,6 @@ export const events: Event[] = [
             "/events/youth-camp-2.jpg",
             "/events/youth-camp-3.jpg",
         ],
-        type: "sooner-upcoming",
+        type: "past",
     },
 ];
