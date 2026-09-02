@@ -91,7 +91,7 @@ export default function EventsPage() {
                 </div>
             </section> */}
             {/* Featured Upcoming Event (Portrait Poster) */}
-            <section className="fade-in py-24 bg-gray-50">
+            {soonerUpcomingEvents.length > 0 && <section className="fade-in py-24 bg-gray-50">
                 <div className="max-w-6xl mx-auto px-6 text-center">
 
                     <h2 className="text-3xl font-bold mb-16">
@@ -141,7 +141,7 @@ export default function EventsPage() {
                     })}
 
                 </div>
-            </section>
+            </section>}
 
             {/* Upcoming Events List */}
             <section className="fade-in py-24">
@@ -178,14 +178,14 @@ export default function EventsPage() {
                                     {event.description}
                                 </p>
 
-                                <button
+                                <span
                                     className={`mt-6 font-semibold ${event.featured
                                         ? "text-white underline"
                                         : "text-teal-600 hover:underline"
                                         }`}
                                 >
                                     Learn More →
-                                </button>
+                                </span>
                             </div>
                         </Link>
                     ))}
@@ -230,9 +230,9 @@ export default function EventsPage() {
                                                 {event.description}
                                             </p>
 
-                                            <button className="text-teal-600 hover:text-teal-700 font-semibold text-sm">
+                                            <span className="text-teal-600 hover:text-teal-700 font-semibold text-sm">
                                                 Learn More →
-                                            </button>
+                                            </span>
                                         </div>
                                     </div>
                                 </Link>

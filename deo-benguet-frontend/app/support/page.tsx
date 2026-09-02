@@ -23,8 +23,6 @@ const products: Product[] = [
         category: "Apparel",
         images: [
             "/products/shirt-1.jpg",
-            "/products/shirt-2.jpg",
-            "/products/shirt-3.jpg",
         ],
         stock: true,
     },
@@ -36,8 +34,6 @@ const products: Product[] = [
         category: "Bags",
         images: [
             "/products/draw-string-bag-1.jpg",
-            "/products/draw-string-bag-2.jpg",
-            "/products/draw-string-bag-3.jpg",
         ],
         stock: true,
     },
@@ -87,8 +83,7 @@ const products: Product[] = [
         category: "Accessories",
         images: [
             "/products/bag-tag-1.jpg", 
-            "/products/sticker-2.jpg", 
-            "/products/sticker-3.jpg"],
+        ],
         stock: true,
     },
     {
@@ -98,9 +93,8 @@ const products: Product[] = [
         price: 250,
         category: "Accessories",
         images: [
-            "/products/cap-1.jpg", 
-            "/products/cap-2.jpg", 
-            "/products/cap-3.jpg"],
+            "/products/cap-1.jpg",
+        ],
         stock: true,
     },
 ];
@@ -195,8 +189,9 @@ function ProductCard({ product }: { product: Product }) {
                     </span>
 
                     <a
-                        href="https://facebook.com/YOUR_PAGE_NAME"
+                        href="https://www.facebook.com/profile.php?id=61587087962445"
                         target="_blank"
+                        rel="noopener noreferrer"
                         className="text-sm font-semibold text-teal-600 hover:underline"
                     >
                         Order →

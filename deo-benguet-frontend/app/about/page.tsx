@@ -228,7 +228,7 @@ export default function AboutPage() {
 
                         <div>
                             <Image
-                                src="10.svg"
+                                src="/10.svg"
                                 alt="DEO Church Logo"
                                 width={400}
                                 height={400}
@@ -280,7 +280,7 @@ export default function AboutPage() {
                         {/* LEFT: IMAGE */}
                         <div className="relative flex justify-center">
                             <Image
-                                src="9.svg"
+                                src="/9.svg"
                                 alt="Our Mission"
                                 width={700}
                                 height={700}
@@ -342,7 +342,7 @@ export default function AboutPage() {
                     {/* Optional image */}
                     <div className="flex justify-center mb-12">
                         <Image
-                            src="11.svg"
+                            src="/11.svg"
                             alt="Our Focus Areas"
                             width={900}
                             height={500}
