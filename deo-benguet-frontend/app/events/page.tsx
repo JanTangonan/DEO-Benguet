@@ -1,245 +1,90 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { events } from "../../data/event";
-import { useFadeIn } from "@/hooks/useFadeIn";
+import { CalendarDays, Clock3, MapPin, Sparkles } from "lucide-react";
+import { useMemo, useState } from "react";
+import { events } from "@/data/event";
+
+type EventFilter = "all" | "weekly" | "past";
+
+const filters: { id: EventFilter; label: string; description: string }[] = [
+    { id: "all", label: "All events", description: "Everything happening at DEO" },
+    { id: "weekly", label: "Weekly gatherings", description: "Worship, youth, and prayer" },
+    { id: "past", label: "Past moments", description: "Celebrations from our church family" },
+];
 
 export default function EventsPage() {
-    useFadeIn();
-    const upcomingEvents = events.filter(e => e.type === "upcoming");
-    const pastEvents = events.filter(e => e.type === "past");
-    const soonerUpcomingEvents = events.filter(e => e.type === "sooner-upcoming");
+    const [activeFilter, setActiveFilter] = useState<EventFilter>("all");
+
+    const visibleEvents = useMemo(() => {
+        if (activeFilter === "weekly") return events.filter((event) => event.type === "upcoming");
+        if (activeFilter === "past") return events.filter((event) => event.type === "past");
+        return events;
+    }, [activeFilter]);
 
     return (
         <main>
-
-            {/* Page Hero */}
-            <section className="relative h-[50vh] flex items-center justify-center text-white fade-in py-24 scroll-mt-24">
-                <div
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: "url('/events/deo-church-benguet-4.jpg')" }}
-                ></div>
-
-                <div className="absolute inset-0 bg-black/50"></div>
-
-                <div className="relative text-center px-6">
-                    <h1 className="text-5xl md:text-5xl font-bold mb-6">
-                        Events
-                    </h1>
-                    <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
-                        Join us and be part of what God is doing in our church and community.
-                    </p>
+            <section className="relative isolate overflow-hidden bg-slate-950 py-24 text-white sm:py-32">
+                <Image src="/events/deo-church-benguet-4.jpg" alt="DEO Church Benguet community event" fill priority sizes="100vw" className="-z-20 object-cover opacity-45" />
+                <div className="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950/95 via-slate-950/75 to-slate-950/40" />
+                <div className="mx-auto max-w-6xl px-6">
+                    <p className="mb-4 flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-teal-300"><Sparkles size={16} aria-hidden="true" /> Gather with us</p>
+                    <h1 className="max-w-2xl text-5xl font-bold tracking-tight sm:text-6xl">Life is better in community.</h1>
+                    <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200">Explore weekly gatherings, ministries, and the moments that shape DEO Church Benguet.</p>
                 </div>
             </section>
 
-            {/* Sooner Upcoming Events */}
-            {/* Featured Upcoming Event (Poster Style) */}
-            {/* <section className="fade-in py-24 bg-gray-50">
-                <div className="max-w-6xl mx-auto px-6">
-
-                    <h2 className="text-3xl font-bold text-center mb-16">
-                        Happening Soon
-                    </h2>
-
-                    {soonerUpcomingEvents.map((event) => {
-                        const firstImage =
-                            event.images?.[0] || event.image || "/events/placeholder.jpg";
-
-                        return (
-                            <div
-                                key={event.id}
-                                className="relative rounded-3xl overflow-hidden shadow-xl group"
-                            >
-                                <img
-                                    src={firstImage}
-                                    alt={event.title}
-                                    className="w-full h-[500px] object-cover group-hover:scale-105 transition duration-500"
-                                />
-
-                                <div className="absolute inset-0 bg-black/60" />
-
-                                <div className="absolute inset-0 flex flex-col justify-center items-start p-10 md:p-16 text-white">
-
-                                    <span className="bg-teal-500 text-white px-4 py-1 rounded-full text-sm mb-4">
-                                        Upcoming Event
-                                    </span>
-
-                                    <h3 className="text-3xl md:text-5xl font-bold mb-4 max-w-xl">
-                                        {event.title}
-                                    </h3>
-
-                                    <p className="text-lg text-gray-200 mb-4">
-                                        {event.date} • {event.time}
-                                    </p>
-
-                                    <p className="max-w-xl text-gray-200 mb-6">
-                                        {event.description}
-                                    </p>
-
-                                    <a
-                                        href="#contact"
-                                        className="bg-teal-600 px-6 py-3 rounded-lg font-semibold hover:bg-teal-700 transition"
-                                    >
-                                        Ask About This Event
-                                    </a>
-
-                                </div>
-                            </div>
-                        );
-                    })}
-
-                </div>
-            </section> */}
-            {/* Featured Upcoming Event (Portrait Poster) */}
-            {soonerUpcomingEvents.length > 0 && <section className="fade-in py-24 bg-gray-50">
-                <div className="max-w-6xl mx-auto px-6 text-center">
-
-                    <h2 className="text-3xl font-bold mb-16">
-                        Happening Soon
-                    </h2>
-
-                    {soonerUpcomingEvents.map((event) => {
-                        const firstImage =
-                            event.images?.[0] || event.image || "/events/placeholder.jpg";
-
-                        return (
-                            <div key={event.id} className="flex flex-col items-center">
-
-                                {/* Poster Container */}
-                                <div className="relative w-full max-w-md rounded-3xl overflow-hidden shadow-2xl group">
-                                    <img
-                                        src={firstImage}
-                                        alt={event.title}
-                                        className="w-full h-auto object-cover group-hover:scale-105 transition duration-500"
-                                    />
-                                </div>
-
-                                {/* Event Info Below */}
-                                <div className="mt-8 max-w-xl text-center">
-                                    <h3 className="text-2xl font-semibold mb-2">
-                                        {event.title}
-                                    </h3>
-
-                                    <p className="text-teal-600 font-medium mb-2">
-                                        {event.date} • {event.time}
-                                    </p>
-
-                                    <p className="text-gray-600 mb-6">
-                                        {event.description}
-                                    </p>
-
-                                    <a
-                                        href="/contact"
-                                        className="inline-block bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition"
-                                    >
-                                        Ask About This Event
-                                    </a>
-                                </div>
-
-                            </div>
-                        );
-                    })}
-
-                </div>
-            </section>}
-
-            {/* Upcoming Events List */}
-            <section className="fade-in py-24">
-                <div className="max-w-4xl mx-auto px-6 space-y-12">
-
-                    {upcomingEvents.map((event) => (
-                        <Link key={event.id} href={`/events/${event.slug}`} className="block">
-                            <div
-                                className={`p-8 rounded-3xl border transition duration-300 ${event.featured
-                                    ? "bg-teal-600 text-white border-teal-600 shadow-xl"
-                                    : "bg-white border-gray-100 hover:shadow-lg"
-                                    }`}
-                            >
-                                <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-4 gap-4">
-
-                                    <h2 className="text-2xl font-semibold">
-                                        {event.title}
-                                    </h2>
-
-                                    <div className={`text-sm font-medium ${event.featured ? "text-teal-100" : "text-teal-600"
-                                        }`}>
-                                        {event.date} • {event.time}
-                                    </div>
-
-                                </div>
-
-                                <p className={`mb-4 ${event.featured ? "text-teal-100" : "text-gray-600"
-                                    }`}>
-                                    📍 {event.location}
-                                </p>
-
-                                <p className={`leading-relaxed ${event.featured ? "text-teal-50" : "text-gray-600"
-                                    }`}>
-                                    {event.description}
-                                </p>
-
-                                <span
-                                    className={`mt-6 font-semibold ${event.featured
-                                        ? "text-white underline"
-                                        : "text-teal-600 hover:underline"
-                                        }`}
+            <section className="bg-slate-50 py-12 sm:py-16" aria-labelledby="event-browser-title">
+                <div className="mx-auto max-w-6xl px-6">
+                    <div className="flex flex-col gap-6 border-b border-slate-200 pb-8 sm:flex-row sm:items-end sm:justify-between">
+                        <div>
+                            <p className="text-sm font-semibold uppercase tracking-[0.15em] text-teal-700">Explore</p>
+                            <h2 id="event-browser-title" className="mt-2 text-3xl font-bold text-slate-900">Find your next gathering</h2>
+                        </div>
+                        <div className="flex flex-wrap gap-2" role="tablist" aria-label="Event categories">
+                            {filters.map((filter) => (
+                                <button
+                                    key={filter.id}
+                                    type="button"
+                                    role="tab"
+                                    aria-selected={activeFilter === filter.id}
+                                    onClick={() => setActiveFilter(filter.id)}
+                                    className={`rounded-full px-4 py-2 text-sm font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600 ${activeFilter === filter.id ? "bg-teal-600 text-white shadow-sm" : "bg-white text-slate-700 ring-1 ring-slate-200 hover:bg-teal-50"}`}
                                 >
-                                    Learn More →
-                                </span>
-                            </div>
-                        </Link>
-                    ))}
+                                    {filter.label}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
 
-                </div>
-            </section>
+                    <p className="mt-5 text-sm text-slate-600">{filters.find((filter) => filter.id === activeFilter)?.description} · {visibleEvents.length} {visibleEvents.length === 1 ? "event" : "events"}</p>
 
-            {/* Past Events */}
-            <section className="fade-in py-24 bg-gray-50">
-                <div className="max-w-6xl mx-auto px-6">
+                    <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                        {visibleEvents.map((event) => {
+                            const image = event.images?.[0] ?? event.image ?? "/events/deo-church-benguet-1.jpg";
+                            const isWeekly = event.type === "upcoming";
 
-                    <h2 className="text-3xl font-bold text-center mb-16">
-                        Successful Past Events
-                    </h2>
-
-                    <div className="grid md:grid-cols-3 gap-8">
-                        {pastEvents.map((event) => {
-                            const firstImage = event.images?.[0] || event.image || "/events/placeholder.jpg";
                             return (
-                                <Link key={event.id} href={`/events/${event.slug}`} className="block group">
-                                    <div className="bg-white rounded-3xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 hover:scale-105">
-                                        {/* Image Container */}
-                                        <div className="relative h-48 overflow-hidden bg-gray-200">
-                                            <img
-                                                src={firstImage}
-                                                alt={event.title}
-                                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                                            />
+                                <Link key={event.id} href={`/events/${event.slug}`} className="group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-600">
+                                    <div className="relative aspect-[4/3] overflow-hidden">
+                                        <Image src={image} alt={event.title} fill sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" className="object-cover transition duration-500 group-hover:scale-105" />
+                                        <span className={`absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-bold ${isWeekly ? "bg-teal-500 text-white" : "bg-white/95 text-slate-800"}`}>{isWeekly ? "Weekly gathering" : "Event recap"}</span>
+                                    </div>
+                                    <div className="p-6">
+                                        <h3 className="text-xl font-bold text-slate-900 transition group-hover:text-teal-700">{event.title}</h3>
+                                        <div className="mt-4 space-y-2 text-sm text-slate-600">
+                                            <p className="flex items-center gap-2"><CalendarDays size={16} className="text-teal-600" aria-hidden="true" /> {event.date}</p>
+                                            {event.time && <p className="flex items-center gap-2"><Clock3 size={16} className="text-teal-600" aria-hidden="true" /> {event.time}</p>}
+                                            {event.location && <p className="flex items-center gap-2 truncate"><MapPin size={16} className="shrink-0 text-teal-600" aria-hidden="true" /> {event.location}</p>}
                                         </div>
-
-                                        {/* Content */}
-                                        <div className="p-6">
-                                            <h3 className="text-xl font-semibold mb-3 group-hover:text-teal-600 transition">
-                                                {event.title}
-                                            </h3>
-
-                                            <p className="text-sm text-teal-600 font-medium mb-3">
-                                                {event.date}
-                                            </p>
-
-                                            <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                                                {event.description}
-                                            </p>
-
-                                            <span className="text-teal-600 hover:text-teal-700 font-semibold text-sm">
-                                                Learn More →
-                                            </span>
-                                        </div>
+                                        <p className="mt-4 line-clamp-2 text-sm leading-relaxed text-slate-600">{event.description}</p>
+                                        <p className="mt-5 text-sm font-bold text-teal-700">View event and photos →</p>
                                     </div>
                                 </Link>
                             );
                         })}
                     </div>
-
                 </div>
             </section>
         </main>

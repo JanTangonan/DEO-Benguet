@@ -4,12 +4,14 @@ import ServiceTimes from "@/components/ServiceTimes";
 import PlanVisit from "@/components/PlanVisit";
 import Location from "@/components/Location";
 import Testimonials from "@/components/Testimonials";
+import ThisWeek from "@/components/ThisWeek";
 import { Analytics } from '@vercel/analytics/next';
 
 export default function HomePage() {
   return (
     <main>
       <Hero />
+      <ThisWeek />
       <ServiceTimes />
       <PlanVisit />
       <Testimonials />
