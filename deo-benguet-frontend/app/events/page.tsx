@@ -14,14 +14,27 @@ const filters: { id: EventFilter; label: string; description: string }[] = [
     { id: "past", label: "Past moments", description: "Celebrations from our church family" },
 ];
 
+function archiveLabel(date: string) {
+    const year = date.match(/20\d{2}/)?.[0];
+    const month = date.match(/January|February|March|April|May|June|July|August|September|October|November|December/)?.[0];
+    return month && year ? `${month} ${year}` : year ?? "Earlier moments";
+}
+
 export default function EventsPage() {
     const [activeFilter, setActiveFilter] = useState<EventFilter>("all");
-
     const visibleEvents = useMemo(() => {
         if (activeFilter === "weekly") return events.filter((event) => event.type === "upcoming");
         if (activeFilter === "past") return events.filter((event) => event.type === "past");
         return events;
     }, [activeFilter]);
+    const archiveGroups = useMemo(() => {
+        const groups = new Map<string, typeof events>();
+        events.filter((event) => event.type === "past").forEach((event) => {
+            const label = archiveLabel(event.date);
+            groups.set(label, [...(groups.get(label) ?? []), event]);
+        });
+        return [...groups.entries()];
+    }, []);
 
     return (
         <main>
@@ -38,53 +51,41 @@ export default function EventsPage() {
             <section className="bg-slate-50 py-12 sm:py-16" aria-labelledby="event-browser-title">
                 <div className="mx-auto max-w-6xl px-6">
                     <div className="flex flex-col gap-6 border-b border-slate-200 pb-8 sm:flex-row sm:items-end sm:justify-between">
-                        <div>
-                            <p className="text-sm font-semibold uppercase tracking-[0.15em] text-teal-700">Explore</p>
-                            <h2 id="event-browser-title" className="mt-2 text-3xl font-bold text-slate-900">Find your next gathering</h2>
-                        </div>
+                        <div><p className="text-sm font-semibold uppercase tracking-[0.15em] text-teal-700">Explore</p><h2 id="event-browser-title" className="mt-2 text-3xl font-bold text-slate-900">{activeFilter === "past" ? "Our story in moments" : "Find your next gathering"}</h2></div>
                         <div className="flex flex-wrap gap-2" role="tablist" aria-label="Event categories">
-                            {filters.map((filter) => (
-                                <button
-                                    key={filter.id}
-                                    type="button"
-                                    role="tab"
-                                    aria-selected={activeFilter === filter.id}
-                                    onClick={() => setActiveFilter(filter.id)}
-                                    className={`rounded-full px-4 py-2 text-sm font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600 ${activeFilter === filter.id ? "bg-teal-600 text-white shadow-sm" : "bg-white text-slate-700 ring-1 ring-slate-200 hover:bg-teal-50"}`}
-                                >
-                                    {filter.label}
-                                </button>
-                            ))}
+                            {filters.map((filter) => <button key={filter.id} type="button" role="tab" aria-selected={activeFilter === filter.id} onClick={() => setActiveFilter(filter.id)} className={`rounded-full px-4 py-2 text-sm font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600 ${activeFilter === filter.id ? "bg-teal-600 text-white shadow-sm" : "bg-white text-slate-700 ring-1 ring-slate-200 hover:bg-teal-50"}`}>{filter.label}</button>)}
                         </div>
                     </div>
-
                     <p className="mt-5 text-sm text-slate-600">{filters.find((filter) => filter.id === activeFilter)?.description} · {visibleEvents.length} {visibleEvents.length === 1 ? "event" : "events"}</p>
 
-                    <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                        {visibleEvents.map((event) => {
-                            const image = event.images?.[0] ?? event.image ?? "/events/deo-church-benguet-1.jpg";
-                            const isWeekly = event.type === "upcoming";
-
-                            return (
-                                <Link key={event.id} href={`/events/${event.slug}`} className="group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-600">
-                                    <div className="relative aspect-[4/3] overflow-hidden">
-                                        <Image src={image} alt={event.title} fill sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" className="object-cover transition duration-500 group-hover:scale-105" />
-                                        <span className={`absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-bold ${isWeekly ? "bg-teal-500 text-white" : "bg-white/95 text-slate-800"}`}>{isWeekly ? "Weekly gathering" : "Event recap"}</span>
-                                    </div>
-                                    <div className="p-6">
-                                        <h3 className="text-xl font-bold text-slate-900 transition group-hover:text-teal-700">{event.title}</h3>
-                                        <div className="mt-4 space-y-2 text-sm text-slate-600">
-                                            <p className="flex items-center gap-2"><CalendarDays size={16} className="text-teal-600" aria-hidden="true" /> {event.date}</p>
-                                            {event.time && <p className="flex items-center gap-2"><Clock3 size={16} className="text-teal-600" aria-hidden="true" /> {event.time}</p>}
-                                            {event.location && <p className="flex items-center gap-2 truncate"><MapPin size={16} className="shrink-0 text-teal-600" aria-hidden="true" /> {event.location}</p>}
-                                        </div>
-                                        <p className="mt-4 line-clamp-2 text-sm leading-relaxed text-slate-600">{event.description}</p>
-                                        <p className="mt-5 text-sm font-bold text-teal-700">View event and photos →</p>
-                                    </div>
-                                </Link>
-                            );
-                        })}
-                    </div>
+                    {activeFilter === "past" ? (
+                        <div className="relative mt-10 border-l-2 border-teal-200 pl-6 sm:pl-10">
+                            {archiveGroups.map(([period, archiveEvents]) => <section key={period} className="relative mb-14 last:mb-0">
+                                <span className="absolute -left-[2.05rem] top-1 h-5 w-5 rounded-full border-4 border-slate-50 bg-teal-600 sm:-left-[3.05rem]" aria-hidden="true" />
+                                <h3 className="text-2xl font-bold text-slate-900">{period}</h3>
+                                <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                                    {archiveEvents.map((event, index) => {
+                                        const image = event.images?.[0] ?? event.image ?? "/events/deo-church-benguet-1.jpg";
+                                        return <Link key={event.id} href={`/events/${event.slug}`} className={`group overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-600 ${index === 0 && archiveEvents.length > 1 ? "sm:col-span-2 lg:col-span-1" : ""}`}>
+                                            <div className="relative aspect-[4/3] overflow-hidden"><Image src={image} alt={event.title} fill sizes="(min-width: 1024px) 30vw, (min-width: 640px) 50vw, 100vw" className="object-cover transition duration-500 group-hover:scale-105" /><span className="absolute bottom-3 left-3 rounded-full bg-slate-950/75 px-3 py-1 text-xs font-bold text-white">View photos</span></div>
+                                            <div className="p-5"><p className="text-sm font-semibold text-teal-700">{event.date}</p><h4 className="mt-2 text-lg font-bold text-slate-900 group-hover:text-teal-700">{event.title}</h4><p className="mt-2 line-clamp-2 text-sm text-slate-600">{event.description}</p></div>
+                                        </Link>;
+                                    })}
+                                </div>
+                            </section>)}
+                        </div>
+                    ) : (
+                        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                            {visibleEvents.map((event) => {
+                                const image = event.images?.[0] ?? event.image ?? "/events/deo-church-benguet-1.jpg";
+                                const isWeekly = event.type === "upcoming";
+                                return <Link key={event.id} href={`/events/${event.slug}`} className="group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-600">
+                                    <div className="relative aspect-[4/3] overflow-hidden"><Image src={image} alt={event.title} fill sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" className="object-cover transition duration-500 group-hover:scale-105" /><span className={`absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-bold ${isWeekly ? "bg-teal-500 text-white" : "bg-white/95 text-slate-800"}`}>{isWeekly ? "Weekly gathering" : "Event recap"}</span></div>
+                                    <div className="p-6"><h3 className="text-xl font-bold text-slate-900 transition group-hover:text-teal-700">{event.title}</h3><div className="mt-4 space-y-2 text-sm text-slate-600"><p className="flex items-center gap-2"><CalendarDays size={16} className="text-teal-600" aria-hidden="true" /> {event.date}</p>{event.time && <p className="flex items-center gap-2"><Clock3 size={16} className="text-teal-600" aria-hidden="true" /> {event.time}</p>}{event.location && <p className="flex items-center gap-2 truncate"><MapPin size={16} className="shrink-0 text-teal-600" aria-hidden="true" /> {event.location}</p>}</div><p className="mt-4 line-clamp-2 text-sm leading-relaxed text-slate-600">{event.description}</p><p className="mt-5 text-sm font-bold text-teal-700">View event and photos →</p></div>
+                                </Link>;
+                            })}
+                        </div>
+                    )}
                 </div>
             </section>
         </main>

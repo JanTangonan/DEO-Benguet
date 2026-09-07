@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import ScrollProgress from "@/components/ScrollProgress";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +35,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.className} antialiased`}
       >
+        <ScrollProgress />
         <Navbar />
         {children}
         <Footer />

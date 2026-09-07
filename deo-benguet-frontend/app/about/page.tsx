@@ -1,631 +1,103 @@
 "use client";
-import { useState } from "react";
+
 import Image from "next/image";
-import { useFadeIn } from "@/hooks/useFadeIn";
+import Link from "next/link";
+import { ChevronDown, ChevronLeft, ChevronRight, Compass, Heart, Sparkles, Users } from "lucide-react";
+import { useState } from "react";
+
+const values = [
+    { id: "christ-centered", title: "Christ-Centered", brief: "Jesus is the foundation of all we do.", full: "Jesus is the foundation and focus of all we do. We exist to glorify Him and make Him known." },
+    { id: "love", title: "Love", brief: "We reflect God’s unconditional love.", full: "We demonstrate God’s unconditional love in how we serve, relate, and care for others." },
+    { id: "excellence", title: "Excellence", brief: "We give our best in all things.", full: "We strive to honor God by giving our best in all things, reflecting His nature through quality and diligence." },
+    { id: "spirit-driven", title: "Spirit-Driven", brief: "Led by the Holy Spirit.", full: "We are led by the Holy Spirit in worship, decision-making, ministry, and daily living." },
+    { id: "word-based", title: "Word-Based", brief: "Guided by God’s Word.", full: "God’s Word is our ultimate authority, guiding our beliefs, practices, and growth." },
+    { id: "integrity", title: "Biblical Integrity", brief: "Truth in character and conduct.", full: "We live with honesty and alignment to Scripture, upholding truth in both character and conduct." },
+    { id: "brave", title: "Brave", brief: "Bold faith and courage.", full: "We step out in faith, take risks for the Gospel, and stand firm in spiritual boldness." },
+    { id: "unashamed", title: "Unashamed", brief: "Boldly proclaim Jesus.", full: "We boldly proclaim the name of Jesus without compromise or fear." },
+    { id: "generous", title: "Generous Giving", brief: "We give joyfully and sacrificially.", full: "We give joyfully, sacrificially, and faithfully, recognizing all we have belongs to God." },
+];
+
+const leadership = [
+    { id: "lyka-arman", name: "PH Campus Pastor Lyka & Arman", role: "Pastor", image: "/events/pastor4-extended.jpeg", focus: "Church Leadership", bio: "PH Campus Pastor Lyka & Arman bring unity, wisdom, and steadfast commitment to leading our growing congregation with grace and purpose." },
+    { id: "kesha", name: "Pastor Kesha", role: "Preacher & Bible Teacher", image: "/events/pastor6.jpg", focus: "God’s Word", bio: "Pastor Kesha is passionate about sharing God’s Word with depth and clarity through practical, faith-building teaching." },
+    { id: "kate", name: "Youth Leader Kate", role: "Youth & Kids Ministry", image: "/events/pastor5-extended.jpeg", focus: "Youth & Kids Ministry", bio: "Youth Leader Kate creates authentic worship experiences and nurtures young believers as they grow in faith and discover their purpose in Christ." },
+    { id: "janelle", name: "Assistant Leader Janelle", role: "Youth & Kids Ministry", image: "/events/pastor.jpg", focus: "Youth & Kids Ministry", bio: "Assistant Leader Janelle brings enthusiasm and care to Youth Connect and Kids Ministry, helping every young person feel valued and welcome." },
+];
+
+const beliefs = [
+    "We believe in God eternal, triune, almighty creator, sustainer and ruler of all creation.",
+    "We believe in God the Father, the author of creation and salvation.",
+    "We believe in Jesus Christ, the only Son of God the Father, who became flesh, was crucified, rose from the dead, and ascended to heaven.",
+    "We believe in the Holy Spirit, true God proceeding from the Father and the Son, who convicts the world and leads in all truth.",
+    "We believe that the Bible is the Word of God, written by people as the Holy Spirit inspired them.",
+    "We believe all human beings are created in the image of God, and salvation comes through faith in Jesus Christ.",
+    "We believe in baptism in the Holy Spirit with the initial evidence of speaking in tongues.",
+    "We believe that Jesus Christ is the Head of the Church, which consists of born-again believers.",
+    "We believe in believer’s baptism by immersion and the Lord’s Supper.",
+    "We believe that Jesus Christ will return for His Church.",
+    "We believe in final judgement, resurrection of the body, and eternal life.",
+];
+
+const journey = [
+    { title: "Early Years", label: "Founded in Benguet", image: "/events/deo-church-benguet-2.jpg", text: "DEO Church Benguet was established as a local church community rooted in the faith and vision of early believers who sought to build a Christ-centered congregation in the region." },
+    { title: "Partnership", label: "Joined DEO Church", image: "/events/deo-interns-visit-1.jpg", text: "We partnered with DEO Church, aligning our mission and values with a growing global movement and strengthening our commitment to make disciples across nations." },
+    { title: "Present", label: "Growing as a Church Plant", image: "/events/sunday-worship-1.jpg", text: "Through weekend services, intentional discipleship, and missional outreach, we are building a vibrant community that reflects Christ’s love in Benguet." },
+    { title: "Future", label: "Expanding God’s Kingdom", image: "/events/amanda-street-evangelism-1.jpg", text: "We look forward to seeing God reach more people locally and globally through the love of Jesus and our partnership with DEO Church." },
+];
+
+const mission = [
+    ["Evangelize", "Matthew 28:19–20", "Share the transforming message of Jesus Christ."],
+    ["Encourage", "Hebrews 10:24–25", "Build authentic community and compassionate care."],
+    ["Equip", "Ephesians 4:11–13", "Grow disciples in biblical truth and spiritual disciplines."],
+    ["Establish", "Mark 16:15", "Build strong foundations of faith and character."],
+    ["Excellence", "Colossians 3:23", "Pursue excellence for the glory of God."],
+];
+
+const focusAreas = [
+    { title: "Worship", description: "Worship the Lord with reverence and Spirit-led praise.", verse: "Luke 4:8" },
+    { title: "Word-Based", description: "Grounded in Scripture and biblical teaching.", verse: "2 Timothy 3:16–17" },
+    { title: "Prayer", description: "A church built on consistent and powerful prayer.", verse: "Romans 12:12" },
+    { title: "People", description: "Building authentic relationships and community.", verse: "Ephesians 4:11–15" },
+    { title: "Missions", description: "Reaching the local community and nations.", verse: "Matthew 28:19–20" },
+    { title: "Growth", description: "Spiritual maturity and discipleship development.", verse: "2 Peter 3:18" },
+];
 
 export default function AboutPage() {
-    //#region State & Data
-    useFadeIn();
-    const [expandedValue, setExpandedValue] = useState<string | null>(null);
-    const [openBelief, setOpenBelief] = useState<string | null>(null);
+    const [activeValue, setActiveValue] = useState(values[0].id);
+    const [activeLeader, setActiveLeader] = useState(0);
+    const [openBelief, setOpenBelief] = useState<number | null>(null);
+    const selectedValue = values.find((value) => value.id === activeValue) ?? values[0];
+    const selectedLeader = leadership[activeLeader];
 
-    const leadership = [
-        {
-            id: "visionary-lyka-arman",
-            name: "PH Campus Pastor Lyka & Arman",
-            role: "Pastor",
-            image: "/events/pastor4-extended.jpeg",
-            focus: "Church Leadership",
-            icon: "🙋‍♀️",
-            bio: "PH Campus Pastor Lyka & Arman is the heart that holds DEO Church together. As the visionary who started the partnership with DEO Church, they bring unity, wisdom, and steadfast commitment to leading our growing congregation with grace and purpose."
-        },
-        {
-            id: "pastor-kesha",
-            name: "Pastor Kesha",
-            role: "Preacher & Bible Teacher",
-            image: "/events/pastor6.jpg",
-            focus: "God's Word",
-            icon: "📖",
-            bio: "Pastor Kesha is passionate about sharing God's Word with depth and clarity. As our Sunday service preacher, she delivers powerful messages that help our congregation understand and apply Scripture in their daily lives."
-        },
-        {
-            id: "youth-leader-kate",
-            name: "Youth Leader Kate",
-            role: "Youth & Kids Ministry",
-            image: "/events/pastor5-extended.jpeg",
-            focus: "Youth & Kids Ministry",
-            icon: "🎤",
-            bio: "Youth Leader Kate brings passion and energy to our young people through the Youth Connect ministry. As the head of the Youth & Kids Ministry, she creates authentic worship experiences that draw our community closer to God. She nurtures and disciples young believers, helping them grow in their faith and discover their purpose in Christ."
-        },
-        {
-            id: "assistant-leader-janelle",
-            name: "Assistant Leader Janelle",
-            role: "Youth & Kids Ministry",
-            image: "/events/pastor.jpg",
-            focus: "Youth & Kids Ministry",
-            icon: "🎤",
-            bio: "Assistant Leader Janelle along with Youth Leader Kate in nurturing our young people and children. She brings enthusiasm and care to the Youth Connect and Kids ministry, helping to create a welcoming environment where every young person feels valued and grows in their faith."
-        }
-    ];
-
-    const coreValues = [
-        {
-            id: "christ-centered",
-            title: "Christ-Centered",
-            icon: "✝️",
-            brief: "Jesus is the foundation of all we do.",
-            full: "Jesus is the foundation and focus of all we do. We exist to glorify Him and make Him known."
-        },
-        {
-            id: "love",
-            title: "Love",
-            icon: "❤️",
-            brief: "We reflect God's unconditional love.",
-            full: "We demonstrate God's unconditional love in how we serve, relate, and care for others."
-        },
-        {
-            id: "excellence",
-            title: "Excellence",
-            icon: "🏆",
-            brief: "We give our best in all things.",
-            full: "We strive to honor God by giving our best in all things, reflecting His nature through quality and diligence."
-        },
-        {
-            id: "spirit-driven",
-            title: "Spirit-Driven",
-            icon: "🔥",
-            brief: "Led by the Holy Spirit.",
-            full: "We are led by the Holy Spirit in worship, decision-making, ministry, and daily living."
-        },
-        {
-            id: "word-based",
-            title: "Word-Based",
-            icon: "📖",
-            brief: "Guided by God's Word.",
-            full: "God’s Word is our ultimate authority, guiding our beliefs, practices, and growth."
-        },
-        {
-            id: "integrity",
-            title: "Biblical Integrity",
-            icon: "🧭",
-            brief: "Truth in character and conduct.",
-            full: "We live with honesty and alignment to Scripture, upholding truth in both character and conduct."
-        },
-        {
-            id: "brave",
-            title: "Brave",
-            icon: "⚔️",
-            brief: "Bold faith and courage.",
-            full: "We step out in faith, take risks for the Gospel, and stand firm in spiritual boldness."
-        },
-        {
-            id: "unashamed",
-            title: "Unashamed",
-            icon: "📣",
-            brief: "Boldly proclaim Jesus.",
-            full: "We boldly proclaim the name of Jesus without compromise or fear."
-        },
-        {
-            id: "generous",
-            title: "Generous Giving",
-            icon: "🎁",
-            brief: "We give joyfully and sacrificially.",
-            full: "We give joyfully, sacrificially, and faithfully, recognizing all we have belongs to God."
-        }
-    ];
-
-    const beliefs = [
-        "We believe in God eternal, triune, almighty creator, sustainer and ruler of all creation.",
-        "We believe in God the Father, the author of creation and salvation.",
-        "We believe in Jesus Christ the only Son of God the Father, true God who for the sake of humanity and its salvation descended from heaven and became flesh; who was conceived by the Holy Spirit and was born of the virgin Mary; who lived on earth and was crucified, died and was buried, who rose from the dead and ascended to heaven where He is seated at the right hand of the Father.",
-        "We believe in the Holy Spirit, true God proceeding from the Father and the Son, who convicts the world of sin, righteousness and judgement and leads in all truth.",
-        "We believe that the Bible is the Word of God, written by men as the Holy Spirit inspired them.",
-        "We believe that all human beings are created in the image of God; due to sin this image is marred, and salvation comes through faith in Jesus Christ.",
-        "We believe in the baptism in the Holy Spirit with the initial evidence of speaking in tongues.",
-        "We believe that Jesus Christ is the Head of the Church which consists of born again believers.",
-        "We believe in believer’s baptism by immersion and the Lord’s Supper.",
-        "We believe that Jesus Christ will return for His Church.",
-        "We believe in final judgement, resurrection of the body and eternal life."
-    ];
-
-    const missionPoints = [
-        {
-            title: "Evangelize",
-            verse: "Matthew 28:19-20",
-            text: "Evangelize the lost with the transforming message of Jesus Christ."
-        },
-        {
-            title: "Encourage",
-            verse: "Hebrews 10:24-25",
-            text: "Encourage believers through authentic community and compassionate care."
-        },
-        {
-            title: "Equip",
-            verse: "Ephesians 4:11-13",
-            text: "Equip disciples with biblical truth and spiritual disciplines."
-        },
-        {
-            title: "Establish",
-            verse: "Mark 16:15, 1 Thessalonians 5:11-18",
-            text: "Establish strong foundations of faith and character. Empower every individual to walk in their God-given purpose."
-        },
-        {
-            title: "Excellence",
-            verse: "Colossians 3:23",
-            text: "Pursue excellence in all we do for the glory of God."
-        }
-    ];
-
-    //#endregion
     return (
         <main>
-            
-            {/* Page Hero */}
-            <section className="relative h-[50vh] flex items-center justify-center text-white fade-in py-24 scroll-mt-24">
-                <div
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: "url('/events/deo-church-benguet-2.jpg')" }}
-                ></div>
-
-                <div className="absolute inset-0 bg-black/40"></div>
-
-                <div className="relative text-center px-6">
-                    <h1 className="text-5xl md:text-5xl font-bold mb-6">
-                        About DEO Church - Benguet
-                    </h1>
-                    <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
-                        A place to belong. A place to grow. A place to encounter God.
-                    </p>
-                </div>
+            <section className="relative isolate overflow-hidden bg-slate-950 py-24 text-white sm:py-32">
+                <Image src="/events/deo-church-benguet-2.jpg" alt="DEO Church Benguet community" fill priority sizes="100vw" className="-z-20 object-cover opacity-45" />
+                <div className="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950/95 via-slate-950/70 to-slate-950/30" />
+                <div className="mx-auto max-w-6xl px-6"><p className="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.18em] text-teal-300"><Sparkles size={16} aria-hidden="true" /> About DEO Church Benguet</p><h1 className="mt-5 max-w-3xl text-5xl font-bold tracking-tight sm:text-6xl">A place to belong, grow, and encounter God.</h1><p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200">We are a Christ-centered church family in Benguet, called to love God, love people, and make disciples.</p><div className="mt-9 flex flex-wrap gap-3">{[["#our-story", "Our story"], ["#values", "Our values"], ["#leadership", "Leadership"]].map(([href, label]) => <a key={href} href={href} className="rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm font-bold backdrop-blur-sm transition hover:bg-white/20">{label}</a>)}</div></div>
             </section>
 
-            {/* Our Story */}
-            <section className="fade-in py-24">
-                <div className="max-w-4xl mx-auto px-6">
-                    <h2 className="text-4xl font-bold mb-8 text-center">
-                        Our Story
-                    </h2>
+            <section id="our-story" className="scroll-mt-24 bg-white py-24 sm:py-28"><div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-2 lg:items-center"><div><p className="text-sm font-bold uppercase tracking-[0.18em] text-teal-700">Our story</p><h2 className="mt-4 text-4xl font-bold tracking-tight text-slate-900">Rooted in Jesus. Here for Benguet.</h2><div className="mt-6 space-y-5 leading-relaxed text-slate-600"><p>DEO Church Benguet is a family of Bible-believing Christians who love God, love our neighbors, and extend Christ’s love to all.</p><p>Our heart is to see people saved, healed, set free, transformed into devoted disciples, and empowered to serve Jesus Christ.</p><p>As a partner plant of DEO Church, we share a mission to establish Christ-like communities around the world.</p></div></div><div className="rounded-3xl bg-teal-50 p-8 sm:p-10"><Compass className="text-teal-700" size={34} aria-hidden="true" /><h3 className="mt-5 text-2xl font-bold text-slate-900">DEO = God</h3><p className="mt-4 text-lg leading-relaxed text-slate-600">This is God’s Church. DEO Victoria means “God Gives Victory.”</p><Image src="/10.svg" alt="DEO Church logo" width={400} height={400} className="mx-auto mt-6 max-h-52 w-auto" /></div></div></section>
 
-                    <div className="space-y-6 text-gray-600 leading-loose text-lg">
-                        <p>
-                            DEO Church Benguet is a Christ-centered community of believers rooted 
-                            in the vision of DEO Church. We are a family of Bible-believing Christians 
-                            who love God, love our neighbors, and extend Christ's love to all. Through 
-                            genuine community and authentic worship, we help every person grow deeper in 
-                            their relationship with Jesus Christ.
-                        </p>
+            <section className="bg-teal-700 py-20 text-white sm:py-24"><div className="mx-auto max-w-4xl px-6 text-center"><p className="text-sm font-bold uppercase tracking-[0.18em] text-teal-100">Our vision</p><h2 className="mt-4 text-4xl font-bold tracking-tight">One church impacting nations.</h2><p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-teal-50">Establishing Christ-like communities around the world.</p><p className="mt-8 text-sm font-bold tracking-wide text-teal-100">ACTS 1:8 · NEWCASTLE, KZN, SOUTH AFRICA, BENGUET, AND THE WORLD</p></div></section>
 
-                        <p>
-                            Our heart is to see people in Benguet saved, healed, set free, transformed 
-                            into devoted disciples, and empowered to serve Jesus Christ and advance His 
-                            Kingdom. We believe that real transformation happens when God's Word is 
-                            proclaimed boldly, and when believers are equipped to make disciples in their 
-                            communities.
-                        </p>
+            <section className="bg-slate-50 py-24 sm:py-28"><div className="mx-auto max-w-6xl px-6"><div className="mx-auto max-w-2xl text-center"><p className="text-sm font-bold uppercase tracking-[0.18em] text-teal-700">Our mission</p><h2 className="mt-4 text-4xl font-bold tracking-tight text-slate-900">One church impacting nations.</h2><p className="mt-5 leading-relaxed text-slate-600">Our mission is expressed in every part of church life.</p></div><div className="mt-12 grid gap-3 md:grid-cols-5">{mission.map(([title, verse, text], index) => <article key={title} className="relative rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200"><span className="text-sm font-bold text-teal-700">0{index + 1}</span><h3 className="mt-4 text-xl font-bold text-slate-900">{title}</h3><p className="mt-3 text-sm leading-relaxed text-slate-600">{text}</p><p className="mt-5 text-xs font-bold text-teal-700">{verse}</p></article>)}</div></div></section>
 
-                        <p>
-                            As a partner plant of DEO Church, we carry the same mission and values globally. 
-                            We are part of a growing movement of believers united in spreading the Gospel 
-                            across nations. Through powerful weekend services, intentional discipleship, 
-                            and missional outreach, we are building a thriving church that reflects Christ's 
-                            love in Benguet and beyond.
-                        </p>
-                    </div>
-                </div>
-            </section>
+            <section className="bg-slate-950 py-20 text-white sm:py-24"><div className="mx-auto max-w-3xl px-6 text-center"><p className="text-2xl font-semibold leading-relaxed sm:text-3xl">“For where two or three gather in my name, there am I with them.”</p><p className="mt-5 font-bold text-teal-300">Matthew 18:20</p></div></section>
 
-            {/* Deo Logo */}
-            <section className="bg-gray-100 fade-in py-24">
-                <div className="max-w-6xl mx-auto px-6">
-                    <div className="grid md:grid-cols-2 gap-16">
-                        <div className="flex flex-col justify-center">
-                            <h3 className="text-2xl mb-6 font-semibold">
-                                DEO = GOD <br />
-                                THIS IS GOD'S CHURCH <br />
-                                DEO VICTORIA = "GOD GIVES VICTORY"
-                            </h3>
-                        </div>
+            <section className="bg-slate-50 py-24 sm:py-28"><div className="mx-auto max-w-6xl px-6"><div className="mx-auto max-w-2xl text-center"><p className="text-sm font-bold uppercase tracking-[0.18em] text-teal-700">Our focus areas</p><h2 className="mt-4 text-4xl font-bold tracking-tight text-slate-900">How we worship, grow, and serve.</h2><p className="mt-5 leading-relaxed text-slate-600">These foundations shape daily life in our church community.</p></div><div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{focusAreas.map((area, index) => <article key={area.title} className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-lg"><span className="text-sm font-bold text-teal-700">0{index + 1}</span><h3 className="mt-4 text-xl font-bold text-slate-900">{area.title}</h3><p className="mt-3 leading-relaxed text-slate-600">{area.description}</p><p className="mt-5 text-sm font-bold text-teal-700">{area.verse}</p></article>)}</div></div></section>
 
-                        <div>
-                            <Image
-                                src="/10.svg"
-                                alt="DEO Church Logo"
-                                width={400}
-                                height={400}
-                                className="w-full h-auto object-contain"
-                            />
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <section id="values" className="scroll-mt-24 bg-white py-24 sm:py-28"><div className="mx-auto max-w-6xl px-6"><div className="max-w-2xl"><p className="text-sm font-bold uppercase tracking-[0.18em] text-teal-700">Our core values</p><h2 className="mt-4 text-4xl font-bold tracking-tight text-slate-900">The convictions that shape us.</h2><p className="mt-5 leading-relaxed text-slate-600">Select a value to see how it guides our church family.</p></div><div className="mt-10 grid gap-6 lg:grid-cols-[0.8fr_1.2fr]"><div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-1" role="tablist" aria-label="Core values">{values.map((value) => <button key={value.id} type="button" role="tab" aria-selected={value.id === activeValue} onClick={() => setActiveValue(value.id)} className={`rounded-2xl p-4 text-left transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600 ${value.id === activeValue ? "bg-teal-600 text-white shadow-lg" : "bg-slate-50 text-slate-800 hover:bg-teal-50"}`}><span className="font-bold">{value.title}</span><span className={`mt-1 block text-sm ${value.id === activeValue ? "text-teal-50" : "text-slate-500"}`}>{value.brief}</span></button>)}</div><article className="relative overflow-hidden rounded-3xl bg-slate-950 p-8 text-white sm:p-12"><Heart className="text-teal-300" size={36} aria-hidden="true" /><p className="mt-7 text-sm font-bold uppercase tracking-[0.16em] text-teal-300">DEO Church value</p><h3 className="mt-3 text-4xl font-bold">{selectedValue.title}</h3><p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-200">{selectedValue.full}</p></article></div></div></section>
 
-            {/* Our Vision */}
-            <section className="fade-in py-24">
-                <div className="max-w-4xl mx-auto px-6">
-                    <h2 className="text-4xl font-bold mb-8 text-center">
-                        Our Vision
-                    </h2>
+            <section id="leadership" className="scroll-mt-24 bg-slate-50 py-24 sm:py-28"><div className="mx-auto max-w-6xl px-6"><div className="text-center"><p className="text-sm font-bold uppercase tracking-[0.18em] text-teal-700">Our people</p><h2 className="mt-4 text-4xl font-bold tracking-tight text-slate-900">Meet our leadership team.</h2></div><div className="mt-12 grid gap-6 lg:grid-cols-[0.7fr_1.3fr]"><div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-1" role="tablist" aria-label="Leadership team">{leadership.map((leader, index) => <button key={leader.id} type="button" role="tab" aria-selected={activeLeader === index} onClick={() => setActiveLeader(index)} className={`rounded-2xl p-4 text-left transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600 ${activeLeader === index ? "bg-teal-600 text-white shadow-lg" : "bg-white text-slate-800 ring-1 ring-slate-200 hover:bg-teal-50"}`}><span className="block font-bold">{leader.name}</span><span className={`mt-1 block text-sm ${activeLeader === index ? "text-teal-50" : "text-teal-700"}`}>{leader.role}</span></button>)}</div><article className="grid overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-slate-200 sm:grid-cols-2"><div className="relative min-h-80"><Image src={selectedLeader.image} alt={selectedLeader.name} fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" /></div><div className="flex flex-col justify-center p-8 sm:p-10"><Users className="text-teal-700" size={33} aria-hidden="true" /><p className="mt-5 text-sm font-bold uppercase tracking-[0.15em] text-teal-700">{selectedLeader.focus}</p><h3 className="mt-3 text-3xl font-bold text-slate-900">{selectedLeader.name}</h3><p className="mt-2 font-semibold text-teal-700">{selectedLeader.role}</p><p className="mt-6 leading-relaxed text-slate-600">{selectedLeader.bio}</p></div></article></div></div></section>
 
-                    <div className="space-y-6 text-gray-600 leading-loose text-lg text-center">
-                        <p>
-                            One church impacting nations through establishing christ-like communities around the world.
-                        </p>
-                    </div>
+            <section className="bg-white py-24 sm:py-28"><div className="mx-auto max-w-6xl px-6"><div className="max-w-2xl"><p className="text-sm font-bold uppercase tracking-[0.18em] text-teal-700">Our journey</p><h2 className="mt-4 text-4xl font-bold tracking-tight text-slate-900">A story still being written.</h2><p className="mt-5 leading-relaxed text-slate-600">Explore the chapters that brought us here and the hope that moves us forward.</p></div><div className="relative mt-12 border-l-2 border-teal-200 pl-7 sm:pl-10">{journey.map((chapter, index) => <article key={chapter.title} className="relative mb-12 last:mb-0"><span className="absolute -left-[2.02rem] top-1 h-5 w-5 rounded-full border-4 border-white bg-teal-600 sm:-left-[3.02rem]" aria-hidden="true" /><div className="grid overflow-hidden rounded-3xl bg-slate-50 shadow-sm ring-1 ring-slate-200 md:grid-cols-[0.7fr_1.3fr]"><div className="relative min-h-56"><Image src={chapter.image} alt={chapter.label} fill sizes="(min-width: 768px) 35vw, 100vw" className="object-cover" /></div><div className="p-7"><p className="text-sm font-bold uppercase tracking-[0.14em] text-teal-700">Chapter 0{index + 1}</p><h3 className="mt-2 text-2xl font-bold text-slate-900">{chapter.title}: {chapter.label}</h3><p className="mt-4 leading-relaxed text-slate-600">{chapter.text}</p></div></div></article>)}</div></div></section>
 
-                    <div className="space-y-6 text-teal-600 leading-loose text-lg text-center mt-8">
-                        <p className="text-lg font-semibold">
-                            ACTS 1:8 - NEWCASTLE,KZN, SOUTH AFRICA, BENGUET AND THE WORLD
-                        </p>
-                    </div>
+            <section className="bg-teal-700 py-20 text-white sm:py-24"><div className="mx-auto max-w-3xl px-6 text-center"><p className="text-2xl font-semibold leading-relaxed sm:text-3xl">“Let us consider how we may spur one another on toward love and good deeds, not giving up meeting together, but encouraging one another.”</p><p className="mt-5 font-bold text-teal-100">Hebrews 10:24–25</p></div></section>
 
-                </div>
-            </section>
+            <section className="bg-teal-700 py-24 text-white sm:py-28"><div className="mx-auto max-w-3xl px-6 text-center"><p className="text-sm font-bold uppercase tracking-[0.18em] text-teal-100">Confession of faith</p><h2 className="mt-4 text-4xl font-bold tracking-tight">What we believe.</h2><p className="mt-5 text-teal-50">The foundation of our church stands firmly on these biblical truths.</p><div className="mt-10 text-left">{beliefs.map((belief, index) => { const isOpen = openBelief === index; return <div key={belief} className="border-b border-white/20"><button type="button" onClick={() => setOpenBelief(isOpen ? null : index)} className="flex w-full items-center justify-between gap-5 py-5 text-left font-semibold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white" aria-expanded={isOpen}><span>We believe {index + 1}</span><ChevronDown size={20} className={`shrink-0 transition ${isOpen ? "rotate-180" : ""}`} aria-hidden="true" /></button>{isOpen && <p className="pb-5 leading-relaxed text-teal-50">{belief}</p>}</div>; })}</div></div></section>
 
-            {/* Our Mission */}
-            <section className="fade-in py-24">
-                <div className="max-w-6xl mx-auto px-6">
-
-                    {/* Header */}
-                    <h2 className="text-4xl font-bold text-center mb-6">
-                        Our Mission
-                    </h2>
-
-                    <p className="text-center text-gray-600 leading-relaxed text-lg mb-16 max-w-2xl mx-auto">
-                        At DEO Church Benguet, our mission is guided by Scripture and expressed in every part of our church life.
-                    </p>
-
-                    {/* Content Layout */}
-                    <div className="grid md:grid-cols-2 gap-12 items-center">
-
-                        {/* LEFT: IMAGE */}
-                        <div className="relative flex justify-center">
-                            <Image
-                                src="/9.svg"
-                                alt="Our Mission"
-                                width={700}
-                                height={700}
-                                className="w-full max-w-[480px] md:max-w-[700px] h-auto"
-                            />
-                        </div>
-
-                        {/* RIGHT: MISSION POINTS */}
-                        <div className="space-y-3">
-
-                            {missionPoints.map((item) => (
-                                <div
-                                    key={item.title}
-                                    className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm hover:shadow-md transition"
-                                >
-                                    <div className="flex items-start justify-between mb-2">
-                                        <h3 className="text-lg font-semibold text-gray-900">
-                                            {item.title}
-                                        </h3>
-
-                                        <span className="text-xs font-semibold text-teal-600 bg-teal-50 px-2 py-1 rounded-full">
-                                            {item.verse}
-                                        </span>
-                                    </div>
-
-                                    <p className="text-gray-600 text-sm leading-relaxed">
-                                        {item.text}
-                                    </p>
-                                </div>
-                            ))}
-
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            {/* Scripture Highlight */}
-            <section className="bg-teal-600 text-white text-center fade-in py-24">
-                <div className="max-w-3xl mx-auto px-6">
-                    <p className="text-2xl md:text-3xl font-semibold leading-relaxed mb-6">
-                        “For where two or three gather in my name, there am I with them.”
-                    </p>
-                    <span className="text-teal-100">Matthew 18:20</span>
-                </div>
-            </section>
-
-            {/* Focus Areas */}
-            <section className="fade-in py-24 bg-gray-100">
-                <div className="max-w-6xl mx-auto px-6 text-center">
-
-                    <h2 className="text-3xl font-bold mb-6">
-                        Our Focus Areas
-                    </h2>
-
-                    <p className="text-gray-600 max-w-2xl mx-auto mb-12">
-                        These are the core foundations that shape how we worship, grow, and serve as a church community.
-                    </p>
-
-                    {/* Optional image */}
-                    <div className="flex justify-center mb-12">
-                        <Image
-                            src="/11.svg"
-                            alt="Our Focus Areas"
-                            width={900}
-                            height={500}
-                        />
-                    </div>
-
-                    <div className="grid md:grid-cols-3 gap-6 text-left">
-                        {[
-                            {
-                                title: "Worship",
-                                icon: "🙏",
-                                desc: "Worship the Lord with reverence and Spirit-led praise.",
-                                verseDesc: "Worship the Lord your God, and serve Him only.",
-                                verse: "Luke 4:8"
-                            },
-                            {
-                                title: "Word-Based",
-                                icon: "📖",
-                                desc: "Grounded in Scripture and biblical teaching.",
-                                verseDesc: "All Scripture is God-breathed so that the servant of God may be thoroughly equipped for every good work.",
-                                verse: "2 Timothy 3:16-17"
-                            },
-                            {
-                                title: "Prayer",
-                                icon: "🤲",
-                                desc: "A church built on consistent and powerful prayer.",
-                                verseDesc: "Be joyful in hope, patient in affliction, faithful in prayer.",
-                                verse: "Romans 12:12"
-                            },
-                            {
-                                title: "People",
-                                icon: "👥",
-                                desc: "Building authentic relationships and community.",
-                                verseDesc: "To equip His people for works of service, so that the body of Christ may be built up.",
-                                verse: "Ephesians 4:11-15"
-                            },
-                            {
-                                title: "Missions",
-                                icon: "🌍",
-                                desc: "Reaching the local community and nations.",
-                                verseDesc: "Go and make disciples of all nations.",
-                                verse: "Matthew 28:19-20"
-                            },
-                            {
-                                title: "Growth",
-                                icon: "📈",
-                                desc: "Spiritual maturity and discipleship development.",
-                                verseDesc: "Grow in the grace and knowledge of our Lord and Savior Jesus Christ.",
-                                verse: "2 Peter 3:18"
-                            }
-                        ].map((item) => (
-                            <div
-                                key={item.title}
-                                className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition border border-gray-100"
-                            >
-                                {/* Header */}
-                                <div className="flex items-center gap-2 mb-3">
-                                    <h3 className="font-semibold text-lg text-gray-800">
-                                        {item.title}
-                                    </h3>
-                                </div>
-
-                                {/* Description */}
-                                <p className="text-gray-600 text-sm mb-4">
-                                    {item.desc}
-                                </p>
-
-                                {/* Verse block */}
-                                <div className="border-l-4 border-teal-500 pl-3">
-                                    <p className="text-gray-700 text-sm italic">
-                                        “{item.verseDesc}”
-                                    </p>
-                                    <p className="text-teal-600 text-xs font-semibold mt-2">
-                                        {item.verse}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Core Values */}
-            <section className="fade-in py-24">
-                <div className="max-w-6xl mx-auto px-6">
-                    <h2 className="text-3xl font-bold text-center mb-12">
-                        Our Core Values
-                    </h2>
-
-                    <p className="text-gray-600 text-center mb-16">
-                        Together, these values shape our identity as a church and fuel our mission to impact nations for Christ.
-                    </p>
-
-                    <div className="grid md:grid-cols-3 gap-6">
-                        {coreValues.map((value) => {
-                            const isOpen = expandedValue === value.id;
-
-                            return (
-                                <div key={value.id} className="space-y-3">
-
-                                    {/* CARD */}
-                                    <div
-                                        onClick={() =>
-                                            setExpandedValue(isOpen ? null : value.id)
-                                        }
-                                        className={`p-6 rounded-2xl border cursor-pointer transition-all duration-300
-                                            ${isOpen
-                                                ? "bg-teal-50 border-teal-300 shadow-md"
-                                                : "border-gray-100 hover:shadow-lg hover:border-teal-200"
-                                            }
-                                        `}
-                                    >
-                                        <div className="text-3xl mb-3">{value.icon}</div>
-
-                                        <h4 className="font-semibold text-lg text-gray-800">
-                                            {value.title}
-                                        </h4>
-
-                                        <p className="text-gray-600 mt-2 text-sm">
-                                            {value.brief}
-                                        </p>
-                                    </div>
-
-                                    {/* EXPANDED CONTENT (NOW INSIDE GRID ITEM) */}
-                                    {isOpen && (
-                                        <div className="bg-teal-50 border border-teal-200 rounded-2xl p-6 shadow-lg animate-fadeIn">
-                                            <div className="flex items-center gap-3 mb-4">
-                                                <div className="text-3xl">{value.icon}</div>
-                                                <h3 className="text-xl font-bold text-gray-800">
-                                                    {value.title}
-                                                </h3>
-                                            </div>
-
-                                            <p className="text-gray-700 leading-relaxed text-sm">
-                                                {value.full}
-                                            </p>
-                                        </div>
-                                    )}
-
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
-            </section>
-
-            {/* Leadership */}
-            <section className="bg-gray-100 fade-in py-24">
-                <div className="max-w-6xl mx-auto px-6">
-                    <h2 className="text-3xl font-bold text-center mb-16">
-                        Meet Our Leadership Team
-                    </h2>
-
-                    <div className="space-y-20">
-                        {leadership.map((leader, index) => (
-                            <div
-                                key={leader.id}
-                                className={`grid md:grid-cols-2 gap-12 items-center ${
-                                    index % 2 === 1 ? "md:grid-flow-col-dense" : ""
-                                }`}
-                            >
-                                {/* Image - alternates sides */}
-                                <div className={index % 2 === 1 ? "md:order-2" : ""}>
-                                    <div className="relative overflow-hidden rounded-3xl shadow-xl group">
-                                        <Image
-                                            src={leader.image}
-                                            alt={leader.name}
-                                            width={600}
-                                            height={500}
-                                            className="w-full h-96 object-cover group-hover:scale-110 transition-transform duration-300"
-                                        />
-                                        {/* Ministry Focus Badge */}
-                                        <div className="absolute top-6 right-6 bg-black/40 text-white px-4 py-2 rounded-full font-semibold flex items-center gap-2 shadow-lg">
-                                            {leader.icon} {leader.focus}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Content - alternates sides */}
-                                <div className={index % 2 === 1 ? "md:order-1" : ""}>
-                                    <div className="mb-4">
-                                        <h3 className="text-3xl font-bold text-gray-800 mb-2">
-                                            {leader.name}
-                                        </h3>
-                                        <p className="text-teal-600 font-semibold text-lg">
-                                            {leader.role}
-                                        </p>
-                                    </div>
-
-                                    <p className="text-gray-600 text-lg leading-loose mb-6">
-                                        {leader.bio}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Timeline */}
-            <section className="fade-in py-24">
-                <div className="max-w-4xl mx-auto px-6">
-                    <h2 className="text-3xl font-bold text-center mb-16">
-                        Our Journey
-                    </h2>
-
-                    <div className="space-y-12 border-l-2 border-teal-200 pl-8">
-
-                        <div>
-                            <h4 className="font-semibold text-teal-700">Early Years — Founded in Benguet</h4>
-                            <p className="text-gray-600">
-                                DEO Church Benguet was originally established as a local church community in Benguet, rooted in the faith and vision of our early believers who sought to build a Christ-centered congregation in our region.
-                            </p>
-                        </div>
-
-                        <div>
-                            <h4 className="font-semibold text-teal-700">Partnership — Joined DEO Church</h4>
-                            <p className="text-gray-600">
-                                We partnered with DEO Church, aligning our mission and values with this growing global movement. This partnership strengthened our commitment to make disciples, advance God's Kingdom, and be part of a thriving network of believers across nations.
-                            </p>
-                        </div>
-
-                        <div>
-                            <h4 className="font-semibold text-teal-700">Present — Growing as a Church Plant</h4>
-                            <p className="text-gray-600">
-                                As an official partner plant of DEO Church, we continue to grow and expand our impact in Benguet and beyond. Through powerful weekend services, intentional discipleship, and missional outreach, we are building a vibrant community that reflects Christ's love.
-                            </p>
-                        </div>
-
-                        <div>
-                            <h4 className="font-semibold text-teal-700">Future — Expanding God's Kingdom</h4>
-                            <p className="text-gray-600">
-                                We are excited to see how God will continue to use us to reach more people with the love of Jesus, both locally in Benguet and globally through our partnership with DEO Church's expanding movement.
-                            </p>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-            {/* Scripture Highlight */}
-            <section className="bg-teal-600 text-white text-center fade-in py-24">
-                <div className="max-w-3xl mx-auto px-6">
-                    <p className="text-2xl md:text-3xl font-semibold leading-relaxed mb-6">
-                        “And let us consider how we may spur one another on toward love and good deeds not giving up meeting together, as some are in the habit of doing, but encouraging one another—and all the more as you see the Day approaching.”
-                    </p>
-                    <span className="text-teal-100">Hebrew 10:24-25</span>
-                </div>
-            </section>
-
-            {/* Confession of Faith */}
-            <section className="bg-gray-50 fade-in py-28">
-                <div className="max-w-3xl mx-auto px-6 text-center">
-
-                    <h2 className="text-4xl font-bold mb-6">
-                        Confession of Faith
-                    </h2>
-
-                    <p className="text-gray-600 mb-16 text-lg">
-                        The foundation of our church stands firmly on these biblical truths.
-                    </p>
-
-                    <h3 className="text-teal-700 font-semibold tracking-widest mb-10">
-                        WE BELIEVE THAT:
-                    </h3>
-
-                    <div className="space-y-10 text-left">
-                        
-                        {beliefs.map((belief, index) => (
-                            <div key={index} className="space-y-3">
-
-                                <p className="text-gray-700 leading-relaxed">
-                                   * {belief}
-                                </p>
-
-                                <div className="border-b border-gray-200 pt-2"></div>
-
-                            </div>
-                        ))}
-
-                    </div>
-                </div>
-            </section>
+            <section className="bg-slate-950 py-20 text-white"><div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 text-center sm:flex-row sm:text-left"><div><p className="text-sm font-bold uppercase tracking-[0.16em] text-teal-300">Be part of the story</p><h2 className="mt-2 text-3xl font-bold">We would love to welcome you.</h2></div><div className="flex flex-wrap justify-center gap-3"><Link href="/events" className="rounded-xl bg-teal-500 px-5 py-3 font-bold transition hover:bg-teal-400">Explore events</Link><Link href="/#visit" className="rounded-xl border border-white/30 px-5 py-3 font-bold transition hover:bg-white/10">Plan a visit</Link></div></div></section>
         </main>
     );
 }
