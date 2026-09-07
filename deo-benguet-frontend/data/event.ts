@@ -110,6 +110,22 @@ export const events: Event[] = [
     // Sooner Upcoming Events (Special Section)
     {
         id: 6,
+        title: "Youth Camp",
+        slug: "youth-camp",
+        date: "May 2026",
+        description:
+            "An exciting time of fun, fellowship, and spiritual growth for our youth.",
+        fullDescription:
+            "An exciting week of fun, fellowship, and spiritual growth for our youth.",
+        images: [
+            "/events/youth-camp-1.jpg",
+            "/events/youth-camp-2.jpg",
+            "/events/youth-camp-3.jpg",
+        ],
+        type: "past",
+    },
+    {
+        id: 7,
         title: "Communion Thanksgiving",
         slug: "communion-thanksgiving",
         date: "March 29, 2026",
@@ -127,7 +143,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 7,
+        id: 8,
         title: "Vacation Bible School",
         slug: "vacation-bible-school",
         date: "April 2-4, 2026",
@@ -145,7 +161,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 8,
+        id: 9,
         title: "Women's Fellowship",
         slug: "womens-fellowship",
         date: "March 29, 2026",
@@ -165,7 +181,7 @@ export const events: Event[] = [
 
     // Past Events
     {
-        id: 9,
+        id: 10,
         title: "Acoustic Night",
         slug: "acoustic-night",
         date: "February 2026",
@@ -181,7 +197,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 10,
+        id: 11,
         title: "Soaking & Seeking",
         slug: "soaking-seeking",
         date: "January 2026",
@@ -197,7 +213,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 11,
+        id: 12,
         title: "Amanda's Street Evangelism",
         slug: "amanda-street-evangelism",
         date: "January 2026",
@@ -213,7 +229,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 12,
+        id: 13,
         title: "Christmas Party",
         slug: "christmas-party",
         date: "December 2025",
@@ -229,7 +245,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 13,
+        id: 14,
         title: "Jesus Reigns",
         slug: "jesus-reigns",
         date: "November 2025",
@@ -245,7 +261,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 14,
+        id: 15,
         title: "DEO Interns Visit",
         slug: "deo-interns-visit",
         date: "August 2025",
@@ -257,22 +273,6 @@ export const events: Event[] = [
             "/events/deo-interns-visit-1.jpg",
             "/events/deo-interns-visit-2.jpg",
             "/events/deo-interns-visit-3.jpg",
-        ],
-        type: "past",
-    },
-    {
-        id: 15,
-        title: "Youth Camp",
-        slug: "youth-camp",
-        date: "May 2026",
-        description:
-            "An exciting time of fun, fellowship, and spiritual growth for our youth.",
-        fullDescription:
-            "An exciting week of fun, fellowship, and spiritual growth for our youth.",
-        images: [
-            "/events/youth-camp-1.jpg",
-            "/events/youth-camp-2.jpg",
-            "/events/youth-camp-3.jpg",
         ],
         type: "past",
     },

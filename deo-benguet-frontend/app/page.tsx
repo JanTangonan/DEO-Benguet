@@ -5,6 +5,7 @@ import PlanVisit from "@/components/PlanVisit";
 import Location from "@/components/Location";
 import Testimonials from "@/components/Testimonials";
 import ThisWeek from "@/components/ThisWeek";
+import Ministries from "@/components/Ministries";
 import { Analytics } from '@vercel/analytics/next';
 
 export default function HomePage() {
@@ -13,6 +14,7 @@ export default function HomePage() {
       <Hero />
       <ThisWeek />
       <ServiceTimes />
+      <Ministries />
       <PlanVisit />
       <Testimonials />
       <Location />
