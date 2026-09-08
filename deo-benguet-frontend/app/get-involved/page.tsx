@@ -1,138 +1,26 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { useFadeIn } from "@/hooks/useFadeIn";
+import { ArrowRight, HandHeart, HeartHandshake, Send, WalletCards } from "lucide-react";
+import { useState } from "react";
 
-const involvement = [
-    {
-        id: "go",
-        icon: "🏃",
-        title: "GO",
-        subtitle: "Join Our Outreach",
-        description:
-            "Join one of our outreaches and become part of sharing God's love with our community.",
-        button: "Contact Us",
-        href: "/contact",
-        bg: "bg-amber-50",
-    },
-
-    {
-        id: "pray",
-        icon: "🙏",
-        title: "PRAY",
-        subtitle: "Stand With Us",
-        description:
-            "Partner with us through prayer for missions, churches, leaders, and lives to be transformed.",
-        button: "Send Prayer",
-        href: "/contact",
-        bg: "bg-teal-50",
-    },
-
-    {
-        id: "sow",
-        icon: "❤️",
-        title: "SOW",
-        subtitle: "Support The Ministry",
-        description:
-            "Help support church activities, outreach programs, and local ministry initiatives.",
-        button: "Support Us",
-        href: "/support/#support",
-        bg: "bg-rose-50",
-    },
+const waysToServe = [
+    { id: "go", title: "Go", subtitle: "Join our outreach", description: "Bring the love of Jesus into our community through outreach, service, and practical care.", image: "/events/amanda-street-evangelism-1.jpg", icon: Send, action: "Ask about outreach", href: "/contact#message" },
+    { id: "pray", title: "Pray", subtitle: "Stand with us", description: "Partner with us in prayer for missions, leaders, churches, and lives to be transformed.", image: "/events/midweek-prayer-1.jpg", icon: HeartHandshake, action: "Send a prayer request", href: "/contact#message" },
+    { id: "sow", title: "Sow", subtitle: "Support the ministry", description: "Help sustain church activities, outreach programs, and local ministry initiatives through generous giving.", image: "/events/deo-church-benguet-5.jpg", icon: WalletCards, action: "Support the ministry", href: "/support/#support" },
 ];
 
 export default function GetInvolvedPage() {
-    useFadeIn();
+    const [activeWay, setActiveWay] = useState(0);
+    const active = waysToServe[activeWay];
+    const ActiveIcon = active.icon;
 
-    return (
-        <main>
+    return <main>
+        <section className="relative isolate overflow-hidden bg-slate-950 py-24 text-white sm:py-32"><Image src="/events/deo-church-benguet-5.jpg" alt="DEO Church Benguet community" fill priority sizes="100vw" className="-z-20 object-cover opacity-45" /><div className="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950/95 via-slate-950/70 to-slate-950/30" /><div className="mx-auto max-w-6xl px-6"><p className="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.18em] text-teal-300"><HandHeart size={17} aria-hidden="true" /> Get involved</p><h1 className="mt-4 max-w-2xl text-5xl font-bold tracking-tight sm:text-6xl">There is a place for your hands and heart.</h1><p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200">Use what God has given you to serve people, strengthen the church, and make a lasting difference in Benguet.</p></div></section>
 
-            {/* HERO */}
-            <section className="relative h-[50vh] flex items-center justify-center text-white fade-in">
+        <section className="bg-slate-50 py-24 sm:py-28"><div className="mx-auto max-w-6xl px-6"><div className="max-w-2xl"><p className="text-sm font-bold uppercase tracking-[0.18em] text-teal-700">Three ways to begin</p><h2 className="mt-4 text-4xl font-bold tracking-tight text-slate-900">Choose your next step.</h2><p className="mt-5 leading-relaxed text-slate-600">Whether you have time, prayer, or resources to share, there is a meaningful way to participate.</p></div><div className="mt-10 grid gap-6 lg:grid-cols-[0.7fr_1.3fr]"><div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1" role="tablist" aria-label="Ways to get involved">{waysToServe.map((way, index) => { const Icon = way.icon; const isActive = index === activeWay; return <button key={way.id} type="button" role="tab" aria-selected={isActive} onClick={() => setActiveWay(index)} className={`flex items-center gap-4 rounded-2xl p-5 text-left transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600 ${isActive ? "bg-teal-600 text-white shadow-lg" : "bg-white text-slate-800 shadow-sm ring-1 ring-slate-200 hover:bg-teal-50"}`}><span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${isActive ? "bg-white/20" : "bg-teal-100 text-teal-700"}`}><Icon size={22} aria-hidden="true" /></span><span><span className="block text-xl font-bold">{way.title}</span><span className={`mt-1 block text-sm ${isActive ? "text-teal-50" : "text-slate-500"}`}>{way.subtitle}</span></span></button>; })}</div><article className="grid overflow-hidden rounded-3xl bg-white shadow-xl ring-1 ring-slate-200 sm:grid-cols-2"><div className="relative min-h-80"><Image src={active.image} alt={active.subtitle} fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" /></div><div className="flex flex-col justify-center p-8 sm:p-10"><span className="flex h-12 w-12 items-center justify-center rounded-xl bg-teal-100 text-teal-700"><ActiveIcon size={25} aria-hidden="true" /></span><p className="mt-6 text-sm font-bold uppercase tracking-[0.16em] text-teal-700">Get involved</p><h3 className="mt-2 text-4xl font-bold text-slate-900">{active.title}</h3><p className="mt-2 text-lg font-semibold text-teal-700">{active.subtitle}</p><p className="mt-5 leading-relaxed text-slate-600">{active.description}</p><Link href={active.href} className="mt-7 inline-flex items-center gap-2 font-bold text-teal-700 transition hover:gap-3">{active.action} <ArrowRight size={18} aria-hidden="true" /></Link></div></article></div></div></section>
 
-                <div
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{
-                        backgroundImage:
-                            "url('/events/deo-church-benguet-5.jpg')",
-                    }}
-                />
-
-                <div className="absolute inset-0 bg-black/50" />
-
-                <div className="relative text-center px-6">
-
-                    <h1 className="text-5xl font-bold mb-6">
-                        Get Involved
-                    </h1>
-
-                    <p className="text-lg text-gray-100 max-w-2xl">
-                        Be part of what God is doing through prayer,
-                        outreach, and generosity.
-                    </p>
-
-                </div>
-
-            </section>
-
-            {/* GO PRAY SOW */}
-            <section className="py-24 fade-in">
-
-                <div className="max-w-6xl mx-auto px-6">
-
-                    <div className="grid md:grid-cols-3 gap-8">
-
-                        {involvement.map((item) => (
-                            <div
-                                key={item.id}
-                                className={`${item.bg}
-                                rounded-3xl p-10
-                                shadow-sm
-                                hover:shadow-xl
-                                hover:-translate-y-2
-                                transition`}
-                            >
-
-                                <div className="text-6xl mb-8">
-                                    {item.icon}
-                                </div>
-
-                                <h2 className="text-4xl font-bold mb-2">
-                                    {item.title}
-                                </h2>
-
-                                <h3 className="text-xl mb-4 text-teal-700">
-                                    {item.subtitle}
-                                </h3>
-
-                                <p className="text-gray-600 leading-relaxed mb-8">
-                                    {item.description}
-                                </p>
-
-                                <Link
-                                    href={item.href}
-                                    className="
-                                    inline-flex
-                                    bg-teal-600
-                                    text-white
-                                    px-6
-                                    py-3
-                                    rounded-xl
-                                    hover:bg-teal-700
-                                    transition"
-                                >
-                                    {item.button}
-                                </Link>
-
-                            </div>
-                        ))}
-
-                    </div>
-
-                </div>
-
-            </section>
-
-        </main>
-    );
+        <section className="bg-teal-700 py-20 text-white"><div className="mx-auto max-w-3xl px-6 text-center"><p className="text-sm font-bold uppercase tracking-[0.18em] text-teal-100">Every contribution matters</p><h2 className="mt-4 text-3xl font-bold sm:text-4xl">When we serve together, more people experience the love of Jesus.</h2><Link href="/contact#message" className="mt-8 inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 font-bold text-teal-700 transition hover:bg-teal-50">Start a conversation <ArrowRight size={18} aria-hidden="true" /></Link></div></section>
+    </main>;
 }

@@ -122,20 +122,34 @@ const supporters: Supporter[] = [
         amount: 2000,
         message: "For God's glory!"
     },
-    // {
-    //     id: "sup-3",
-    //     name: "Henry Sy",
-    //     product: "DEO Church T-Shirt x2",
-    //     amount: 700,
-    //     message: "Love our church community"
-    // },
-    // {
-    //     id: "sup-4",
-    //     name: "Benj Magalang",
-    //     product: "Sticker Pack + Magnet",
-    //     amount: 200,
-    //     message: "Blessings to our church"
-    // },
+    {
+        id: "sup-3",
+        name: "Arsel Vergara",
+        product: "Thailand Mission Shirt",
+        amount: 350,
+        message: "Quality shirt, hindi tinipid"
+    },
+    {
+        id: "sup-4",
+        name: "Mikaela Martin",
+        product: "Thailand Mission Shirt",
+        amount: 350,
+        message: "Simple pero elepante"
+    },
+    {
+        id: "sup-5",
+        name: "Mark Adrian Abad",
+        product: "Thailand Mission Shirt",
+        amount: 350,
+        message: "Ang nice ng quality ng shirt, salamat sa church!"
+    },
+    {
+        id: "sup-6",
+        name: "Exelyn Ani-Catalan",
+        product: "Thailand Mission Shirt",
+        amount: 350,
+        message: "More blessing to the church"
+    },
 ];
 
 function ProductCard({ product }: { product: Product }) {

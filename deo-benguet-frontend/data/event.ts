@@ -108,8 +108,44 @@ export const events: Event[] = [
     },
 
     // Sooner Upcoming Events (Special Section)
+
+    // Past Events
     {
         id: 6,
+        title: "Youth Connect Anniversary",
+        slug: "youth-connect-anniversary",
+        date: "August 2026",
+        description:
+            "Youth Connect Anniversary is a celebration of our youth ministry's journey, growth, and impact in the lives of young believers.",
+        fullDescription:
+            "Youth Connect Anniversary is a celebration of our youth ministry's journey, growth, and impact in the lives of young believers. It's a time to reflect on the past year, honor the achievements of our youth, and look forward to the exciting future ahead. Join us for a memorable event filled with worship, fellowship, and fun activities as we celebrate the vibrant community of young people in our church.",
+        images: [
+            "/events/youth-connect-anniv-1.jpg",
+            "/events/youth-connect-anniv-2.jpg",
+            "/events/youth-connect-anniv-3.jpg",
+            "/events/youth-connect-anniv-4.jpg",
+        ],
+        type: "past",
+    },
+    {
+        id: 7,
+        title: "Coffee for a Cause",
+        slug: "coffee-for-cause",
+        date: "August 2026",
+        description:
+            "Coffee for a cause is a community initiative where we gather to enjoy coffee while supporting meaningful projects and charitable causes.",
+        fullDescription:
+            "Coffee for a Cause is a community initiative where we gather to enjoy coffee while supporting meaningful projects and charitable causes. It's a time to connect, share stories, and make a positive impact in our community. Join us for a cup of coffee and be part of something bigger!",
+        images: [
+            "/events/coffee-for-cause-1.jpg",
+            "/events/coffee-for-cause-2.jpg",
+            "/events/coffee-for-cause-3.jpg",
+            "/events/coffee-for-cause-4.jpg",
+        ],
+        type: "past",
+    },
+    {
+        id: 8,
         title: "Youth Camp",
         slug: "youth-camp",
         date: "May 2026",
@@ -121,11 +157,12 @@ export const events: Event[] = [
             "/events/youth-camp-1.jpg",
             "/events/youth-camp-2.jpg",
             "/events/youth-camp-3.jpg",
+            "/events/youth-camp-4.jpg",
         ],
         type: "past",
     },
     {
-        id: 7,
+        id: 9,
         title: "Communion Thanksgiving",
         slug: "communion-thanksgiving",
         date: "March 29, 2026",
@@ -143,7 +180,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 8,
+        id: 10,
         title: "Vacation Bible School",
         slug: "vacation-bible-school",
         date: "April 2-4, 2026",
@@ -161,7 +198,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 9,
+        id: 11,
         title: "Women's Fellowship",
         slug: "womens-fellowship",
         date: "March 29, 2026",
@@ -178,10 +215,8 @@ export const events: Event[] = [
         ],
         type: "past",
     },
-
-    // Past Events
     {
-        id: 10,
+        id: 12,
         title: "Acoustic Night",
         slug: "acoustic-night",
         date: "February 2026",
@@ -197,7 +232,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 11,
+        id: 13,
         title: "Soaking & Seeking",
         slug: "soaking-seeking",
         date: "January 2026",
@@ -213,7 +248,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 12,
+        id: 14,
         title: "Amanda's Street Evangelism",
         slug: "amanda-street-evangelism",
         date: "January 2026",
@@ -229,7 +264,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 13,
+        id: 15,
         title: "Christmas Party",
         slug: "christmas-party",
         date: "December 2025",
@@ -245,7 +280,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 14,
+        id: 16,
         title: "Jesus Reigns",
         slug: "jesus-reigns",
         date: "November 2025",
@@ -261,7 +296,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 15,
+        id: 17,
         title: "DEO Interns Visit",
         slug: "deo-interns-visit",
         date: "August 2025",

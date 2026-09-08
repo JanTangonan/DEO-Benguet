@@ -16,15 +16,6 @@ const ministries = [
         action: "Explore Youth Connect",
     },
     {
-        name: "Kids Ministry",
-        description: "A safe, engaging place for children to learn about Jesus and experience the joy of church community.",
-        schedule: "During Sunday Worship · 10:30 AM",
-        image: "/events/vacation-bible-school-1.jpg",
-        icon: HeartHandshake,
-        href: "mailto:deochurchbenguetchosenmission@gmail.com?subject=Question%20about%20Kids%20Ministry",
-        action: "Ask about Kids Ministry",
-    },
-    {
         name: "Bible Study & Prayer",
         description: "Grow deeper in Scripture and pray with others from wherever you are.",
         schedule: "Monday, Tuesday & Thursday · 9:00 PM",
