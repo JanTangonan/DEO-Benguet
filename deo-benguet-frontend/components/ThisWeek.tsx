@@ -104,9 +104,6 @@ export default function ThisWeek() {
         <div className="mt-6 flex flex-col gap-3 border-t border-slate-100 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm text-slate-600">New here? We would love to welcome you this Sunday.</p>
           <div className="flex flex-wrap gap-3">
-            <a href="#visit" className="rounded-xl bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-teal-700">
-              Plan a visit
-            </a>
             <a href="https://maps.app.goo.gl/DdSt7GaUAHBoQJFe7" target="_blank" rel="noreferrer" className="rounded-xl border border-teal-600 px-5 py-2.5 text-sm font-semibold text-teal-700 transition hover:bg-teal-50">
               Get directions
             </a>
