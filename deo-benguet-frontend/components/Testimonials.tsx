@@ -32,8 +32,11 @@ const communityPhotos = [
     { src: "/events/deo-church-benguet-2.jpg", alt: "DEO Church community gathering" },
     { src: "/events/acoustic-night-1.jpg", alt: "Acoustic worship night at DEO Church" },
     { src: "/events/youth-connect-1.jpg", alt: "Youth Connect gathering" },
-    { src: "/events/taekwondo-ministry-1.jpg", alt: "Soldiers of God Taekwondo Ministry" },
+    { src: "/events/coffee-for-cause-2.jpg", alt: "Coffee for a Cause event" },
     { src: "/events/christmas-party-1.jpg", alt: "DEO Church Christmas celebration" },
+    { src: "/events/deo-interns-visit-1.jpg", alt: "DEO Church Interns visit" },
+    { src: "/events/youth-camp-3.jpg", alt: "DEO Church Youth Camp" },
+    { src: "/events/taekwondo-ministry-3.jpg", alt: "Soldiers of God Taekwondo Ministry" },
 ];
 
 export default function Testimonials() {

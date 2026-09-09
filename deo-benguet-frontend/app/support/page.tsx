@@ -1,408 +1,54 @@
 "use client";
 
-import { useFadeIn } from "@/hooks/useFadeIn";
+import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight, ChevronLeft, ChevronRight, HeartHandshake, Mail, ShoppingBag, Users, WalletCards, X } from "lucide-react";
 import { useState } from "react";
 
-interface Product {
-    id: string;
-    name: string;
-    description: string;
-    price: number;
-    category: string;
-    images: string[];
-    stock: boolean;
-}
-
+type Product = { id: string; name: string; description: string; price: number; category: string; images: string[]; stock: boolean };
 const products: Product[] = [
-    {
-        id: "shirt-1",
-        name: "DEO Church T-Shirt",
-        description: "Comfortable premium cotton shirt with our church logo.",
-        price: 350,
-        category: "Apparel",
-        images: [
-            "/products/shirt-1.jpg",
-        ],
-        stock: true,
-    },
-    {
-        id: "draw-string-bag-1",
-        name: "DEO Church Drawstring Bag",
-        description: "Convenient and stylish drawstring bag for your daily needs.",
-        price: 180,
-        category: "Bags",
-        images: [
-            "/products/draw-string-bag-1.jpg",
-        ],
-        stock: true,
-    },
-    {
-        id: "tote-1",
-        name: "Canvas Tote Bag",
-        description: "Eco-friendly tote bag for everyday use.",
-        price: 180,
-        category: "Bags",
-        images: [
-            "/products/tote-bag-1.jpg",
-            "/products/tote-bag-2.jpg",
-            "/products/tote-bag-3.jpg",
-        ],
-        stock: true,
-    },
-    {
-        id: "mug-1",
-        name: "Faith Mug",
-        description: "Start your day with a reminder of faith.",
-        price: 150,
-        category: "Drinkware",
-        images: [
-            "/products/mug-1.jpg",
-            "/products/mug-2.jpg",
-        ],
-        stock: true,
-    },
-    {
-        id: "magnet-1",
-        name: "Refrigerator Magnet",
-        description: "Beautiful fridge magnet to inspire daily.",
-        price: 40,
-        category: "Home & Office",
-        images: [
-            "/products/ref-magnet-1.jpg",
-            "/products/ref-magnet-2.jpg",
-            "/products/ref-magnet-3.jpg",
-        ],
-        stock: true,
-    },
-    {
-        id: "bag-tag-1",
-        name: "DEO Church Bag Tag",
-        description: "Tags for your bags and belongings.",
-        price: 70,
-        category: "Accessories",
-        images: [
-            "/products/bag-tag-1.jpg", 
-        ],
-        stock: true,
-    },
-    {
-        id: "cap-1",
-        name: "DEO Church Cap",
-        description: "Stay cool and stylish with our branded cap.",
-        price: 250,
-        category: "Accessories",
-        images: [
-            "/products/cap-1.jpg",
-        ],
-        stock: true,
-    },
+    { id: "shirt-1", name: "DEO Church T-Shirt", description: "Comfortable premium cotton shirt with our church logo.", price: 350, category: "Apparel", images: ["/products/shirt-1.jpg"], stock: true },
+    { id: "draw-string-bag-1", name: "DEO Church Drawstring Bag", description: "A convenient bag for daily needs.", price: 180, category: "Bags", images: ["/products/draw-string-bag-1.jpg"], stock: true },
+    { id: "tote-1", name: "Canvas Tote Bag", description: "An eco-friendly tote bag for everyday use.", price: 180, category: "Bags", images: ["/products/tote-bag-1.jpg", "/products/tote-bag-2.jpg", "/products/tote-bag-3.jpg"], stock: true },
+    { id: "mug-1", name: "Faith Mug", description: "Start the day with a reminder of faith.", price: 150, category: "Drinkware", images: ["/products/mug-1.jpg", "/products/mug-2.jpg"], stock: true },
+    { id: "magnet-1", name: "Refrigerator Magnet", description: "A small daily reminder for your home or office.", price: 40, category: "Home & Office", images: ["/products/ref-magnet-1.jpg", "/products/ref-magnet-2.jpg", "/products/ref-magnet-3.jpg"], stock: true },
+    { id: "bag-tag-1", name: "DEO Church Bag Tag", description: "A thoughtful tag for bags and belongings.", price: 70, category: "Accessories", images: ["/products/bag-tag-1.jpg"], stock: true },
+    { id: "cap-1", name: "DEO Church Cap", description: "A comfortable branded cap for everyday wear.", price: 250, category: "Accessories", images: ["/products/cap-1.jpg"], stock: true },
 ];
-
-interface Supporter {
-    id: string;
-    name: string;
-    product: string;
-    amount: number;
-    message: string;
-}
-
-const supporters: Supporter[] = [
-    {
-        id: "sup-1",
-        name: "Rose Rosales",
-        product: "DEO Church Shirt x5",
-        amount: 1750,
-        message: "Supporting the youth ministry ❤️"
-    },
-    {
-        id: "sup-2",
-        name: "Kimberly Toyokan",
-        product: "Canvas Tote Bag + Mug",
-        amount: 2000,
-        message: "For God's glory!"
-    },
-    {
-        id: "sup-3",
-        name: "Arsel Vergara",
-        product: "Thailand Mission Shirt",
-        amount: 350,
-        message: "Quality shirt, hindi tinipid"
-    },
-    {
-        id: "sup-4",
-        name: "Mikaela Martin",
-        product: "Thailand Mission Shirt",
-        amount: 350,
-        message: "Simple pero elepante"
-    },
-    {
-        id: "sup-5",
-        name: "Mark Adrian Abad",
-        product: "Thailand Mission Shirt",
-        amount: 350,
-        message: "Ang nice ng quality ng shirt, salamat sa church!"
-    },
-    {
-        id: "sup-6",
-        name: "Exelyn Ani-Catalan",
-        product: "Thailand Mission Shirt",
-        amount: 350,
-        message: "More blessing to the church"
-    },
+const supporterStories = [
+    ["Rose Rosales", "Supporting the youth ministry."], ["Kimberly Toyokan", "For God’s glory!"], ["Arsel Vergara", "Quality shirt, hindi tinipid."], 
+    ["Exelyn Ani-Catalan", "More blessings to the church."], ["Mark Adrian", "Ang nice ng shirt, Thank you DEO."], ["Mika Martin", "Grabe, simple pero elepante."],
 ];
+const impactAreas = [["Youth gatherings", "Creating safe spaces where young people can worship, learn, and belong."], ["Community outreach", "Serving people in Benguet with practical care and the love of Jesus."], ["Discipleship", "Providing resources and opportunities for people to grow in faith."], ["Church events", "Making room for prayer, worship, fellowship, and connection."]];
 
-function ProductCard({ product }: { product: Product }) {
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-    const goToPrevious = () => {
-        setCurrentImageIndex((prev) => (prev === 0 ? product.images.length - 1 : prev - 1));
-    };
-
-    const goToNext = () => {
-        setCurrentImageIndex((prev) => (prev === product.images.length - 1 ? 0 : prev + 1));
-    };
-
-    const goToSlide = (index: number) => {
-        setCurrentImageIndex(index);
-    };
-
-    return (
-        <div className="group bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300">
-
-            {/* IMAGE */}
-            <div className="relative overflow-hidden">
-                <img
-                    src={product.images[currentImageIndex]}
-                    alt={product.name}
-                    className="w-full h-72 object-cover group-hover:scale-105 transition duration-500"
-                />
-
-                {/* Optional Badge */}
-                {/* <div className="absolute top-4 left-4 bg-teal-600 text-white text-xs px-3 py-1 rounded-full">
-                    Support
-                </div> */}
-            </div>
-
-            {/* CONTENT */}
-            <div className="p-6 flex flex-col justify-between h-[220px]">
-
-                <div>
-                    <h3 className="text-lg font-semibold text-gray-800 mb-1">
-                        {product.name}
-                    </h3>
-
-                    <p className="text-sm text-gray-500 mb-4">
-                        {product.description}
-                    </p>
-                </div>
-
-                <div className="flex items-center justify-between">
-                    <span className="text-teal-600 font-bold text-lg">
-                        ₱{product.price}
-                    </span>
-
-                    <a
-                        href="https://www.facebook.com/profile.php?id=61587087962445"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm font-semibold text-teal-600 hover:underline"
-                    >
-                        Order →
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    );
+function ProductCard({ product, onView, selected, toggle }: { product: Product; onView: (product: Product) => void; selected: boolean; toggle: (product: Product) => void }) {
+    return <article className="group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-xl"><button type="button" onClick={() => onView(product)} className="relative block aspect-[4/3] w-full overflow-hidden text-left focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-teal-600"><Image src={product.images[0]} alt={product.name} fill sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" className="object-cover transition duration-500 group-hover:scale-105" /><span className="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1 text-xs font-bold text-teal-800">{product.stock ? "Available" : "Out of stock"}</span></button><div className="p-6"><p className="text-xs font-bold uppercase tracking-[0.14em] text-teal-700">{product.category}</p><h3 className="mt-2 text-xl font-bold text-slate-900">{product.name}</h3><p className="mt-3 min-h-10 text-sm leading-relaxed text-slate-600">{product.description}</p><div className="mt-6 flex items-center justify-between gap-3"><span className="text-xl font-bold text-teal-700">₱{product.price.toLocaleString()}</span><div className="flex gap-2"><button type="button" onClick={() => onView(product)} className="rounded-xl border border-teal-600 px-3 py-2 text-sm font-bold text-teal-700 hover:bg-teal-50">View</button><button type="button" onClick={() => toggle(product)} className={`rounded-xl px-3 py-2 text-sm font-bold ${selected ? "bg-teal-100 text-teal-800" : "bg-teal-600 text-white hover:bg-teal-700"}`}>{selected ? "Added" : "Interested"}</button></div></div></div></article>;
 }
 
 export default function SupportPage() {
-    useFadeIn();
-    const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+    const [category, setCategory] = useState<string | null>(null);
+    const [selected, setSelected] = useState<Product[]>([]);
+    const [viewing, setViewing] = useState<Product | null>(null);
+    const [imageIndex, setImageIndex] = useState(0);
+    const categories = Array.from(new Set(products.map((product) => product.category)));
+    const visible = category ? products.filter((product) => product.category === category) : products;
+    const toggle = (product: Product) => setSelected((current) => current.some((item) => item.id === product.id) ? current.filter((item) => item.id !== product.id) : [...current, product]);
+    const openProduct = (product: Product) => { setViewing(product); setImageIndex(0); };
+    const orderBody = encodeURIComponent(`Hello DEO Church! I am interested in: ${selected.map((product) => `${product.name} (₱${product.price})`).join(", ")}. Please confirm availability, payment details, and collection options.`);
 
-    const categories = Array.from(new Set(products.map((p) => p.category)));
-    const filteredProducts = selectedCategory
-        ? products.filter((p) => p.category === selectedCategory)
-        : products;
+    return <main>
+        <section className="relative isolate overflow-hidden bg-slate-950 py-24 text-white sm:py-32"><Image src="/events/deo-church-benguet-5.jpg" alt="DEO Church Benguet community" fill priority sizes="100vw" className="-z-20 object-cover opacity-40" /><div className="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950/95 via-slate-950/70 to-slate-950/35" /><div className="mx-auto max-w-6xl px-6"><p className="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.18em] text-teal-300"><HeartHandshake size={17} aria-hidden="true" /> Support the mission</p><h1 className="mt-4 max-w-3xl text-5xl font-bold tracking-tight sm:text-6xl">Generosity makes room for ministry.</h1><p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200">Shop, give, pray, or serve—each act of support helps make a lasting difference in Benguet.</p><div className="mt-9 flex flex-wrap gap-3"><a href="#shop" className="rounded-xl bg-teal-500 px-5 py-3 font-bold hover:bg-teal-400">Shop merchandise</a><Link href="/contact#message" className="rounded-xl border border-white/30 bg-white/10 px-5 py-3 font-bold hover:bg-white/20">Ask about giving</Link></div></div></section>
 
-    // const totalRaised = supporters.reduce((sum, sup) => sum + sup.amount, 0);
-    const totalRaised = 29000;
+        <section className="bg-slate-50 py-16 sm:py-20"><div className="mx-auto grid max-w-6xl gap-5 px-6 md:grid-cols-3">{[[ShoppingBag, "Shop merchandise", "Choose a meaningful item that supports active ministries.", "Browse items", "#shop"], [WalletCards, "Give directly", "Contact the church for verified giving options and confirmation.", "Ask about giving", "/contact#message"], [HeartHandshake, "Pray and serve", "Stand with the church through prayer, skills, and time.", "Get involved", "/get-involved"]].map(([Icon, title, text, action, href]) => { const Symbol = Icon as typeof ShoppingBag; const content = <><span className="flex h-12 w-12 items-center justify-center rounded-xl bg-teal-100 text-teal-700"><Symbol size={24} aria-hidden="true" /></span><h2 className="mt-5 text-2xl font-bold text-slate-900">{title as string}</h2><p className="mt-3 leading-relaxed text-slate-600">{text as string}</p><p className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-teal-700">{action as string} <ArrowRight size={16} aria-hidden="true" /></p></>; return (href as string).startsWith("#") ? <a key={title as string} href={href as string} className="rounded-3xl bg-white p-7 shadow-sm ring-1 ring-slate-200 hover:-translate-y-1 hover:shadow-lg">{content}</a> : <Link key={title as string} href={href as string} className="rounded-3xl bg-white p-7 shadow-sm ring-1 ring-slate-200 hover:-translate-y-1 hover:shadow-lg">{content}</Link>; })}</div></section>
 
-    return (
-        <main>
+        <section id="shop" className="scroll-mt-24 bg-white py-24 sm:py-28"><div className="mx-auto max-w-6xl px-6"><div className="max-w-2xl"><p className="text-sm font-bold uppercase tracking-[0.18em] text-teal-700">Shop for the mission</p><h2 className="mt-4 text-4xl font-bold tracking-tight text-slate-900">Wear and share the vision.</h2><p className="mt-5 leading-relaxed text-slate-600">View an item for more photos, then add it to your inquiry. The church will confirm stock and payment before any order is placed.</p></div><div className="mt-8 flex flex-wrap gap-2">{[null, ...categories].map((item) => <button key={item ?? "all"} type="button" onClick={() => setCategory(item)} className={`rounded-full px-4 py-2 text-sm font-bold ${category === item ? "bg-teal-600 text-white" : "bg-slate-100 text-slate-700 hover:bg-teal-50"}`}>{item ?? "All items"}</button>)}</div><div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{visible.map((product) => <ProductCard key={product.id} product={product} onView={openProduct} selected={selected.some((item) => item.id === product.id)} toggle={toggle} />)}</div>{selected.length > 0 && <div className="sticky bottom-5 z-20 mt-10 flex flex-col gap-4 rounded-2xl bg-slate-950 p-5 text-white shadow-2xl sm:flex-row sm:items-center sm:justify-between"><div><p className="font-bold">{selected.length} item{selected.length === 1 ? "" : "s"} selected</p><p className="mt-1 text-sm text-slate-300">Send an inquiry; availability and payment will be confirmed first.</p></div><a href={`mailto:deochurchbenguetchosenmission@gmail.com?subject=Merchandise%20order%20inquiry&body=${orderBody}`} className="inline-flex items-center justify-center gap-2 rounded-xl bg-teal-500 px-5 py-3 font-bold hover:bg-teal-400">Ask to order <Mail size={18} aria-hidden="true" /></a></div>}</div></section>
 
-            {/* HERO */}
-            <section className="bg-teal-600 dark:bg-teal-700 text-white py-28 text-center fade-in">
-                <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                    Support the Mission
-                </h1>
+        <section className="bg-slate-50 py-24 sm:py-28"><div className="mx-auto max-w-6xl px-6"><div className="max-w-2xl"><p className="text-sm font-bold uppercase tracking-[0.18em] text-teal-700">Giving with confidence</p><h2 className="mt-4 text-4xl font-bold tracking-tight text-slate-900">Direct giving, handled with care.</h2><p className="mt-5 leading-relaxed text-slate-600">Use only giving details confirmed by the official church contact channels. We will explain the verified payment option, intended ministry use, and confirmation process.</p></div><div className="mt-10 grid gap-5 md:grid-cols-3">{[["1", "Contact the church", "Ask for verified giving options and the ministry area you want to support."], ["2", "Confirm payment details", "Use only details supplied through official DEO Church Benguet channels."], ["3", "Receive confirmation", "Keep your confirmation and contact us with any questions about your gift."]].map(([number, title, text]) => <article key={number} className="rounded-2xl bg-white p-6 ring-1 ring-slate-200"><span className="text-sm font-bold text-teal-700">STEP {number}</span><h3 className="mt-4 text-xl font-bold text-slate-900">{title}</h3><p className="mt-3 leading-relaxed text-slate-600">{text}</p></article>)}</div><Link href="/contact#message" className="mt-8 inline-flex items-center gap-2 rounded-xl bg-teal-600 px-5 py-3 font-bold text-white hover:bg-teal-700">Ask about giving <ArrowRight size={18} aria-hidden="true" /></Link></div></section>
 
-                <p className="max-w-2xl mx-auto text-lg text-teal-100">
-                    Every purchase helps fund church activities, outreach programs,
-                    and ministry efforts in our community.
-                </p>
-            </section>
+        <section className="bg-white py-24 sm:py-28"><div className="mx-auto max-w-6xl px-6"><div className="mx-auto max-w-2xl text-center"><p className="text-sm font-bold uppercase tracking-[0.18em] text-teal-700">Your support in action</p><h2 className="mt-4 text-4xl font-bold tracking-tight text-slate-900">Where generosity makes a difference.</h2></div><div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{impactAreas.map(([title, text], index) => <article key={title} className="rounded-2xl bg-teal-50 p-6"><span className="text-sm font-bold text-teal-700">0{index + 1}</span><h3 className="mt-4 text-xl font-bold text-slate-900">{title}</h3><p className="mt-3 leading-relaxed text-slate-600">{text}</p></article>)}</div><div className="mt-12 grid gap-4 rounded-3xl bg-slate-950 p-7 text-white sm:grid-cols-4 sm:p-9">{[["Your support", "Purchase, gift, prayer, or time"], ["Ministry resources", "Tools and preparation"], ["Gatherings and outreach", "Church and community connection"], ["People reached", "Lives touched by Jesus’ love"]].map(([title, text], index) => <div key={title} className="relative"><p className="text-sm font-bold text-teal-300">0{index + 1}</p><h3 className="mt-2 font-bold">{title}</h3><p className="mt-2 text-sm text-slate-300">{text}</p>{index < 3 && <ArrowRight className="absolute -right-3 top-7 hidden text-teal-300 sm:block" size={18} aria-hidden="true" />}</div>)}</div></div></section>
 
-            {/* PRODUCTS */}
-            <section className="bg-gray-50 dark:bg-gray-800 py-24 fade-in">
-                <div className="max-w-6xl mx-auto px-6">
+        <section className="bg-teal-700 py-24 text-white sm:py-28"><div className="mx-auto max-w-6xl px-6"><div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end"><div><p className="text-sm font-bold uppercase tracking-[0.18em] text-teal-100">Supporter stories</p><h2 className="mt-4 text-4xl font-bold tracking-tight">A community that gives together.</h2></div><p className="max-w-sm text-teal-50">Stories are shared only with permission and can be updated or removed on request.</p></div><div className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4">{supporterStories.map(([name, story]) => <article key={name} className="w-72 shrink-0 snap-start rounded-2xl bg-white/10 p-6 backdrop-blur-sm"><Users className="text-teal-200" size={25} aria-hidden="true" /><blockquote className="mt-5 text-lg font-medium leading-relaxed">“{story}”</blockquote><p className="mt-6 text-sm font-bold text-teal-200">{name}</p></article>)}</div></div></section>
 
-                    <h2 className="text-3xl font-bold text-center mb-4 text-gray-800 dark:text-white">
-                        Available Items
-                    </h2>
-                    <p className="text-center text-gray-600 dark:text-gray-400 mb-12">
-                        Browse our collection of quality items supporting church ministries. 
-                        These items are created and sold to support the ongoing ministries
-                        of our church. Your support allows us to reach more people, organize
-                        events, and serve our community with love and purpose.
-                    </p>
-
-                    {/* Category Filter */}
-                    <div className="flex flex-wrap justify-center gap-3 mb-12">
-                        <button
-                            onClick={() => setSelectedCategory(null)}
-                            className={`px-6 py-2 rounded-full font-semibold transition ${selectedCategory === null
-                                    ? "bg-teal-600 text-white"
-                                    : "bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-teal-50 dark:hover:bg-gray-600"
-                                }`}
-                        >
-                            All Items
-                        </button>
-                        {categories.map((category) => (
-                            <button
-                                key={category}
-                                onClick={() => setSelectedCategory(category)}
-                                className={`px-6 py-2 rounded-full font-semibold transition ${selectedCategory === category
-                                        ? "bg-teal-600 text-white"
-                                        : "bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-teal-50 dark:hover:bg-gray-600"
-                                    }`}
-                            >
-                                {category}
-                            </button>
-                        ))}
-                    </div>
-
-                    <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-10">
-                        {filteredProducts.map((product) => (
-                            <ProductCard key={product.id} product={product} />
-                        ))}
-                    </div>
-
-                </div>
-            </section>
-
-            {/* SUPPORTERS RECOGNITION */}
-            <section className="py-24 fade-in bg-white dark:bg-gray-900">
-                <div className="max-w-6xl mx-auto px-6">
-                    <h2 className="text-3xl font-bold text-center mb-4 text-gray-800 dark:text-white">
-                        Our Valued Supporters & Donors
-                    </h2>
-                    <p className="text-center text-gray-600 dark:text-gray-400 mb-4">
-                        We thank you for your generosity and support
-                    </p>
-
-                    {/* Total Raised Counter */}
-                    <div className="text-center mb-12 p-8 bg-teal-50 dark:bg-teal-900/30 rounded-2xl">
-                        <p className="text-sm font-semibold text-teal-700 dark:text-teal-400 mb-2">Total Raised</p>
-                        <h3 className="text-4xl md:text-5xl font-bold text-teal-600 dark:text-teal-400">₱{totalRaised.toLocaleString()}</h3>
-                        {/* <p className="text-gray-600 dark:text-gray-400 mt-2">From {supporters.length} supporters</p> */}
-                        <p className="text-gray-600 dark:text-gray-400 mt-2">From 100+ supporters</p>
-                    </div>
-
-                    {/* Supporters Grid */}
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {supporters.map((supporter) => (
-                            <div
-                                key={supporter.id}
-                                className="bg-gradient-to-br from-teal-50 to-teal-100 dark:from-teal-900/30 dark:to-teal-800/30 p-6 rounded-2xl border border-teal-200 dark:border-teal-700 hover:shadow-lg transition duration-300"
-                            >
-                                <div className="flex items-start justify-between mb-3">
-                                    <div>
-                                        <h3 className="font-bold text-gray-800 dark:text-white">
-                                            {supporter.name}
-                                        </h3>
-                                        <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
-                                            {supporter.product}
-                                        </p>
-                                    </div>
-                                    <span className="text-2xl">❤️</span>
-                                </div>
-
-                                <p className="text-sm italic text-gray-700 dark:text-gray-300 mb-3">
-                                    "{supporter.message}"
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="text-center mt-12">
-                        <p className="text-gray-600 dark:text-gray-400 mb-4">
-                            Be part of this amazing community of supporters!
-                        </p>
-                        <a
-                            href="#support"
-                            className="inline-block bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 rounded-lg font-semibold transition"
-                        >
-                            Shop Now & Support
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            {/* CTA */}
-            <section className="py-24 text-center fade-in bg-gray-50 dark:bg-gray-800">
-                <div className="max-w-3xl mx-auto px-6">
-
-                    <h2 className="text-3xl font-bold mb-4 text-gray-800 dark:text-white">
-                        Want to Support?
-                    </h2>
-
-                    <p className="text-gray-600 dark:text-gray-400 mb-8">
-                        If you’re interested in any item, feel free to message us directly.
-                        We’d love to connect with you!
-                    </p>
-
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-
-                        <a
-                            href="https://www.facebook.com/profile.php?id=61587087962445"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-lg hover:shadow-lg transition font-semibold"
-                        >
-                            Message on Facebook
-                        </a>
-
-                        <Link
-                            href="/contact"
-                            className="border-2 border-teal-600 dark:border-teal-400 text-teal-600 dark:text-teal-400 px-6 py-3 rounded-lg hover:bg-teal-50 dark:hover:bg-teal-900/20 transition font-semibold"
-                        >
-                            Contact Us
-                        </Link>
-
-                    </div>
-
-                </div>
-            </section>
-
-            {/* IMPACT */}
-            <section className="bg-teal-50 dark:bg-teal-900/20 py-24 text-center fade-in border-t border-teal-200 dark:border-teal-800">
-                <div className="max-w-3xl mx-auto px-6">
-
-                    <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">
-                        Your Support Makes a Difference
-                    </h2>
-
-                    <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
-                        Through your support, we are able to organize youth gatherings,
-                        outreach programs, and community events that impact lives and
-                        spread the love of Jesus in Benguet and beyond.
-                    </p>
-
-                </div>
-            </section>
-
-        </main>
-    );
+        {viewing && <div role="dialog" aria-modal="true" aria-label={`${viewing.name} details`} className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-950/80 p-4" onClick={() => setViewing(null)}><div className="relative grid max-h-[90vh] w-full max-w-4xl overflow-auto rounded-3xl bg-white sm:grid-cols-2" onClick={(event) => event.stopPropagation()}><div className="relative min-h-80 bg-slate-100"><Image src={viewing.images[imageIndex]} alt={`${viewing.name}, image ${imageIndex + 1}`} fill sizes="(min-width: 640px) 50vw, 100vw" className="object-cover" />{viewing.images.length > 1 && <><button type="button" onClick={() => setImageIndex((current) => (current - 1 + viewing.images.length) % viewing.images.length)} className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-slate-950/60 p-2 text-white" aria-label="Previous product image"><ChevronLeft size={20} /></button><button type="button" onClick={() => setImageIndex((current) => (current + 1) % viewing.images.length)} className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-slate-950/60 p-2 text-white" aria-label="Next product image"><ChevronRight size={20} /></button></>}</div><div className="p-7 sm:p-9"><button type="button" onClick={() => setViewing(null)} className="absolute right-4 top-4 rounded-full bg-white/90 p-2 text-slate-800 shadow" aria-label="Close product details"><X size={20} /></button><p className="text-sm font-bold uppercase tracking-[0.14em] text-teal-700">{viewing.category}</p><h2 className="mt-3 text-3xl font-bold text-slate-900">{viewing.name}</h2><p className="mt-4 leading-relaxed text-slate-600">{viewing.description}</p><p className="mt-6 text-2xl font-bold text-teal-700">₱{viewing.price.toLocaleString()}</p><p className="mt-3 text-sm font-semibold text-teal-700">{viewing.stock ? "Available — confirm current stock with the church." : "Please ask the church about availability."}</p><button type="button" onClick={() => { toggle(viewing); setViewing(null); }} className="mt-7 rounded-xl bg-teal-600 px-5 py-3 font-bold text-white hover:bg-teal-700">{selected.some((item) => item.id === viewing.id) ? "Remove from inquiry" : "Add to inquiry"}</button></div></div></div>}
+    </main>;
 }
