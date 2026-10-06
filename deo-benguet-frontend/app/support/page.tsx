@@ -7,13 +7,14 @@ import { useState } from "react";
 
 type Product = { id: string; name: string; description: string; price: number; category: string; images: string[]; stock: boolean };
 const products: Product[] = [
-    { id: "shirt-1", name: "DEO Church T-Shirt", description: "Comfortable premium cotton shirt with our church logo.", price: 350, category: "Apparel", images: ["/products/shirt-1.jpg"], stock: true },
+    { id: "shirt-1", name: "DEO Church T-Shirt", description: "Comfortable premium cotton shirt with our church logo.", price: 350, category: "Apparel", images: ["/products/shirt-1.jpg", "/products/shirt-2.jpg", "/products/shirt-3.jpg", "/products/shirt-4.jpg"], stock: true },
+    { id: "mission-shirt-1", name: "DEO Mission Church T-Shirt", description: "Comfortable premium cotton shirt with our limited edition Mission Church design.", price: 350, category: "Apparel", images: ["/products/mission-shirt-1.jpg", "/products/mission-shirt-2.jpg", "/products/mission-shirt-3.jpg", "/products/mission-shirt-4.jpg"], stock: true },
     { id: "draw-string-bag-1", name: "DEO Church Drawstring Bag", description: "A convenient bag for daily needs.", price: 180, category: "Bags", images: ["/products/draw-string-bag-1.jpg"], stock: true },
     { id: "tote-1", name: "Canvas Tote Bag", description: "An eco-friendly tote bag for everyday use.", price: 180, category: "Bags", images: ["/products/tote-bag-1.jpg", "/products/tote-bag-2.jpg", "/products/tote-bag-3.jpg"], stock: true },
     { id: "mug-1", name: "Faith Mug", description: "Start the day with a reminder of faith.", price: 150, category: "Drinkware", images: ["/products/mug-1.jpg", "/products/mug-2.jpg"], stock: true },
     { id: "magnet-1", name: "Refrigerator Magnet", description: "A small daily reminder for your home or office.", price: 40, category: "Home & Office", images: ["/products/ref-magnet-1.jpg", "/products/ref-magnet-2.jpg", "/products/ref-magnet-3.jpg"], stock: true },
     { id: "bag-tag-1", name: "DEO Church Bag Tag", description: "A thoughtful tag for bags and belongings.", price: 70, category: "Accessories", images: ["/products/bag-tag-1.jpg"], stock: true },
-    { id: "cap-1", name: "DEO Church Cap", description: "A comfortable branded cap for everyday wear.", price: 250, category: "Accessories", images: ["/products/cap-1.jpg"], stock: true },
+    { id: "cap-1", name: "DEO Church Cap", description: "A comfortable branded cap for everyday wear.", price: 250, category: "Accessories", images: ["/products/cap-1.jpg", "/products/cap-2.jpg", "/products/cap-3.jpg", "/products/cap-4.jpg", "/products/cap-5.jpg", "/products/cap-6.jpg"], stock: true },
 ];
 const supporterStories = [
     ["Rose Rosales", "Supporting the youth ministry."], ["Kimberly Toyokan", "For God’s glory!"], ["Arsel Vergara", "Quality shirt, hindi tinipid."], 
