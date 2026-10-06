@@ -107,7 +107,7 @@ export function EventDetailClient({ event }: { event: (typeof events)[number] })
                     </div>
 
                     <article className="rounded-3xl bg-white p-7 shadow-sm ring-1 ring-slate-200 sm:p-9">
-                        <p className="text-sm font-bold uppercase tracking-[0.15em] text-teal-700">{event.type === "upcoming" ? "Weekly gathering" : "Event recap"}</p>
+                        <p className="text-sm font-bold uppercase tracking-[0.15em] text-teal-700">{event.type === "upcoming" ? "Weekly gathering" : event.type === "sooner-upcoming" ? "Coming soon" : "Event recap"}</p>
                         <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{event.title}</h1>
                         <div className="mt-6 space-y-3 text-slate-700">
                             <p className="flex gap-3"><Clock3 className="mt-0.5 shrink-0 text-teal-600" size={19} aria-hidden="true" /><span><strong className="block text-slate-900">{event.date}</strong>{event.time}</span></p>

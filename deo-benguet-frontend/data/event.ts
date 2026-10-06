@@ -38,7 +38,7 @@ export const events: Event[] = [
         id: 2,
         title: "Youth Connect",
         slug: "youth-connect",
-        date: "Every Friday",
+        date: "Every last Friday of the month",
         time: "3:00 PM - 6:00 PM",
         location: "1229 Camanggaan, Virac, Itogon, Benguet, Itogon, Philippines",
         description:
@@ -106,12 +106,59 @@ export const events: Event[] = [
         ],
         type: "upcoming",
     },
+    {
+        id: 6,
+        title: "Campus Ministry",
+        slug: "campus-ministry",
+        date: "Every Friday",
+        time: "3:00 PM - 6:00 PM",
+        location: "Jahpa Covered Court, Virac, Itogon, Benguet, Philippines",
+        description:
+            "Join our Campus Ministry for a time of fellowship, worship, and spiritual growth with fellow students.",
+        fullDescription:
+            "Our Campus Ministry is a vibrant community of students who gather to grow in faith, build meaningful relationships, and make a positive impact on their campuses. Through worship, Bible study, and outreach activities, we create an environment where students can explore their faith, develop leadership skills, and serve others. Whether you're looking to deepen your relationship with God or connect with like-minded peers, our Campus Ministry welcomes you to be part of this transformative journey.",
+        images: [
+            "/events/campus-ministry-1.jpg"
+        ],
+        type: "upcoming",
+    },
 
     // Sooner Upcoming Events (Special Section)
+    {
+        id: 19,
+        title: "Thailand Mission",
+        slug: "thailand-mission",
+        date: "Oct - Nov, 2026",
+        location: "Koh Samui, Thailand",
+        description:
+            " Mission trip to Koh Samui, Thailand, to share the love of Christ and serve the local community.",
+        fullDescription:
+            " Our Thailand Mission is a special outreach initiative where we travel to Koh Samui, Thailand, to share the love of Christ and serve the local community. This mission trip involves campus ministry, prison ministry, and cultural exchange, providing an opportunity for participants to grow spiritually while making a positive impact on the lives of others. Join us in this transformative journey as we spread hope and faith across borders.",
+        images: [
+            "/events/thailand-1.jpg"
+        ],
+        type: "sooner-upcoming",
+    },
+
+    {
+        id: 20,
+        title: "Variety Show",
+        slug: "variety-show",
+        date: "Oct 23, 2026",
+        location: "1229 Camanggaan, Virac, Itogon, Benguet, Itogon, Philippines",
+        description:
+            "Join us for a night of entertainment and fellowship as we celebrate the talents and creativity of our church community.",
+        fullDescription:
+            "Get ready for an exciting evening of music, dance, and drama as our church community showcases their diverse talents. This variety show is a wonderful opportunity to come together, support one another, and enjoy a night filled with fun and inspiration. Whether you're a performer or just looking to enjoy a great show, this event promises to be an unforgettable experience.",
+        images: [
+            "/events/variety-show-1.jpg"
+        ],
+        type: "sooner-upcoming",
+    },
 
     // Past Events
     {
-        id: 6,
+        id: 7,
         title: "Youth Connect Anniversary",
         slug: "youth-connect-anniversary",
         date: "August 2026",
@@ -128,7 +175,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 7,
+        id: 8,
         title: "Coffee for a Cause",
         slug: "coffee-for-cause",
         date: "August 2026",
@@ -145,7 +192,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 8,
+        id: 9,
         title: "Youth Camp",
         slug: "youth-camp",
         date: "May 2026",
@@ -162,7 +209,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 9,
+        id: 10,
         title: "Communion Thanksgiving",
         slug: "communion-thanksgiving",
         date: "March 29, 2026",
@@ -180,7 +227,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 10,
+        id: 11,
         title: "Vacation Bible School",
         slug: "vacation-bible-school",
         date: "April 2-4, 2026",
@@ -198,7 +245,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 11,
+        id: 12,
         title: "Women's Fellowship",
         slug: "womens-fellowship",
         date: "March 29, 2026",
@@ -216,7 +263,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 12,
+        id: 13,
         title: "Acoustic Night",
         slug: "acoustic-night",
         date: "February 2026",
@@ -232,7 +279,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 13,
+        id: 14,
         title: "Soaking & Seeking",
         slug: "soaking-seeking",
         date: "January 2026",
@@ -248,7 +295,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 14,
+        id: 15,
         title: "Amanda's Street Evangelism",
         slug: "amanda-street-evangelism",
         date: "January 2026",
@@ -264,7 +311,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 15,
+        id: 16,
         title: "Christmas Party",
         slug: "christmas-party",
         date: "December 2025",
@@ -280,7 +327,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 16,
+        id: 17,
         title: "Jesus Reigns",
         slug: "jesus-reigns",
         date: "November 2025",
@@ -296,7 +343,7 @@ export const events: Event[] = [
         type: "past",
     },
     {
-        id: 17,
+        id: 18,
         title: "DEO Interns Visit",
         slug: "deo-interns-visit",
         date: "August 2025",
