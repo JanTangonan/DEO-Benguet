@@ -23,7 +23,23 @@ const supporterStories = [
 const impactAreas = [["Youth gatherings", "Creating safe spaces where young people can worship, learn, and belong."], ["Community outreach", "Serving people in Benguet with practical care and the love of Jesus."], ["Discipleship", "Providing resources and opportunities for people to grow in faith."], ["Church events", "Making room for prayer, worship, fellowship, and connection."]];
 
 function ProductCard({ product, onView, selected, toggle }: { product: Product; onView: (product: Product) => void; selected: boolean; toggle: (product: Product) => void }) {
-    return <article className="group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-xl"><button type="button" onClick={() => onView(product)} className="relative block aspect-[4/3] w-full overflow-hidden text-left focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-teal-600"><Image src={product.images[0]} alt={product.name} fill sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" className="object-cover transition duration-500 group-hover:scale-105" /><span className="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1 text-xs font-bold text-teal-800">{product.stock ? "Available" : "Out of stock"}</span></button><div className="p-6"><p className="text-xs font-bold uppercase tracking-[0.14em] text-teal-700">{product.category}</p><h3 className="mt-2 text-xl font-bold text-slate-900">{product.name}</h3><p className="mt-3 min-h-10 text-sm leading-relaxed text-slate-600">{product.description}</p><div className="mt-6 flex items-center justify-between gap-3"><span className="text-xl font-bold text-teal-700">₱{product.price.toLocaleString()}</span><div className="flex gap-2"><button type="button" onClick={() => onView(product)} className="rounded-xl border border-teal-600 px-3 py-2 text-sm font-bold text-teal-700 hover:bg-teal-50">View</button><button type="button" onClick={() => toggle(product)} className={`rounded-xl px-3 py-2 text-sm font-bold ${selected ? "bg-teal-100 text-teal-800" : "bg-teal-600 text-white hover:bg-teal-700"}`}>{selected ? "Added" : "Interested"}</button></div></div></div></article>;
+    return <article className="group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-xl">
+        <button type="button" onClick={() => onView(product)} className="relative block aspect-square w-full overflow-hidden bg-slate-50 text-left focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-teal-600">
+            <Image src={product.images[0]} alt={product.name} fill sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" className="object-cover transition duration-500 group-hover:scale-105" />
+            <span className="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1 text-xs font-bold text-teal-800">{product.stock ? "Available" : "Out of stock"}</span>
+        </button>
+        <div className="p-4 sm:p-5">
+            <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-teal-700">{product.category}</p>
+            <h3 className="mt-1.5 text-lg font-bold text-slate-900">{product.name}</h3>
+            <div className="mt-4 flex items-center justify-between gap-2">
+                <span className="text-lg font-bold text-teal-700">₱{product.price.toLocaleString()}</span>
+                <div className="flex gap-2">
+                    <button type="button" onClick={() => onView(product)} className="rounded-lg border border-slate-300 px-3 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50">View</button>
+                    <button type="button" onClick={() => toggle(product)} className={`rounded-lg px-3 py-2 text-xs font-bold ${selected ? "bg-teal-100 text-teal-800" : "bg-teal-600 text-white hover:bg-teal-700"}`}>{selected ? "Added" : "Interested"}</button>
+                </div>
+            </div>
+        </div>
+    </article>;
 }
 
 export default function SupportPage() {
@@ -50,6 +66,25 @@ export default function SupportPage() {
 
         <section className="bg-teal-700 py-24 text-white sm:py-28"><div className="mx-auto max-w-6xl px-6"><div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end"><div><p className="text-sm font-bold uppercase tracking-[0.18em] text-teal-100">Supporter stories</p><h2 className="mt-4 text-4xl font-bold tracking-tight">A community that gives together.</h2></div><p className="max-w-sm text-teal-50">Stories are shared only with permission and can be updated or removed on request.</p></div><div className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4">{supporterStories.map(([name, story]) => <article key={name} className="w-72 shrink-0 snap-start rounded-2xl bg-white/10 p-6 backdrop-blur-sm"><Users className="text-teal-200" size={25} aria-hidden="true" /><blockquote className="mt-5 text-lg font-medium leading-relaxed">“{story}”</blockquote><p className="mt-6 text-sm font-bold text-teal-200">{name}</p></article>)}</div></div></section>
 
-        {viewing && <div role="dialog" aria-modal="true" aria-label={`${viewing.name} details`} className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-950/80 p-4" onClick={() => setViewing(null)}><div className="relative grid max-h-[90vh] w-full max-w-4xl overflow-auto rounded-3xl bg-white sm:grid-cols-2" onClick={(event) => event.stopPropagation()}><div className="relative min-h-80 bg-slate-100"><Image src={viewing.images[imageIndex]} alt={`${viewing.name}, image ${imageIndex + 1}`} fill sizes="(min-width: 640px) 50vw, 100vw" className="object-cover" />{viewing.images.length > 1 && <><button type="button" onClick={() => setImageIndex((current) => (current - 1 + viewing.images.length) % viewing.images.length)} className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-slate-950/60 p-2 text-white" aria-label="Previous product image"><ChevronLeft size={20} /></button><button type="button" onClick={() => setImageIndex((current) => (current + 1) % viewing.images.length)} className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-slate-950/60 p-2 text-white" aria-label="Next product image"><ChevronRight size={20} /></button></>}</div><div className="p-7 sm:p-9"><button type="button" onClick={() => setViewing(null)} className="absolute right-4 top-4 rounded-full bg-white/90 p-2 text-slate-800 shadow" aria-label="Close product details"><X size={20} /></button><p className="text-sm font-bold uppercase tracking-[0.14em] text-teal-700">{viewing.category}</p><h2 className="mt-3 text-3xl font-bold text-slate-900">{viewing.name}</h2><p className="mt-4 leading-relaxed text-slate-600">{viewing.description}</p><p className="mt-6 text-2xl font-bold text-teal-700">₱{viewing.price.toLocaleString()}</p><p className="mt-3 text-sm font-semibold text-teal-700">{viewing.stock ? "Available — confirm current stock with the church." : "Please ask the church about availability."}</p><button type="button" onClick={() => { toggle(viewing); setViewing(null); }} className="mt-7 rounded-xl bg-teal-600 px-5 py-3 font-bold text-white hover:bg-teal-700">{selected.some((item) => item.id === viewing.id) ? "Remove from inquiry" : "Add to inquiry"}</button></div></div></div>}
+        {viewing && <div role="dialog" aria-modal="true" aria-label={`${viewing.name} details`} className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-950/80 p-3 sm:p-5" onClick={() => setViewing(null)}>
+            <div className="relative grid max-h-[92vh] w-full max-w-6xl overflow-auto rounded-3xl bg-white sm:grid-cols-[minmax(0,1.5fr)_minmax(18rem,0.8fr)]" onClick={(event) => event.stopPropagation()}>
+                <div className="relative aspect-square bg-slate-100 sm:aspect-auto sm:min-h-[70vh]">
+                    <Image src={viewing.images[imageIndex]} alt={`${viewing.name}, image ${imageIndex + 1}`} fill sizes="(min-width: 640px) 65vw, 100vw" className="object-contain" />
+                    {viewing.images.length > 1 && <>
+                        <button type="button" onClick={() => setImageIndex((current) => (current - 1 + viewing.images.length) % viewing.images.length)} className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-slate-950/60 p-2 text-white" aria-label="Previous product image"><ChevronLeft size={20} /></button>
+                        <button type="button" onClick={() => setImageIndex((current) => (current + 1) % viewing.images.length)} className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-slate-950/60 p-2 text-white" aria-label="Next product image"><ChevronRight size={20} /></button>
+                    </>}
+                </div>
+                <div className="relative flex flex-col justify-center p-5 sm:p-7">
+                    <button type="button" onClick={() => setViewing(null)} className="absolute right-4 top-4 rounded-full bg-slate-100 p-2 text-slate-800 transition hover:bg-slate-200" aria-label="Close product details"><X size={18} /></button>
+                    <p className="text-xs font-bold uppercase tracking-[0.14em] text-teal-700">{viewing.category}</p>
+                    <h2 className="mt-2 pr-8 text-2xl font-bold text-slate-900">{viewing.name}</h2>
+                    <p className="mt-3 text-sm leading-relaxed text-slate-600">{viewing.description}</p>
+                    <p className="mt-5 text-xl font-bold text-teal-700">₱{viewing.price.toLocaleString()}</p>
+                    <p className="mt-2 text-xs font-semibold text-teal-700">{viewing.stock ? "Available — confirm current stock with the church." : "Please ask the church about availability."}</p>
+                    <button type="button" onClick={() => { toggle(viewing); setViewing(null); }} className="mt-5 self-start rounded-lg bg-teal-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-teal-700">{selected.some((item) => item.id === viewing.id) ? "Remove from inquiry" : "Add to inquiry"}</button>
+                </div>
+            </div>
+        </div>}
     </main>;
 }
