@@ -85,15 +85,15 @@ export function EventDetailClient({ event }: { event: (typeof events)[number] })
 
     return (
         <main className="bg-slate-50 py-16 sm:py-24">
-            <div className="mx-auto max-w-5xl px-6">
+            <div className="mx-auto max-w-6xl px-6">
                 <Link href="/events" className="inline-flex items-center gap-2 text-sm font-bold text-teal-700 hover:text-teal-800">
                     <ChevronLeft size={18} aria-hidden="true" /> Back to events
                 </Link>
 
-                <div className="mt-7 grid gap-10 lg:grid-cols-[1.3fr_0.7fr] lg:items-start">
+                <div className="mt-7 space-y-8">
                     <div>
                         <div className="relative overflow-hidden rounded-3xl bg-slate-200 shadow-xl shadow-slate-950/10">
-                            <button type="button" onClick={() => setLightboxOpen(true)} className="relative block aspect-[4/3] w-full cursor-zoom-in focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-white" aria-label={`Open ${event.title} photo gallery`}>
+                            <button type="button" onClick={() => setLightboxOpen(true)} className="relative block aspect-[16/10] w-full cursor-zoom-in focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-white" aria-label={`Open ${event.title} photo gallery`}>
                                 <Image src={images[currentIndex]} alt={`${event.title}, image ${currentIndex + 1}`} fill priority sizes="(min-width: 1024px) 60vw, 100vw" className="object-cover" />
                             </button>
                             {images.length > 1 && <>
@@ -106,14 +106,14 @@ export function EventDetailClient({ event }: { event: (typeof events)[number] })
                         </div>}
                     </div>
 
-                    <article className="rounded-3xl bg-white p-7 shadow-sm ring-1 ring-slate-200 sm:p-9">
+                    <article className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 sm:p-9">
                         <p className="text-sm font-bold uppercase tracking-[0.15em] text-teal-700">{event.type === "upcoming" ? "Weekly gathering" : event.type === "sooner-upcoming" ? "Coming soon" : "Event recap"}</p>
                         <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{event.title}</h1>
-                        <div className="mt-6 space-y-3 text-slate-700">
+                        <div className="mt-6 flex flex-wrap gap-x-8 gap-y-4 text-slate-700">
                             <p className="flex gap-3"><Clock3 className="mt-0.5 shrink-0 text-teal-600" size={19} aria-hidden="true" /><span><strong className="block text-slate-900">{event.date}</strong>{event.time}</span></p>
-                            {event.location && <p className="flex gap-3"><MapPin className="mt-0.5 shrink-0 text-teal-600" size={19} aria-hidden="true" /><span>{event.location}</span></p>}
+                            {event.location && <p className="flex max-w-xl gap-3"><MapPin className="mt-0.5 shrink-0 text-teal-600" size={19} aria-hidden="true" /><span>{event.location}</span></p>}
                         </div>
-                        <p className="mt-7 leading-relaxed text-slate-700">{event.fullDescription?.replace(/<[^>]*>/g, "") || event.description}</p>
+                        <p className="mt-7 max-w-4xl text-base leading-8 text-slate-700">{event.fullDescription?.replace(/<[^>]*>/g, "") || event.description}</p>
                         <div className="mt-8 flex flex-wrap gap-3 border-t border-slate-100 pt-6">
                             {canAddToCalendar && <button type="button" onClick={() => downloadCalendarEvent(event)} className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-teal-700"><CalendarPlus size={17} aria-hidden="true" /> Add to calendar</button>}
                             <button type="button" onClick={shareEvent} className="inline-flex items-center gap-2 rounded-xl border border-slate-300 px-4 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-slate-50"><Share2 size={17} aria-hidden="true" /> {shareLabel}</button>
