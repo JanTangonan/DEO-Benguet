@@ -20,8 +20,9 @@ const values = [
 const leadership = [
     { id: "lyka-arman", name: "PH Campus Pastor Lyka & Arman", role: "Pastor", image: "/events/pastor4-extended.jpeg", focus: "Church Leadership", bio: "PH Campus Pastor Lyka & Arman bring unity, wisdom, and steadfast commitment to leading our growing congregation with grace and purpose." },
     { id: "kesha", name: "Pastor Kesha", role: "Preacher & Bible Teacher", image: "/events/pastor6.jpg", focus: "God’s Word", bio: "Pastor Kesha is passionate about sharing God’s Word with depth and clarity through practical, faith-building teaching." },
-    { id: "kate", name: "Youth Leader Kate", role: "Youth & Kids Ministry", image: "/events/pastor5-extended.jpeg", focus: "Youth & Kids Ministry", bio: "Youth Leader Kate creates authentic worship experiences and nurtures young believers as they grow in faith and discover their purpose in Christ." },
-    { id: "janelle", name: "Assistant Leader Janelle", role: "Youth & Kids Ministry", image: "/events/pastor.jpg", focus: "Youth & Kids Ministry", bio: "Assistant Leader Janelle brings enthusiasm and care to Youth Connect and Kids Ministry, helping every young person feel valued and welcome." },
+    { id: "grace", name: "Pastor Grace", role: "Worship Pastor", image: "/events/pastor7.jpg", focus: "Worship", bio: "Pastor Grace leads our worship ministry with creativity and devotion, inspiring heartfelt praise and encounters with God." },
+    { id: "kate", name: "Youth Leader Kate", role: "Soldiers of God Taekwondo & Kids Ministry", image: "/events/pastor5-extended.jpeg", focus: "Youth & Kids Ministry", bio: "Youth Leader Kate brings energy and care to Soldiers of God Taekwondo and Kids Ministry, helping every young person feel valued and welcome." },
+    { id: "janelle", name: "Youth Leader Janelle", role: "Youth Ministry", image: "/events/pastor.jpg", focus: "Youth & Kids Ministry", bio: "Youth Leader Janelle is dedicated to mentoring and guiding our youth, fostering spiritual growth and community among young believers." },
 ];
 
 const beliefs = [
