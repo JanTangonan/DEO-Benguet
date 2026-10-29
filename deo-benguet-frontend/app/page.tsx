@@ -13,7 +13,6 @@ export default function HomePage() {
     <main>
       <Hero />
       <ThisWeek />
-      <ServiceTimes />
       <Ministries />
       <PlanVisit />
       <Testimonials />
