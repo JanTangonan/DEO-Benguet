@@ -51,28 +51,28 @@ export default function Ministries() {
     const isExternal = active.href.startsWith("mailto:");
 
     return (
-        <section className="bg-slate-50 py-24 sm:py-28" aria-labelledby="ministries-title">
+        <section className="bg-slate-50 py-16 sm:py-28" aria-labelledby="ministries-title">
             <div className="mx-auto max-w-6xl px-6">
                 <div className="max-w-2xl">
                     <p className="text-sm font-bold uppercase tracking-[0.18em] text-teal-700">Find your place</p>
-                    <h2 id="ministries-title" className="mt-4 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">There’s a ministry for every season of life.</h2>
+                    <h2 id="ministries-title" className="mt-4 text-[1.875rem] font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl">There’s a ministry for every season of life.</h2>
                     <p className="mt-5 leading-relaxed text-slate-600">Choose a ministry to see what it is like, when it meets, and how to take your next step.</p>
                 </div>
 
                 <div className="mt-10 grid gap-5 lg:grid-cols-[0.8fr_1.2fr]">
-                    <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-1" role="tablist" aria-label="Church ministries">
+                    <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 lg:grid-cols-1" role="tablist" aria-label="Church ministries">
                         {ministries.map((ministry, index) => {
                             const MinistryIcon = ministry.icon;
                             const isActive = index === activeIndex;
-                            return <button key={ministry.name} type="button" role="tab" aria-selected={isActive} onClick={() => setActiveIndex(index)} className={`flex items-center gap-4 rounded-2xl p-4 text-left transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600 ${isActive ? "bg-teal-600 text-white shadow-lg shadow-teal-900/15" : "bg-white text-slate-800 ring-1 ring-slate-200 hover:bg-teal-50"}`}>
-                                <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${isActive ? "bg-white/20" : "bg-teal-100 text-teal-700"}`}><MinistryIcon size={21} aria-hidden="true" /></span>
-                                <span className="font-bold">{ministry.name}</span>
+                            return <button key={ministry.name} type="button" role="tab" aria-selected={isActive} onClick={() => setActiveIndex(index)} className={`flex min-h-16 min-w-0 items-center gap-2 rounded-2xl px-2 py-2 text-left transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600 sm:gap-4 sm:p-4 ${isActive ? "bg-teal-600 text-white shadow-lg shadow-teal-900/15" : "bg-white text-slate-800 ring-1 ring-slate-200 hover:bg-teal-50"}`}>
+                                <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-xl sm:h-10 sm:w-10 ${isActive ? "bg-white/20" : "bg-teal-100 text-teal-700"}`}><MinistryIcon size={21} aria-hidden="true" /></span>
+                                <span className="text-[13px] font-bold leading-tight sm:text-base">{ministry.name}</span>
                             </button>;
                         })}
                     </div>
 
                     <article className="grid overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-slate-200 sm:grid-cols-2">
-                        <div className="relative min-h-72"><Image src={active.image} alt={`${active.name} at DEO Church Benguet`} fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" /></div>
+                        <div className="relative min-h-52 sm:min-h-72"><Image src={active.image} alt={`${active.name} at DEO Church Benguet`} fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" /></div>
                         <div className="flex flex-col justify-center p-7 sm:p-9">
                             <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-teal-100 text-teal-700"><ActiveIcon size={23} aria-hidden="true" /></span>
                             <h3 className="mt-5 text-3xl font-bold text-slate-900">{active.name}</h3>

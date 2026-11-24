@@ -39,28 +39,28 @@ export default function PlanVisit() {
     const ActiveIcon = active.icon;
 
     return (
-        <section id="visit" className="scroll-mt-24 bg-teal-700 py-24 text-white sm:py-28" aria-labelledby="visit-title">
+        <section id="visit" className="scroll-mt-24 bg-teal-700 py-16 text-white sm:py-28" aria-labelledby="visit-title">
             <div className="mx-auto max-w-6xl px-6">
-                <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+                <div className="grid gap-8 sm:gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
                     <div>
                         <p className="text-sm font-bold uppercase tracking-[0.18em] text-teal-100">Your first visit</p>
-                        <h2 id="visit-title" className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">We’ll help you feel at home.</h2>
+                        <h2 id="visit-title" className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">We’ll help you feel at home.</h2>
                         <p className="mt-5 max-w-md leading-relaxed text-teal-50">Visiting a church for the first time can feel unfamiliar. Here’s everything you need, one simple step at a time.</p>
                     </div>
 
-                    <div className="rounded-3xl bg-white p-3 text-slate-900 shadow-2xl shadow-teal-950/30 sm:p-5">
+                    <div className="rounded-3xl bg-white p-2.5 text-slate-900 shadow-2xl shadow-teal-950/30 sm:p-5">
                         <div className="grid gap-2 sm:grid-cols-2">
                             {steps.map((step, index) => {
                                 const StepIcon = step.icon;
                                 const isActive = index === activeStep;
-                                return <button key={step.title} type="button" onClick={() => setActiveStep(index)} className={`flex items-center gap-3 rounded-2xl p-4 text-left transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600 ${isActive ? "bg-teal-600 text-white shadow-md" : "hover:bg-teal-50"}`} aria-pressed={isActive}>
+                                return <button key={step.title} type="button" onClick={() => setActiveStep(index)} className={`flex items-center gap-3 rounded-2xl p-3 text-left transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600 sm:p-4 ${isActive ? "bg-teal-600 text-white shadow-md" : "hover:bg-teal-50"}`} aria-pressed={isActive}>
                                     <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-bold ${isActive ? "bg-white/20" : "bg-teal-100 text-teal-700"}`}>{isActive ? <Check size={18} aria-hidden="true" /> : <StepIcon size={18} aria-hidden="true" />}</span>
                                     <span><span className="block font-bold">{step.title}</span><span className={`mt-0.5 block text-sm ${isActive ? "text-teal-50" : "text-slate-500"}`}>{step.summary}</span></span>
                                 </button>;
                             })}
                         </div>
 
-                        <div className="mt-4 rounded-2xl bg-slate-50 p-6 sm:p-8">
+                        <div className="mt-4 rounded-2xl bg-slate-50 p-5 sm:p-8">
                             <div className="flex gap-4">
                                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-teal-100 text-teal-700"><ActiveIcon size={24} aria-hidden="true" /></span>
                                 <div>

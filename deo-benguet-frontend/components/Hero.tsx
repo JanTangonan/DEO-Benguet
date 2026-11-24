@@ -26,7 +26,7 @@ export default function Hero() {
     const showNextSlide = () => setActiveSlide((current) => (current + 1) % heroSlides.length);
 
     return (
-        <section className="relative isolate min-h-[720px] w-full overflow-hidden text-white sm:min-h-[760px]" aria-labelledby="hero-title">
+        <section className="relative isolate min-h-[650px] w-full overflow-hidden text-white sm:min-h-[760px]" aria-labelledby="hero-title">
             <div className="absolute inset-0" aria-hidden="true">
                 {heroSlides.map((slide, index) => (
                     <Image
@@ -43,19 +43,19 @@ export default function Hero() {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/45 via-transparent to-slate-950/20" />
             </div>
 
-            <div className="relative mx-auto flex min-h-[720px] max-w-6xl items-center px-6 py-28 sm:min-h-[760px]">
+            <div className="relative mx-auto flex min-h-[650px] max-w-6xl items-center px-4 py-20 sm:min-h-[760px] sm:px-6 sm:py-28">
                 <div className="max-w-2xl">
-                    <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
+                    <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3.5 py-2 text-sm font-semibold backdrop-blur-sm sm:mb-6 sm:px-4">
                         <CalendarDays size={16} aria-hidden="true" /> Sundays at 10:30 AM
                     </p>
-                    <h1 id="hero-title" className="text-5xl font-bold leading-[1.08] tracking-tight sm:text-6xl md:text-7xl">
+                    <h1 id="hero-title" className="text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
                         Welcome to <span className="text-teal-300">DEO Church</span> Benguet.
                     </h1>
-                    <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-100 sm:text-xl">
+                    <p className="mt-5 max-w-xl text-base leading-7 text-slate-100 sm:mt-6 sm:text-xl sm:leading-relaxed">
                         A welcoming church family where faith grows, hope is restored, and lives are transformed through Jesus Christ.
                     </p>
 
-                    <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+                    <div className="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row">
                         <a href="#visit" className="inline-flex items-center justify-center gap-2 rounded-xl bg-teal-500 px-6 py-3.5 font-semibold text-white shadow-lg shadow-teal-950/30 transition hover:bg-teal-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                             Plan a visit <ArrowRight size={18} aria-hidden="true" />
                         </a>
@@ -66,25 +66,27 @@ export default function Hero() {
                 </div>
             </div>
 
-            <div className="absolute bottom-8 left-0 right-0 z-10 mx-auto flex max-w-6xl items-center justify-between px-6">
-                <div className="flex gap-2" aria-label="Hero image selection">
+            <div className="absolute bottom-4 left-0 right-0 z-10 mx-auto flex max-w-6xl items-center justify-between px-4 sm:bottom-8 sm:px-6">
+                <div className="flex gap-1" aria-label="Hero image selection">
                     {heroSlides.map((slide, index) => (
                         <button
                             key={slide.src}
                             type="button"
                             onClick={() => setActiveSlide(index)}
-                            className={`h-2.5 rounded-full transition-all focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white ${index === activeSlide ? "w-8 bg-teal-300" : "w-2.5 bg-white/50 hover:bg-white"}`}
+                            className="grid h-11 w-11 place-items-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-white"
                             aria-label={`Show image ${index + 1}: ${slide.alt}`}
                             aria-current={index === activeSlide ? "true" : undefined}
-                        />
+                        >
+                            <span className={`h-2.5 rounded-full transition-all ${index === activeSlide ? "w-7 bg-teal-300" : "w-2.5 bg-white/50"}`} />
+                        </button>
                     ))}
                 </div>
                 <div className="flex gap-2">
-                    <button type="button" onClick={showPreviousSlide} className="rounded-full border border-white/30 bg-black/20 p-2.5 backdrop-blur-sm transition hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" aria-label="Previous hero image">
-                        <ChevronLeft size={10} aria-hidden="true" />
+                    <button type="button" onClick={showPreviousSlide} className="grid h-11 w-11 place-items-center rounded-full border border-white/30 bg-black/20 backdrop-blur-sm transition hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" aria-label="Previous hero image">
+                        <ChevronLeft size={18} aria-hidden="true" />
                     </button>
-                    <button type="button" onClick={showNextSlide} className="rounded-full border border-white/30 bg-black/20 p-2.5 backdrop-blur-sm transition hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" aria-label="Next hero image">
-                        <ChevronRight size={10} aria-hidden="true" />
+                    <button type="button" onClick={showNextSlide} className="grid h-11 w-11 place-items-center rounded-full border border-white/30 bg-black/20 backdrop-blur-sm transition hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" aria-label="Next hero image">
+                        <ChevronRight size={18} aria-hidden="true" />
                     </button>
                 </div>
             </div>

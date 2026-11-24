@@ -47,49 +47,49 @@ export default function EventsPage() {
 
     return (
         <main>
-            <section className="relative isolate overflow-hidden bg-slate-950 py-24 text-white sm:py-32">
+            <section className="relative isolate overflow-hidden bg-slate-950 py-16 text-white sm:py-32">
                 <Image src="/events/deo-church-benguet-4.jpg" alt="DEO Church Benguet community event" fill priority sizes="100vw" className="-z-20 object-cover opacity-45" />
                 <div className="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950/95 via-slate-950/75 to-slate-950/40" />
-                <div className="mx-auto max-w-6xl px-6">
-                    <p className="mb-4 flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-teal-300"><Sparkles size={16} aria-hidden="true" /> Gather with us</p>
-                    <h1 className="max-w-2xl text-5xl font-bold tracking-tight sm:text-6xl">Life is better in community.</h1>
-                    <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200">Explore weekly gatherings, ministries, and the moments that shape DEO Church Benguet.</p>
+                <div className="mx-auto max-w-6xl px-4 sm:px-6">
+                    <p className="mb-3 flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-teal-300 sm:mb-4"><Sparkles size={16} aria-hidden="true" /> Gather with us</p>
+                    <h1 className="max-w-2xl text-4xl font-bold tracking-tight sm:text-6xl">Life is better in community.</h1>
+                    <p className="mt-4 max-w-2xl text-base leading-7 text-slate-200 sm:mt-6 sm:text-lg sm:leading-relaxed">Explore weekly gatherings, ministries, and the moments that shape DEO Church Benguet.</p>
                 </div>
             </section>
 
             <section className="bg-slate-50 py-12 sm:py-16" aria-labelledby="event-browser-title">
-                <div className="mx-auto max-w-6xl px-6">
-                    <div className="flex flex-col gap-6 border-b border-slate-200 pb-8 sm:flex-row sm:items-end sm:justify-between">
-                        <div><p className="text-sm font-semibold uppercase tracking-[0.15em] text-teal-700">Explore</p><h2 id="event-browser-title" className="mt-2 text-3xl font-bold text-slate-900">{activeFilter === "past" ? "Our story in moments" : "Find your next gathering"}</h2></div>
-                        <div className="flex flex-wrap gap-2" role="tablist" aria-label="Event categories">
-                            {filters.map((filter) => <button key={filter.id} type="button" role="tab" aria-selected={activeFilter === filter.id} onClick={() => setActiveFilter(filter.id)} className={`rounded-full px-4 py-2 text-sm font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600 ${activeFilter === filter.id ? "bg-teal-600 text-white shadow-sm" : "bg-white text-slate-700 ring-1 ring-slate-200 hover:bg-teal-50"}`}>{filter.label}</button>)}
+                <div className="mx-auto max-w-6xl px-4 sm:px-6">
+                    <div className="flex flex-col gap-4 border-b border-slate-200 pb-6 sm:gap-6 sm:pb-8 sm:flex-row sm:items-end sm:justify-between">
+                        <div><p className="text-sm font-semibold uppercase tracking-[0.15em] text-teal-700">Explore</p><h2 id="event-browser-title" className="mt-2 text-2xl font-bold leading-tight text-slate-900 sm:text-3xl">{activeFilter === "past" ? "Our story in moments" : "Find your next gathering"}</h2></div>
+                        <div className="grid grid-cols-3 gap-2 sm:flex sm:flex-wrap" role="tablist" aria-label="Event categories">
+                            {filters.map((filter) => <button key={filter.id} type="button" role="tab" aria-selected={activeFilter === filter.id} onClick={() => setActiveFilter(filter.id)} className={`flex min-h-12 items-center justify-center rounded-xl px-2 py-2 text-center text-[13px] font-semibold leading-tight transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600 sm:rounded-full sm:px-4 sm:text-sm ${activeFilter === filter.id ? "bg-teal-600 text-white shadow-sm" : "bg-white text-slate-700 ring-1 ring-slate-200 hover:bg-teal-50"}`}>{filter.label}</button>)}
                         </div>
                     </div>
-                    <p className="mt-5 text-sm text-slate-600">{filters.find((filter) => filter.id === activeFilter)?.description} · {visibleEvents.length} {visibleEvents.length === 1 ? "event" : "events"}</p>
+                    <p className="mt-4 text-[15px] text-slate-600 sm:mt-5 sm:text-sm">{filters.find((filter) => filter.id === activeFilter)?.description} · {visibleEvents.length} {visibleEvents.length === 1 ? "event" : "events"}</p>
 
                     {activeFilter === "all" && soonerEvents.length > 0 && (
-                        <section className="mt-10 rounded-3xl bg-gradient-to-br from-teal-50 via-white to-slate-50 p-6 shadow-sm ring-1 ring-teal-100 sm:p-8" aria-labelledby="coming-soon-title">
-                            <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                        <section className="mt-8 rounded-2xl bg-gradient-to-br from-teal-50 via-white to-slate-50 p-4 shadow-sm ring-1 ring-teal-100 sm:mt-10 sm:rounded-3xl sm:p-8" aria-labelledby="coming-soon-title">
+                            <div className="mb-5 flex flex-col gap-2 sm:mb-6 sm:flex-row sm:items-end sm:justify-between">
                                 <div>
-                                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-teal-700">Upcoming events</p>
-                                    <h3 id="coming-soon-title" className="mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">Coming up soon</h3>
+                                    <p className="text-[13px] font-bold uppercase tracking-[0.18em] text-teal-700 sm:text-xs">Upcoming events</p>
+                                    <h3 id="coming-soon-title" className="mt-2 text-xl font-bold tracking-tight text-slate-900 sm:text-3xl">Coming up soon</h3>
                                 </div>
-                                <p className="max-w-xl text-sm leading-relaxed text-slate-600">Mark your calendar for what’s happening at DEO.</p>
+                                <p className="max-w-xl text-[15px] leading-relaxed text-slate-600 sm:text-sm">Mark your calendar for what’s happening at DEO.</p>
                             </div>
                             <div className={soonerGridClass}>
                                 {soonerEvents.map((event) => {
                                     const image = event.images?.[0] ?? event.image ?? "/events/deo-church-benguet-1.jpg";
                                     return <Link key={event.id} href={`/events/${event.slug}`} className="group overflow-hidden rounded-2xl bg-white text-slate-900 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-600">
-                                        <div className={`relative overflow-hidden ${soonerEvents.length === 1 ? "aspect-[16/9]" : "aspect-[4/3]"}`}>
+                                        <div className={`relative overflow-hidden ${soonerEvents.length === 1 ? "aspect-[16/9]" : "aspect-[3/2] sm:aspect-[4/3]"}`}>
                                             <Image src={image} alt={event.title} fill sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw" className="object-cover transition duration-500 group-hover:scale-105" />
-                                            <span className="absolute left-4 top-4 rounded-full bg-teal-700/95 px-3 py-1 text-xs font-bold text-white shadow-sm">Coming soon</span>
-                                            <span className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full bg-white/95 px-3 py-2 text-xs font-bold text-slate-900 shadow-sm backdrop-blur-sm"><CalendarDays size={15} className="text-teal-700" aria-hidden="true" />{event.date}</span>
+                                            <span className="absolute left-3 top-3 rounded-full bg-teal-700/95 px-3 py-1 text-[13px] font-bold text-white shadow-sm sm:left-4 sm:top-4 sm:text-xs">Coming soon</span>
+                                            <span className="absolute bottom-3 left-3 inline-flex items-center gap-2 rounded-full bg-white/95 px-3 py-2 text-[13px] font-bold text-slate-900 shadow-sm backdrop-blur-sm sm:bottom-4 sm:left-4 sm:text-xs"><CalendarDays size={15} className="text-teal-700" aria-hidden="true" />{event.date}</span>
                                         </div>
-                                        <div className="p-5">
-                                            <h4 className="mt-3 text-xl font-bold transition group-hover:text-teal-700">{event.title}</h4>
-                                            {event.location && <p className="mt-2 flex items-center gap-2 text-xs text-slate-600"><MapPin size={14} className="shrink-0 text-teal-700" aria-hidden="true" /><span className="line-clamp-1">{event.location}</span></p>}
-                                            <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-slate-600">{event.description}</p>
-                                            <p className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-teal-700 transition group-hover:gap-2">View event <span aria-hidden="true">→</span></p>
+                                        <div className="p-4 sm:p-5">
+                                            <h4 className="mt-2 text-lg font-bold transition group-hover:text-teal-700 sm:mt-3 sm:text-xl">{event.title}</h4>
+                                            {event.location && <p className="mt-2 flex items-center gap-2 text-[13px] text-slate-600 sm:text-xs"><MapPin size={14} className="shrink-0 text-teal-700" aria-hidden="true" /><span className="line-clamp-1">{event.location}</span></p>}
+                                            <p className="mt-3 line-clamp-2 text-[15px] leading-relaxed text-slate-600 sm:text-sm">{event.description}</p>
+                                            <p className="mt-4 inline-flex items-center gap-1 text-[15px] font-bold text-teal-700 transition group-hover:gap-2 sm:text-sm">View event <span aria-hidden="true">→</span></p>
                                         </div>
                                     </Link>;
                                 })}
@@ -98,7 +98,7 @@ export default function EventsPage() {
                     )}
 
                     {activeFilter === "past" ? (
-                        <div className="relative mt-10 border-l-2 border-teal-200 pl-6 sm:pl-10">
+                        <div className="relative mt-8 border-l-2 border-teal-200 pl-5 sm:mt-10 sm:pl-10">
                             {archiveGroups.map(([period, archiveEvents]) => <section key={period} className="relative mb-14 last:mb-0">
                                 <span className="absolute -left-[2.05rem] top-1 h-5 w-5 rounded-full border-4 border-slate-50 bg-teal-600 sm:-left-[3.05rem]" aria-hidden="true" />
                                 <h3 className="text-2xl font-bold text-slate-900">{period}</h3>
@@ -106,22 +106,22 @@ export default function EventsPage() {
                                     {archiveEvents.map((event, index) => {
                                         const image = event.images?.[0] ?? event.image ?? "/events/deo-church-benguet-1.jpg";
                                         return <Link key={event.id} href={`/events/${event.slug}`} className={`group overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-600 ${index === 0 && archiveEvents.length > 1 ? "sm:col-span-2 lg:col-span-1" : ""}`}>
-                                            <div className="relative aspect-[4/3] overflow-hidden"><Image src={image} alt={event.title} fill sizes="(min-width: 1024px) 30vw, (min-width: 640px) 50vw, 100vw" className="object-cover transition duration-500 group-hover:scale-105" /><span className="absolute bottom-3 left-3 rounded-full bg-slate-950/75 px-3 py-1 text-xs font-bold text-white">View photos</span></div>
-                                            <div className="p-5"><p className="text-sm font-semibold text-teal-700">{event.date}</p><h4 className="mt-2 text-lg font-bold text-slate-900 group-hover:text-teal-700">{event.title}</h4><p className="mt-2 line-clamp-2 text-sm text-slate-600">{event.description}</p></div>
+                                            <div className="relative aspect-[3/2] overflow-hidden sm:aspect-[4/3]"><Image src={image} alt={event.title} fill sizes="(min-width: 1024px) 30vw, (min-width: 640px) 50vw, 100vw" className="object-cover transition duration-500 group-hover:scale-105" /><span className="absolute bottom-3 left-3 rounded-full bg-slate-950/75 px-3 py-1 text-[13px] font-bold text-white sm:text-xs">View photos</span></div>
+                                            <div className="p-4 sm:p-5"><p className="text-[15px] font-semibold text-teal-700 sm:text-sm">{event.date}</p><h4 className="mt-2 text-lg font-bold text-slate-900 group-hover:text-teal-700">{event.title}</h4><p className="mt-2 line-clamp-2 text-[15px] text-slate-600 sm:text-sm">{event.description}</p></div>
                                         </Link>;
                                     })}
                                 </div>
                             </section>)}
                         </div>
                     ) : (
-                        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                        <div className="mt-6 grid gap-4 sm:mt-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
                             {regularEvents.map((event) => {
                                 const image = event.images?.[0] ?? event.image ?? "/events/deo-church-benguet-1.jpg";
                                 const isWeekly = event.type === "upcoming";
                                 const isSooner = event.type === "sooner-upcoming";
-                                return <Link key={event.id} href={`/events/${event.slug}`} className="group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-600">
-                                    <div className="relative aspect-[4/3] overflow-hidden"><Image src={image} alt={event.title} fill sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" className="object-cover transition duration-500 group-hover:scale-105" /><span className={`absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-bold ${isWeekly ? "bg-teal-500 text-white" : isSooner ? "bg-amber-300 text-amber-950" : "bg-white/95 text-slate-800"}`}>{isWeekly ? "Weekly gathering" : isSooner ? "Coming soon" : "Event recap"}</span></div>
-                                    <div className="p-6"><h3 className="text-xl font-bold text-slate-900 transition group-hover:text-teal-700">{event.title}</h3><div className="mt-4 space-y-2 text-sm text-slate-600"><p className="flex items-center gap-2"><CalendarDays size={16} className="text-teal-600" aria-hidden="true" /> {event.date}</p>{event.time && <p className="flex items-center gap-2"><Clock3 size={16} className="text-teal-600" aria-hidden="true" /> {event.time}</p>}{event.location && <p className="flex items-center gap-2 truncate"><MapPin size={16} className="shrink-0 text-teal-600" aria-hidden="true" /> {event.location}</p>}</div><p className="mt-4 line-clamp-2 text-sm leading-relaxed text-slate-600">{event.description}</p><p className="mt-5 text-sm font-bold text-teal-700">View event and photos →</p></div>
+                                return <Link key={event.id} href={`/events/${event.slug}`} className="group overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-600 sm:rounded-3xl">
+                                    <div className="relative aspect-[3/2] overflow-hidden sm:aspect-[4/3]"><Image src={image} alt={event.title} fill sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" className="object-cover transition duration-500 group-hover:scale-105" /><span className={`absolute left-3 top-3 rounded-full px-3 py-1 text-[13px] font-bold sm:left-4 sm:top-4 sm:text-xs ${isWeekly ? "bg-teal-500 text-white" : isSooner ? "bg-amber-300 text-amber-950" : "bg-white/95 text-slate-800"}`}>{isWeekly ? "Weekly gathering" : isSooner ? "Coming soon" : "Event recap"}</span></div>
+                                    <div className="p-4 sm:p-6"><h3 className="text-lg font-bold text-slate-900 transition group-hover:text-teal-700 sm:text-xl">{event.title}</h3><div className="mt-3 space-y-2 text-[15px] text-slate-600 sm:mt-4 sm:text-sm"><p className="flex items-center gap-2"><CalendarDays size={16} className="shrink-0 text-teal-600" aria-hidden="true" /> {event.date}</p>{event.time && <p className="flex items-center gap-2"><Clock3 size={16} className="shrink-0 text-teal-600" aria-hidden="true" /> {event.time}</p>}{event.location && <p className="flex items-center gap-2 truncate"><MapPin size={16} className="shrink-0 text-teal-600" aria-hidden="true" /> {event.location}</p>}</div><p className="mt-4 line-clamp-2 text-[15px] leading-relaxed text-slate-600 sm:text-sm">{event.description}</p><p className="mt-4 text-[15px] font-bold text-teal-700 sm:mt-5 sm:text-sm">View event and photos →</p></div>
                                 </Link>;
                             })}
                         </div>

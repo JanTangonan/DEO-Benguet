@@ -4,8 +4,8 @@ import { useFadeIn } from "@/hooks/useFadeIn";
 export default function Location() {
     useFadeIn();
     return (
-        <section id="location" className="bg-gray-50 py-24 scroll-mt-20 fade-in">
-            <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+        <section id="location" className="bg-gray-50 py-16 scroll-mt-20 fade-in sm:py-24">
+            <div className="max-w-6xl mx-auto grid gap-8 px-4 md:grid-cols-2 md:items-center md:gap-12 sm:px-6">
                 
                 {/* Left Side */}
                 <div>
@@ -38,7 +38,7 @@ export default function Location() {
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d239.2614419018902!2d120.66195215591807!3d16.364634058630806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sph!4v1771076307326!5m2!1sen!2sph" 
                         width="100%"
-                        height="350"
+                        height="280"
                         style={{ border: 0 }}
                         allowFullScreen={true}
                         loading="lazy"

@@ -64,8 +64,8 @@ function NextStepCard({ icon, title, description, buttonText, href }: NextStepPr
 export default function Features() {
     useFadeIn();
     return (
-        <section className="bg-gradient-to-b from-teal-600 to-white py-28 fade-in">
-            <div className="max-w-6xl mx-auto px-6 text-center">
+        <section className="bg-gradient-to-b from-teal-600 to-white py-16 fade-in sm:py-28">
+            <div className="max-w-6xl mx-auto px-4 text-center sm:px-6">
 
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
                     Your Next Steps
@@ -75,7 +75,7 @@ export default function Features() {
                     Ready to take the next step? Here's how you can connect, grow, and stay involved.
                 </p>
 
-                <div className="grid md:grid-cols-3 gap-10 text-left">
+                <div className="grid gap-5 text-left md:grid-cols-3 md:gap-10">
                     {steps.map((step, index) => (
                         <NextStepCard
                             key={index}

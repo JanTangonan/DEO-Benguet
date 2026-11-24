@@ -25,14 +25,14 @@ export default function Navbar() {
 
     return (
         <nav className="sticky top-0 z-50 border-b border-slate-100 bg-white/95 shadow-sm backdrop-blur-md" aria-label="Main navigation">
-            <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
+            <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 sm:py-3">
                 <Link href="/" className="flex items-center gap-2 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-600" aria-label="DEO Church Benguet home">
-                    <Image src="/chosen-mission.svg" alt="" width={60} height={40} priority />
-                    <Image src="/logo.svg" alt="DEO Church Benguet" width={170} height={60} priority />
+                    <Image src="/chosen-mission.svg" alt="" width={60} height={40} className="h-auto w-11 sm:w-[60px]" priority />
+                    <Image src="/logo.svg" alt="DEO Church Benguet" width={170} height={60} className="h-auto w-[144px] sm:w-[170px]" priority />
                 </Link>
 
-                <button type="button" aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} className="rounded-lg p-2 text-slate-800 transition hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600 md:hidden" onClick={() => setMenuOpen((open) => !open)}>
-                    {menuOpen ? <X size={25} aria-hidden="true" /> : <Menu size={25} aria-hidden="true" />}
+                <button type="button" aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} className="grid h-11 w-11 place-items-center rounded-lg text-slate-800 transition hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600 md:hidden" onClick={() => setMenuOpen((open) => !open)}>
+                    {menuOpen ? <X size={23} aria-hidden="true" /> : <Menu size={23} aria-hidden="true" />}
                 </button>
 
                 <div className="hidden items-center gap-6 md:flex">
