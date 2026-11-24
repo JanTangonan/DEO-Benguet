@@ -220,7 +220,7 @@ export const events: Event[] = [
         fullDescription:
             "Join us for a meaningful Communion Thanksgiving service where we gather to celebrate the sacrifice of Christ and express gratitude for His grace and blessings in our lives. This will be a spiritually enriching experience of worship, reflection, and community.",
         images: [
-            "/events/communion-thanksgiving-1.jpg",
+            "/events/communion-thanksgiving-1.JPG",
             "/events/communion-thanksgiving-2.jpg",
             "/events/communion-thanksgiving-3.jpg",
         ],

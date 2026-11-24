@@ -56,11 +56,11 @@ export default function ThisWeek() {
   const nextEvent = schedule[0];
 
   return (
-    <section aria-labelledby="this-week-title" className="relative z-20 -mt-10 px-4 sm:px-6">
-      <div className="mx-auto max-w-6xl rounded-3xl border border-slate-200 bg-white p-5 shadow-xl shadow-slate-900/10 sm:p-8">
-        <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+    <section aria-labelledby="this-week-title" className="relative z-20 -mt-8 px-4 sm:-mt-10 sm:px-6">
+      <div className="mx-auto max-w-6xl rounded-2xl border border-slate-200 bg-white p-4 shadow-xl shadow-slate-900/10 sm:rounded-3xl sm:p-8">
+        <div className="mb-5 flex flex-col gap-3 sm:mb-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="mb-2 flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">
+            <p className="mb-2 flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] text-teal-700 sm:tracking-[0.18em]">
               <CalendarDays size={16} aria-hidden="true" /> This week at DEO
             </p>
             <h2 id="this-week-title" className="text-2xl font-bold text-slate-900 sm:text-3xl">
@@ -68,18 +68,18 @@ export default function ThisWeek() {
             </h2>
           </div>
           {nextEvent && (
-            <p className="rounded-full bg-teal-50 px-4 py-2 text-sm font-semibold text-teal-800">
+            <p className="rounded-2xl bg-teal-50 px-4 py-2 text-sm font-semibold text-teal-800 sm:rounded-full">
               Next gathering: {nextEvent.event.title} {now && formatCountdown(nextEvent.next, now)}
             </p>
           )}
         </div>
 
-        <div className="grid gap-3 md:grid-cols-3">
+        <div className="grid gap-2.5 sm:gap-3 md:grid-cols-3">
           {schedule.map(({ event, next }) => (
             <Link
               key={event.id}
               href={`/events/${event.slug}`}
-              className="group rounded-2xl border border-slate-100 bg-slate-50 p-5 transition hover:-translate-y-1 hover:border-teal-200 hover:bg-teal-50 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
+              className="group rounded-2xl border border-slate-100 bg-slate-50 p-4 transition hover:-translate-y-1 hover:border-teal-200 hover:bg-teal-50 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600 sm:p-5"
             >
               <div className="mb-4 flex items-start justify-between gap-3">
                 <div>
@@ -101,7 +101,7 @@ export default function ThisWeek() {
           ))}
         </div>
 
-        <div className="mt-6 flex flex-col gap-3 border-t border-slate-100 pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-5 flex flex-col gap-3 border-t border-slate-100 pt-5 sm:mt-6 sm:flex-row sm:items-center sm:justify-between sm:pt-6">
           <p className="text-sm text-slate-600">New here? We would love to welcome you this Sunday.</p>
           <div className="flex flex-wrap gap-3">
             <a href="https://maps.app.goo.gl/DdSt7GaUAHBoQJFe7" target="_blank" rel="noreferrer" className="rounded-xl border border-teal-600 px-5 py-2.5 text-sm font-semibold text-teal-700 transition hover:bg-teal-50">
