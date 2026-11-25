@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, ChevronLeft, ChevronRight, Compass, Heart, Sparkles, Users } from "lucide-react";
 import { useState } from "react";
+import styles from "./about.module.css";
 
 const values = [
     { id: "christ-centered", title: "Christ-Centered", brief: "Jesus is the foundation of all we do.", full: "Jesus is the foundation and focus of all we do. We exist to glorify Him and make Him known." },
@@ -71,11 +72,11 @@ export default function AboutPage() {
     const selectedLeader = leadership[activeLeader];
 
     return (
-        <main>
+        <main className={styles.page}>
             <section className="relative isolate overflow-hidden bg-slate-950 py-24 text-white sm:py-32">
                 <Image src="/events/deo-church-benguet-2.jpg" alt="DEO Church Benguet community" fill priority sizes="100vw" className="-z-20 object-cover opacity-45" />
                 <div className="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950/95 via-slate-950/70 to-slate-950/30" />
-                <div className="mx-auto max-w-6xl px-6"><p className="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.18em] text-teal-300"><Sparkles size={16} aria-hidden="true" /> About DEO Church Benguet</p><h1 className="mt-5 max-w-3xl text-5xl font-bold tracking-tight sm:text-6xl">A place to belong, grow, and encounter God.</h1><p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200">We are a Christ-centered church family in Benguet, called to love God, love people, and make disciples.</p><div className="mt-9 flex flex-wrap gap-3">{[["#our-story", "Our story"], ["#values", "Our values"], ["#leadership", "Leadership"]].map(([href, label]) => <a key={href} href={href} className="rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm font-bold backdrop-blur-sm transition hover:bg-white/20">{label}</a>)}</div></div>
+                <div className="mx-auto max-w-6xl px-6"><p className="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.18em] text-teal-300"><Sparkles size={16} aria-hidden="true" /> About DEO Church Benguet</p><h1 className="mt-5 max-w-3xl text-5xl font-bold tracking-tight sm:text-6xl">Belong. Grow. Encounter God.</h1><p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200">We are a Christ-centered church family in Benguet, called to love God, love people, and make disciples.</p><div className="mt-9 flex flex-wrap gap-3">{[["#our-story", "Our story"], ["#values", "Our values"], ["#leadership", "Leadership"]].map(([href, label]) => <a key={href} href={href} className="rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm font-bold backdrop-blur-sm transition hover:bg-white/20">{label}</a>)}</div></div>
             </section>
 
             <section id="our-story" className="scroll-mt-24 bg-white py-24 sm:py-28"><div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-2 lg:items-center"><div><p className="text-sm font-bold uppercase tracking-[0.18em] text-teal-700">Our story</p><h2 className="mt-4 text-4xl font-bold tracking-tight text-slate-900">Rooted in Jesus. Here for Benguet.</h2><div className="mt-6 space-y-5 leading-relaxed text-slate-600"><p>DEO Church Benguet is a family of Bible-believing Christians who love God, love our neighbors, and extend Christ’s love to all.</p><p>Our heart is to see people saved, healed, set free, transformed into devoted disciples, and empowered to serve Jesus Christ.</p><p>As a partner plant of DEO Church, we share a mission to establish Christ-like communities around the world.</p></div></div><div className="rounded-3xl bg-teal-50 p-8 sm:p-10"><Compass className="text-teal-700" size={34} aria-hidden="true" /><h3 className="mt-5 text-2xl font-bold text-slate-900">DEO = God</h3><p className="mt-4 text-lg leading-relaxed text-slate-600">This is God’s Church. DEO Victoria means “God Gives Victory.”</p><Image src="/10.svg" alt="DEO Church logo" width={400} height={400} className="mx-auto mt-6 max-h-52 w-auto" /></div></div></section>
